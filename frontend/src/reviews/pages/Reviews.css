@@ -1,0 +1,29 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+  background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2073&q=80");
+  background-size: cover;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(241, 241, 241, 0.043);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(227, 227, 227, 0.8);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(235, 235, 235);
+}

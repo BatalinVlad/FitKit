@@ -1,0 +1,81 @@
+main {
+  margin-top: 4.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.fill {
+  width: 100%;
+}
+.half-fill {
+  width: 50%;
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-baseline {
+  align-items: baseline;
+}
+
+.align-end {
+  align-items: end;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.flex-row-rev {
+  flex-direction: row-reverse;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.centerImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
