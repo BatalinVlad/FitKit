@@ -54,7 +54,7 @@ const ReviewItem = props => {
     }
     // update review ==> send userId and the action LIKE or Dislike
     try {
-      const responseData = await sendRequest(`http://localhost:5000/api/reviews/${auth.userId}/${props.reviewId}/${action}`, 'PUT',
+      const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews/${auth.userId}/${props.reviewId}/${action}`, 'PUT',
         null,
         {
           Authorization: 'Bearer ' + auth.token

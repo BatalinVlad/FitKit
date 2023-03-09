@@ -1,0 +1,25 @@
+// Setup
+@import "setup/variables.scss";
+@import "setup/functions.scss";
+@import "setup/mixins.scss";
+
+// Basics
+@import "basics/helpers.scss";
+@import "basics/layout.scss";
+@import "basics/base.scss";
+@import "basics/links.scss";
+@import "basics/buttons.scss";
+
+//Component for all reviews
+@import "components/LoadPage.scss";
+
+//Components for user
+
+//splash
+@import "components/SplashMenu.scss";
+
+//task details componenets / helpers / modals
+
+//views
+@import "views/HomePage.scss";
+@import "views/BoardPage.scss";

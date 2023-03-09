@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 
-import ReviewsList from '../../user/components/ReviewsList';
+import ReviewsList from '../../reviews/components/ReviewsList';
 import MainChat from '../../chat/components/MainChat';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
@@ -22,7 +22,7 @@ const Reviews = ({ socket }) => {
     }
     const getCurrentUser = async () => {
       try {
-        const currentUser = await sendRequest(`http://localhost:5000/api/users/${auth.userId}`);
+        const currentUser = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/${auth.userId}`);
         setUser(currentUser);
       } catch (err) { };
     };
@@ -32,7 +32,7 @@ const Reviews = ({ socket }) => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const responseData = await sendRequest('http://localhost:5000/api/reviews');
+        const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews`);
         setLoadedReviews(responseData.loadedReviews.reverse());
       } catch (err) { };
     };
@@ -42,7 +42,7 @@ const Reviews = ({ socket }) => {
   useEffect(() => {
     const fetchMainCHatMessages = async () => {
       try {
-        const responseData = await sendRequest('http://localhost:5000/api/mainchat');
+        const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/mainchat`);
         setLoadedMainChatMessages(responseData.loadedMessages);
       } catch (err) { };
     };

@@ -27,13 +27,4 @@ router.post(
 
 router.post('/login', usersController.login);
 
-// router.put(
-//   '/:uid/:rid/:act',
-//   [
-//     check('userLikedReviews'),
-//     check('userDislikedReviews')
-//   ],
-//   usersController.updateUserLikedReviews
-// );
-
 module.exports = router;

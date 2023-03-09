@@ -312,7 +312,9 @@ const deleteReview = async (req, res, next) => {
   const imagePath = review.image.image_id;
 
   try {
-    await cloudinary.uploader.destroy(imagePath);
+    await cloudinary.uploader.destroy(imagePath, options = {
+      folder: 'production'
+    });
   } catch (err) {
     const error = new HttpError('Something went wrong, Could not delete the image from Cloudinary', 500);
     return next(error);

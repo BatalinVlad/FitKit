@@ -4,7 +4,7 @@ import { useHttpClient } from '../../shared/hooks/http-hook';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 
-import UserReviewsList from '../../reviews/components/UserReviewsList';
+import UserReviewsList from '../../user/components/UserLikedReviewsList';
 import Card from '../../shared/components/UIElements/Card';
 import Button from '../../shared/components/FormElements/Button';
 
@@ -18,7 +18,7 @@ const UserReviews = () => {
   useEffect(() => {
     const fetchUserReviews = async () => {
       try {
-        const responseData = await sendRequest(`http://localhost:5000/api/reviews/user/${userId}`);
+        const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews/user/${userId}`);
         if (!responseData.userReviews) {
           setAddReview(true);
         }

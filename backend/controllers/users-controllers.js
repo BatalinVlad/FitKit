@@ -186,40 +186,8 @@ const login = async (req, res, next) => {
   });
 }
 
-// const updateUserLikedReviews = async (req, res, next) => {
-//   const errors = validationResult(req);
-//   if (!errors.isEmpty()) {
-//     return next(new HttpError('Invalid inputs passed, please check your data.', 422));
-//   }
-//   const { userLikes, userDislikes } = req.body;
-
-//   const userId = req.params.uid;
-
-//   let user;
-
-//   try {
-//     user = await User.findById(userId);
-//   } catch (err) {
-//     const error = new HttpError('Could not find the user, try again later.', 500);
-//     return next(error);
-//   }
-
-//   user.likedReviews = [...userLikes];
-//   user.dislikedReviews = [...userDislikes];
-//   try {
-//     await user.save({ session: sess });
-
-//   } catch (err) {
-//     const error = new HttpError('Something went wrong, could not update user likes/dislike', 500);
-//     return next(error);
-//   }
-
-//   // res.status(200).json({ userLikedDislikedReviews: userLikedDislikedReviews.toObject({ getters: true }) });
-// };
-
 exports.getUserById = getUserById;
 exports.getUsers = getUsers;
 exports.signup = signup;
 exports.login = login;
-// exports.updateUserLikedReviews = updateUserLikedReviews;
 

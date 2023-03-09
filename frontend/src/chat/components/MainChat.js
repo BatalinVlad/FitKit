@@ -45,7 +45,7 @@ const MainChat = ({ socket, messages }) => {
             //send to bcakend
 
             try {
-                await sendRequest('http://localhost:5000/api/mainchat/sendMsg', 'POST',
+                await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/mainchat/sendMsg`, 'POST',
                     JSON.stringify({
                         msgId: messageData.msgId,
                         chat: messageData.chat,

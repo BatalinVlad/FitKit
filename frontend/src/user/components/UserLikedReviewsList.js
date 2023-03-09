@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Card from '../../shared/components/UIElements/Card';
-import UserLikedReviewItem from './UserLikedReviewItem';
+import UserLikedReviewItem from './UserReviewItem';
 import Button from '../../shared/components/FormElements/Button';
 import './UserReviewsList.css';
 
@@ -18,7 +18,7 @@ const UserLikedReviewsList = props => {
   }
 
   return (
-    <ul className="user-reviews-list">
+    <ul className="user-reviews-list flex justify-center">
       {props.items.map(review => (
         <UserLikedReviewItem
           key={review.id}

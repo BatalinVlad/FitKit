@@ -7,7 +7,6 @@ import { FiClipboard } from 'react-icons/fi';
 import { FiHome } from 'react-icons/fi';
 import { FiLogOut } from 'react-icons/fi';
 import { FiLogIn } from 'react-icons/fi';
-import { SlLike } from 'react-icons/sl';
 
 
 import { FiPlusSquare } from 'react-icons/fi';
@@ -62,16 +61,6 @@ const NavLinks = props => {
               </span>
             </NavLink>
           </div>
-        </li>
-      )}
-      {auth.isLoggedIn && (
-        <li>
-          <NavLink to={`/mylikes/${auth.userId}`}>
-            <SlLike />
-            <span>
-              MY LIKES
-            </span>
-          </NavLink>
         </li>
       )}
       {auth.isLoggedIn && (

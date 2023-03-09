@@ -47,7 +47,5 @@ const newMessage = async (req, res, next) => {
     });
 };
 
-
-
 exports.newMessage = newMessage;
 exports.getMessages = getMessages;

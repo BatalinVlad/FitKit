@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -8,19 +8,21 @@ import {
 
 import io from 'socket.io-client';
 
-import Reviews from './reviews/pages/Reviews';
-import AddReview from './user/pages/AddReview';
-import UserLikedReviews from './user/pages/UserLikedReviews';
-import UserReviews from './user/pages/UserReviews';
-import UpdateUserReview from './user/pages/UpdateUserReview';
-import Auth from './user/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
+import LoadingSpinner from './shared/components/UIElements/LoadingSpinner';
 import { AuthContext } from './shared/context/auth-context';
 import { useAuth } from './shared/hooks/auth-hook';
-
 import './shared/util/cssHelpers.css'
 
-const socket = io.connect('http://localhost:3001');
+const Reviews = React.lazy(() => import('./reviews/pages/Reviews'));
+const AddReview = React.lazy(() => import('./user/pages/AddReview'));
+const UserReviews = React.lazy(() => import('./user/pages/UserReviews'));
+const UpdateUserReview = React.lazy(() => import('./user/pages/UpdateUserReview'));
+const Auth = React.lazy(() => import('./user/pages/Auth'));
+
+
+
+const socket = io.connect(process.env.REACT_APP_FRONTEND_URL);
 socket.emit("join_room", 'main_chat');
 socket.emit("join_room", 'reviews_room');
 
@@ -43,9 +45,6 @@ const App = () => {
         </Route>
         <Route path="/reviews/:reviewId">
           <UpdateUserReview socket={socket} />
-        </Route>
-        <Route path="/mylikes/:userId" exact>
-          <UserLikedReviews />
         </Route>
         <Route path="/auth" exact>
           <Auth />
@@ -87,7 +86,15 @@ const App = () => {
     >
       <Router>
         <MainNavigation />
-        <main>{routes}</main>
+        <main>
+          <Suspense fallback={
+            <div className='center'>
+              <LoadingSpinner />
+            </div>
+          }>
+            {routes}
+          </Suspense>
+        </main>
       </Router>
     </AuthContext.Provider>
   );

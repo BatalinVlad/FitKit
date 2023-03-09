@@ -47,11 +47,11 @@ const NewReview = ({ socket }) => {
       formData.append('userImage', auth.userImage || 'https://res.cloudinary.com/dzeycmkct/image/upload/v1676724957/guestMode_sjwyx7.png');
 
       if (auth.userId) {
-        const user = await sendRequest(`http://localhost:5000/api/users/${auth.userId}`);
+        const user = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/${auth.userId}`);
         formData.append('name', user.name);
         formData.append('isGuest', false);
 
-        const responseData = await sendRequest('http://localhost:5000/api/reviews', 'POST', formData, {
+        const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews`, 'POST', formData, {
           Authorization: 'Bearer ' + auth.token
         });
 
@@ -62,7 +62,7 @@ const NewReview = ({ socket }) => {
         formData.append('name', 'guest');
         formData.append('isGuest', true);
 
-        const responseData = await sendRequest('http://localhost:5000/api/reviews', 'POST', formData, {
+        const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews`, 'POST', formData, {
           Authorization: 'Bearer guestMode'
         });
 
