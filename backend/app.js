@@ -19,13 +19,13 @@ const app = express();
 app.use(cors());
 
 const server = http.createServer(app);
-server.listen(process.env.FRONT_PORT, () => {
+server.listen(3001, () => {
   console.log('SERVER RUNNING');
 })
 
 const io = new Server(server, {
   cors: {
-    origin: `${process.env.REACT_FRONTEND_URL}`,
+    origin: 'http://localhost:3000',
     methods: ['GET', 'POST'],
   }
 });
@@ -74,6 +74,6 @@ app.use((req, res, next) => {
 mongoose
   .connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.0qc0rdq.mongodb.net/${process.env.MONGO_NAME}?retryWrites=true&w=majority`)
   .then(() => {
-    app.listen(process.env.PORT);
+    app.listen(process.env.PORT || 5000);
   })
   .catch(err => console.log(err));

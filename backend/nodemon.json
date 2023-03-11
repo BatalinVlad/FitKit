@@ -1,0 +1,12 @@
+{
+    "env": {
+        "REACT_FRONTEND_URL": "http: //localhost:3000",
+        "MONGO_USERNAME": "vladbatalin",
+        "MONGO_PASSWORD": "9081206",
+        "MONGO_NAME": "reviewapp",
+        "CLOUD_NAME": "dzeycmkct",
+        "CLOUD_API_KEY": "341623861283216",
+        "CLOUD_API_SECRET": "ngTgjeiWwqMxUuEg-O0zou9zFTI",
+        "JWT_SECRET": "supersecret_dont_share"
+    }
+}
