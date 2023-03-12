@@ -22,7 +22,7 @@ const Auth = React.lazy(() => import('./user/pages/Auth'));
 
 
 //localhost:3001?
-const socket = io.connect(`${process.env.REACT_APP_FRONTEND_URL}:2400`);
+const socket = io.connect(`${process.env.REACT_APP_FRONTEND_URL}`);
 socket.emit("join_room", 'main_chat');
 socket.emit("join_room", 'reviews_room');
 
