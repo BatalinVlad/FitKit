@@ -19,7 +19,7 @@ const app = express();
 app.use(cors());
 
 const server = http.createServer(app);
-server.listen(process.env.PORT || 3001, () => {
+server.listen(3001, () => {
   console.log('SERVER RUNNING');
 })
 
