@@ -21,8 +21,8 @@ const UpdateUserReview = React.lazy(() => import('./user/pages/UpdateUserReview'
 const Auth = React.lazy(() => import('./user/pages/Auth'));
 
 
-
-const socket = io.connect(process.env.REACT_APP_FRONTEND_URL);
+//localhost:3001?
+const socket = io.connect(`${process.env.REACT_APP_FRONTEND_URL}:2400`);
 socket.emit("join_room", 'main_chat');
 socket.emit("join_room", 'reviews_room');
 
