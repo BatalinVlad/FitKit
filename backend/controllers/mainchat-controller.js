@@ -1,7 +1,7 @@
 const { validationResult } = require('express-validator');
 
 const HttpError = require('../models/http-error');
-const Message = require('../models/Message');
+const Message = require('../models/message');
 
 const getMessages = async (req, res, next) => {
     let messages;
