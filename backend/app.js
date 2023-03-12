@@ -18,10 +18,8 @@ const app = express();
 
 app.use(cors());
 
-const port = 2400;
-
 const server = http.createServer(app);
-server.listen(port, () => {
+server.listen(3001, () => {
   console.log('SERVER RUNNING');
 })
 
