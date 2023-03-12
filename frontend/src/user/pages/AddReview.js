@@ -56,7 +56,7 @@ const NewReview = ({ socket }) => {
         });
 
         //socket emit
-        await socket.emit("add_review", responseData.review); //not working this way either
+        await socket.emit("add_review", responseData.review); 
 
       } else {
         formData.append('name', 'guest');
@@ -67,7 +67,7 @@ const NewReview = ({ socket }) => {
         });
 
         //socket emit
-        await socket.emit("add_review", responseData.review); //not working this way either
+        await socket.emit("add_review", responseData.review); 
       }
       socket.off('connection');
       socket.off('receive_review');
