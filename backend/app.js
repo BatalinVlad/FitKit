@@ -18,10 +18,10 @@ const app = express();
 
 app.use(cors());
 
-// const port = process.env.PORT || 2400;
+const port = process.env.PORT || 2400;
 
 const server = http.createServer(app);
-server.listen('https://reviewsapp-bv.web.app/', () => {
+server.listen(port, () => {
   console.log('SERVER RUNNING');
 })
 
