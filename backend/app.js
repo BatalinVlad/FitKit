@@ -25,7 +25,7 @@ server.listen(3001, () => {
 
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:3000', 'https://reviewsapp-bv.web.app/'],
+    origin: 'https://reviewsapp-bv.web.app/',
     methods: ['GET', 'POST'],
   }
 });
