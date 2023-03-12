@@ -21,7 +21,7 @@ app.use(cors());
 // const port = process.env.PORT || 2400;
 
 const server = http.createServer(app);
-server.listen(2400, () => {
+server.listen(3001, () => {
   console.log('SERVER RUNNING');
 })
 
