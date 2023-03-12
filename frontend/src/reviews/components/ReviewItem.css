@@ -1,4 +1,5 @@
 .review-item {
+  margin: 5px;
   width: 20rem;
   cursor: pointer;
 }
@@ -19,6 +20,9 @@
 .review-item__content_link:hover,
 .review-item__content_link:active {
   background: rgb(193, 193, 193);
+}
+.review-item .review-item__content {
+  padding: 0;
 }
 
 .review-item__content {

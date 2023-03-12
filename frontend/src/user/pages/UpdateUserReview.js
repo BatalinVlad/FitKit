@@ -45,7 +45,7 @@ const UpdateUserReview = () => {
   useEffect(() => {
     const fetchReview = async () => {
       try {
-        const responseData = await sendRequest(`http://localhost:5000/api/reviews/${reviewId}`);
+        const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews/${reviewId}`);
         setLoadedReview(responseData.review);
 
         setFormData(
@@ -70,7 +70,7 @@ const UpdateUserReview = () => {
   const reviewUpdateSubmitHandler = async event => {
     event.preventDefault();
     try {
-      await sendRequest(`http://localhost:5000/api/reviews/${reviewId}`, 'PATCH',
+      await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews/${reviewId}`, 'PATCH',
         JSON.stringify({
           stars: formState.inputs.stars.value,
           description: formState.inputs.description.value
