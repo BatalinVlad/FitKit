@@ -50,30 +50,25 @@ const NavLinks = props => {
       </li>
       {!auth.isLoggedIn && (
         <li className='nav_login'>
-          <div className="nav_link_user flex align-center">
-            <div className="review-item__user_image  flex align-center">
-              <img src='https://res.cloudinary.com/dzeycmkct/image/upload/v1676724957/guestMode_sjwyx7.png' alt='guest' />
-            </div>
-            <NavLink to="/auth">
+          <NavLink to="/auth">
+              <div className="review-item__user_image flex align-center">
+                <img src='https://res.cloudinary.com/dzeycmkct/image/upload/v1676724957/guestMode_sjwyx7.png' alt='guest' />
+              </div>
               <FiLogIn />
               <span>
                 LOG IN
               </span>
-            </NavLink>
-          </div>
+          </NavLink>
         </li>
       )}
       {auth.isLoggedIn && (
-        <li>
-          <div className="nav_link_user flex">
+        <li className='logout-nav flex align-center justify-center'>
             <div className="review-item__user_image  flex align-center">
               <img src={`${auth.userImage}`} alt='user' />
             </div>
-            <button onClick={logoutHandler} className="flex align-center">
+            <button onClick={logoutHandler} className="logout-btn flex align-center">
               <FiLogOut />
             </button>
-
-          </div>
         </li>
       )}
     </ul>

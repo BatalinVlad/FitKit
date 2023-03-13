@@ -89,7 +89,8 @@ const Auth = () => {
           responseData.token,
           responseData.userImage.secure_url);
         history.push('/');
-      } catch (err) { }
+      } catch (err) {
+      }
     } else {
       try {
         const formData = new FormData();

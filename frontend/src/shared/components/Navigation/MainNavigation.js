@@ -6,6 +6,7 @@ import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
 import Backdrop from '../UIElements/Backdrop';
 import './MainNavigation.css';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 const MainNavigation = props => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
@@ -29,12 +30,10 @@ const MainNavigation = props => {
 
       <MainHeader>
         <button
-          className="main-navigation__menu-btn"
+          className="main-navigation__menu-btn flex"
           onClick={openDrawerHandler}
         >
-          <span />
-          <span />
-          <span />
+          <GiHamburgerMenu />
         </button>
         <h1 className="main-navigation__title">
           <Link to="/">VLAD B FIT REVIEWS</Link>

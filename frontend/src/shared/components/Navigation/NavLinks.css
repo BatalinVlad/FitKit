@@ -1,35 +1,27 @@
+/* SLIDER NAVIGATION (more then 500px)*/
 .nav-links {
-  height: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
 .nav-links li {
-  height: 100%;
   width: 100%;
-  margin: 1rem;
-}
-
-.nav-links li:last-child {
-  width: auto;
 }
 
 .nav-links a {
-  height: 70%;
+  width: 100%;
+  height: 90px;
+  padding: 30px 0px;
   font-size: 0.8rem;
   display: flex;
+  justify-content: center;
   align-items: center;
-  border-radius: 5px;
   color: white;
   text-decoration: none;
-  padding: 0.5rem;
 }
 
 .nav-links span {
@@ -38,60 +30,63 @@
 .nav-links a:hover,
 .nav-links a.active {
   transition: 0.6s;
-  background: #8e8e8e50;
+  background: #8e8e8e20;
   color: white;
 }
 .nav-links img {
   box-shadow: 0px 0px 3px 2px rgb(255, 255, 255, 0.6);
   width: 30px;
   height: 30px;
+  margin-right: 10px;
 }
 
 .nav-links button {
-  border-radius: 5px;
+  border: none;
   cursor: pointer;
-  color: #292929;
   background: transparent;
+  color: white;
   padding: 0.2rem;
   margin-left: 5px;
-}
-
-.nav-links button:focus {
-  outline: none;
 }
 
 .nav-links button:hover,
 .nav-links button:active {
   transition: 0.6s;
-  background: #292929;
+  background: #8e8e8e42;
   color: white;
 }
 
-@media (min-width: 768px) {
+.logout-nav {
+  margin-top: 10px;
+}
+
+/* MAIN NAVIGATION */
+@media (min-width: 500px) {
   .nav-links {
     flex-direction: row;
+    height: 150px;
   }
 
   .nav-links li {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 140px;
-    margin: 0 0.5rem;
+    height: 30px;
+    margin: 0 0.1rem;
   }
 
   .nav-links a {
+    padding: 25px 0px;
     width: 100%;
-    justify-content: center;
+    height: 100%;
     color: white;
     text-decoration: none;
   }
 
-  .nav-links button {
-    color: white;
-    background: transparent;
-  }
-
   .nav-links button:hover,
   .nav-links button:active {
-    background: #8e8e8e50;
+    color: white;
+    background: #8e8e8e42;
   }
 }
