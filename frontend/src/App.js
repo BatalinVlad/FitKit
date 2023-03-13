@@ -21,7 +21,8 @@ const UpdateUserReview = React.lazy(() => import('./user/pages/UpdateUserReview'
 const Auth = React.lazy(() => import('./user/pages/Auth'));
 
 
-//localhost:3001?
+// ENDPOINT=https://reviewsapp-production.up.railway.app/ ?
+
 const socket = io.connect(process.env.ENDPOINT);
 socket.emit("join_room", 'main_chat');
 socket.emit("join_room", 'reviews_room');
