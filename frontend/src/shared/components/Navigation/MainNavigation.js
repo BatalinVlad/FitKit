@@ -29,7 +29,7 @@ const MainNavigation = props => {
       </SideDrawer>
 
       <MainHeader>
-        <div>
+        <div className="flex align-center">
           <button
             className="main-navigation__menu-btn flex"
             onClick={openDrawerHandler}
