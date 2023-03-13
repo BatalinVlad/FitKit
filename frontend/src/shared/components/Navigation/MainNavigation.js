@@ -29,15 +29,17 @@ const MainNavigation = props => {
       </SideDrawer>
 
       <MainHeader>
-        <button
-          className="main-navigation__menu-btn flex"
-          onClick={openDrawerHandler}
-        >
-          <GiHamburgerMenu />
-        </button>
-        <h1 className="main-navigation__title">
-          <Link to="/">VLAD B FIT REVIEWS</Link>
-        </h1>
+        <div>
+          <button
+            className="main-navigation__menu-btn flex"
+            onClick={openDrawerHandler}
+          >
+            <GiHamburgerMenu />
+          </button>
+          <h1 className="main-navigation__title">
+            <Link to="/">VLAD B FIT REVIEWS</Link>
+          </h1>
+        </div>
         <nav className="main-navigation__header-nav">
           <NavLinks />
         </nav>
