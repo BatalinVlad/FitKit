@@ -31,7 +31,7 @@ const MainNavigation = props => {
       <MainHeader>
         <div className="flex align-center">
           <button
-            className="main-navigation__menu-btn flex"
+            className="main-navigation__menu-btn"
             onClick={openDrawerHandler}
           >
             <GiHamburgerMenu />

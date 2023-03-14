@@ -30,7 +30,7 @@
 .nav-links a:hover,
 .nav-links a.active {
   transition: 0.6s;
-  background: #8e8e8e20;
+  background: #8e8e8e40;
   color: white;
 }
 .nav-links img {
@@ -60,11 +60,30 @@
   margin-top: 10px;
 }
 
+@media (min-width: 395px) and (max-width: 920px) {
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+  }
+  .nav-links li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.1rem;
+  }
+  .nav-links a {
+    height: 45px;
+    padding: 0px 15px;
+  }
+  .nav-links span {
+    display: none;
+  }
+}
+
 /* MAIN NAVIGATION */
-@media (min-width: 500px) {
+@media (min-width: 921px) {
   .nav-links {
     flex-direction: row;
-    height: 150px;
   }
 
   .nav-links li {
