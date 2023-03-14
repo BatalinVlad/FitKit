@@ -72,7 +72,7 @@ const NewReview = ({ socket }) => {
       socket.off('connection');
       socket.off('receive_review');
       socket.off('disconnect');
-      history.push('/');
+      history.push('/reviews');
     } catch (err) { };
   };
 

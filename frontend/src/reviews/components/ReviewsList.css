@@ -1,12 +1,13 @@
 .reviews-list {
-  margin-top: 10px;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0;
+  padding: 0 30px;
   margin: 0;
   overflow: scroll;
   overflow-x: hidden;
   height: 86vh;
 }
+
+

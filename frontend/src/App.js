@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -11,10 +11,12 @@ import io from 'socket.io-client';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import LoadingSpinner from './shared/components/UIElements/LoadingSpinner';
 import { AuthContext } from './shared/context/auth-context';
+import { useHttpClient } from './shared/hooks/http-hook';
 import { useAuth } from './shared/hooks/auth-hook';
+import MainChat from './chat/components/MainChat';
 import './shared/util/cssHelpers.css'
 
-const About = React.lazy(() => import('./about/pages/About'));
+const About = React.lazy(() => import('./about/About'));
 const Reviews = React.lazy(() => import('./reviews/pages/Reviews'));
 const AddReview = React.lazy(() => import('./user/pages/AddReview'));
 const UserReviews = React.lazy(() => import('./user/pages/UserReviews'));
@@ -27,15 +29,15 @@ socket.emit("join_room", 'reviews_room');
 
 const App = () => {
   const { token, login, logout, userId, userName, userImage } = useAuth();
+  const [loadedMainChatMessages, setLoadedMainChatMessages] = useState();
+  const { sendRequest } = useHttpClient();
+
 
   let routes;
 
   if (token) {
     routes = (
       <Switch>
-        <Route path="/" exact>
-          <About socket={socket} />
-        </Route>
         <Route path="/reviews" exact>
           <Reviews socket={socket} />
         </Route>
@@ -51,15 +53,15 @@ const App = () => {
         <Route path="/auth" exact>
           <Auth />
         </Route>
+        <Route path="/" exact>
+          <About socket={socket} />
+        </Route>
         <Redirect to="/" />
       </Switch>
     );
   } else {
     routes = (
       <Switch>
-        <Route path="/" exact>
-          <About socket={socket} />
-        </Route>
         <Route path="/reviews" exact>
           <Reviews socket={socket} />
         </Route>
@@ -72,10 +74,24 @@ const App = () => {
         <Route path="/auth" exact>
           <Auth />
         </Route>
-        <Redirect to="/auth" />
+        <Route path="/" exact>
+          <About socket={socket} />
+        </Route>
+        <Redirect to="/" />
       </Switch>
     );
   }
+
+  useEffect(() => {
+    const fetchMainCHatMessages = async () => {
+      try {
+        const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/mainchat`);
+        setLoadedMainChatMessages(responseData.loadedMessages);
+      } catch (err) { };
+    };
+    fetchMainCHatMessages();
+  }, [sendRequest]);
+
 
   return (
     <AuthContext.Provider
@@ -99,6 +115,7 @@ const App = () => {
           }>
             {routes}
           </Suspense>
+          <MainChat socket={socket} messages={loadedMainChatMessages} />
         </main>
       </Router>
     </AuthContext.Provider>

@@ -138,3 +138,15 @@
   padding-bottom: 5px;
   transition: 0.8s;
 }
+
+@media (max-width: 700px) {
+  .review-item:not(:first-child) {
+    margin-top: 20px;
+    width: 20rem;
+    cursor: pointer;
+  }
+
+  .review-item:last-child {
+    padding-bottom: 50px;
+  }
+}
