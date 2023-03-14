@@ -22,8 +22,16 @@ const NavLinks = props => {
 
   return (
     <ul className="nav-links">
-      <li>
+       <li>
         <NavLink to="/" exact>
+          <FiHome />
+          <span>
+            ABOUT
+          </span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/reviews" exact>
           <FiHome />
           <span>
             ALL REVIEWS

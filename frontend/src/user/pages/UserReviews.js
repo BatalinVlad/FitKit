@@ -4,7 +4,7 @@ import { useHttpClient } from '../../shared/hooks/http-hook';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 
-import UserReviewsList from '../../user/components/UserLikedReviewsList';
+import UserReviewsList from '../../user/components/UserReviewsList';
 import Card from '../../shared/components/UIElements/Card';
 import Button from '../../shared/components/FormElements/Button';
 

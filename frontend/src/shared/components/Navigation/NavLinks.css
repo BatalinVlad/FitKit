@@ -27,8 +27,7 @@
 .nav-links span {
   margin-left: 5px;
 }
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links a:hover {
   transition: 0.6s;
   background: #8e8e8e40;
   color: white;

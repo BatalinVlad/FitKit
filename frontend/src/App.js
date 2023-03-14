@@ -14,6 +14,7 @@ import { AuthContext } from './shared/context/auth-context';
 import { useAuth } from './shared/hooks/auth-hook';
 import './shared/util/cssHelpers.css'
 
+const About = React.lazy(() => import('./about/pages/About'));
 const Reviews = React.lazy(() => import('./reviews/pages/Reviews'));
 const AddReview = React.lazy(() => import('./user/pages/AddReview'));
 const UserReviews = React.lazy(() => import('./user/pages/UserReviews'));
@@ -33,6 +34,9 @@ const App = () => {
     routes = (
       <Switch>
         <Route path="/" exact>
+          <About socket={socket} />
+        </Route>
+        <Route path="/reviews" exact>
           <Reviews socket={socket} />
         </Route>
         <Route path="/:userId/reviews" exact>
@@ -54,6 +58,9 @@ const App = () => {
     routes = (
       <Switch>
         <Route path="/" exact>
+          <About socket={socket} />
+        </Route>
+        <Route path="/reviews" exact>
           <Reviews socket={socket} />
         </Route>
         <Route path="/addreview" exact>
