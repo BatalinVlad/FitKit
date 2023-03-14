@@ -37,7 +37,7 @@ const MainNavigation = props => {
             <GiHamburgerMenu />
           </button>
           <h1 className="main-navigation__title">
-            <Link to="/">VLAD B FIT REVIEWS</Link>
+            <Link to="/">VLAD B FITNESS</Link>
           </h1>
         </div>
         <nav className="main-navigation__header-nav">
