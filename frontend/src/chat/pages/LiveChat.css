@@ -1,48 +1,19 @@
-.chat-icon {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  padding: 5px;
-  border-radius: 4px;
-  color: #009900;
-  text-shadow: 0px 0px 1px #252525;
-  cursor: pointer;
-}
-
-.chat-icon p {
-  font-size: 0.7rem;
-  font-weight: bold;
-  margin: 0;
-}
-
-.chat-icon svg {
-  font-size: 2.7rem;
-}
-
-.chat-icon-exit {
-  z-index: 2;
-  font-size: 1.5rem;
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  color: white;
+.chat-container {
+  margin-top: 30px;
+  height: 80vh;
 }
 
 .chat-window {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  width: 300px;
+  height: max-content;
+  width: 50%;
   background-color: aliceblue;
-  border-top-left-radius: 4px;
-  box-shadow: 3px 3px 7px 2px #252525;
+  box-shadow: 0px 0px 3px 1px #262626;
 }
 
 .chat-window p {
   margin: 0;
 }
 .chat-window .chat-header {
-  border-top-left-radius: 4px;
   height: 45px;
   background: #263238;
   position: relative;

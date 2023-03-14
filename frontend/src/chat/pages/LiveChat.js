@@ -3,26 +3,20 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
-import { BsChatSquareTextFill } from 'react-icons/bs';
-import { MdOutlineTransitEnterexit } from 'react-icons/md';
 import { v4 as uuid } from 'uuid';
-import './MainChat.css';
+import './LiveChat.css';
 
-const MainChat = ({ socket, messages }) => {
+const LiveChat = ({ socket }) => {
     const { sendRequest, error, clearError } = useHttpClient();
     const auth = useContext(AuthContext);
 
-    const [openChat, setOpenChat] = useState(false);
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
 
     const unique_id = uuid();
     const small_id = unique_id.slice(0, 8)
 
-    const openChathandler = (event) => {
-        event.stopPropagation();
-        setOpenChat(!openChat);
-    }
+
 
     const sendMessage = async () => {
         if (currentMessage !== "") {
@@ -43,7 +37,6 @@ const MainChat = ({ socket, messages }) => {
             setCurrentMessage("");
 
             //send to bcakend
-
             try {
                 await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/mainchat/sendMsg`, 'POST',
                     JSON.stringify({
@@ -73,19 +66,21 @@ const MainChat = ({ socket, messages }) => {
     }, [socket]);
 
     useEffect(() => {
-        setMessageList(messages)
-    }, [messages]);
+        socket.emit("join_room", 'main_chat');
+
+        const fetchMainCHatMessages = async () => {
+            try {
+                const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/mainchat`);
+                setMessageList(responseData.loadedMessages);
+            } catch (err) { };
+        };
+        fetchMainCHatMessages();
+    }, [sendRequest , socket]);
 
     return <React.Fragment>
         <ErrorModal error={error} onClear={clearError} />
-        {!openChat ? <div className='chat-icon flex column justify-center align-center'
-            onClick={openChathandler}>
-            <p>Live Chat</p>
-            <BsChatSquareTextFill />
-        </div>
-            :
+        <div className='chat-container flex justify-center align-center'>
             <div className='chat-window flex column space-between'>
-                <MdOutlineTransitEnterexit className='chat-icon-exit pointer' onClick={(event) => { openChathandler(event) }} />
                 <div className='chat-header'>
                     <p>live chat</p>
                 </div>
@@ -112,7 +107,6 @@ const MainChat = ({ socket, messages }) => {
                         })}
                     </ScrollToBottom>
                 </div>
-
                 <div className="chat-footer">
                     <input
                         type="text"
@@ -127,10 +121,9 @@ const MainChat = ({ socket, messages }) => {
                     />
                     <button onClick={sendMessage}>&#9658;</button>
                 </div>
-
             </div>
-        }
+        </div>
     </React.Fragment>
 }
 
-export default MainChat;
+export default LiveChat;
