@@ -81,6 +81,9 @@ h3 {
   cursor: pointer;
 }
 
+.text-center {
+  text-align: center;
+}
 .centerImage {
   display: block;
   margin-left: auto;
