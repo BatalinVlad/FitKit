@@ -1,6 +1,7 @@
 .user-review-item {
   width: 25rem;
   margin: 0px 5px 15px 5px;
+  box-shadow: 0px 0px 2px 0px #ffffff6b;
 }
 .user-review-item__content {
   height: 570px;

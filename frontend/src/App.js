@@ -33,6 +33,9 @@ const App = () => {
   if (token) {
     routes = (
       <Switch>
+        <Route path="/" exact>
+          <About socket={socket} />
+        </Route>
         <Route path="/livechat" exact>
           <LiveChat socket={socket} />
         </Route>
@@ -51,15 +54,15 @@ const App = () => {
         <Route path="/auth" exact>
           <Auth />
         </Route>
-        <Route path="/" exact>
-          <About socket={socket} />
-        </Route>
         <Redirect to="/" />
       </Switch>
     );
   } else {
     routes = (
       <Switch>
+        <Route path="/" exact>
+          <About socket={socket} />
+        </Route>
         <Route path="/livechat" exact>
           <LiveChat socket={socket} />
         </Route>
@@ -74,9 +77,6 @@ const App = () => {
         </Route>
         <Route path="/auth" exact>
           <Auth />
-        </Route>
-        <Route path="/" exact>
-          <About socket={socket} />
         </Route>
         <Redirect to="/" />
       </Switch>
@@ -105,7 +105,6 @@ const App = () => {
           }>
             {routes}
           </Suspense>
-          {/* <LiveChat socket={socket} messages={loadedMainChatMessages} /> */}
         </main>
       </Router>
     </AuthContext.Provider>

@@ -90,3 +90,24 @@ h3 {
   margin-right: auto;
   width: 50%;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(241, 241, 241, 0.043);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(227, 227, 227, 0.8);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(235, 235, 235);
+}
