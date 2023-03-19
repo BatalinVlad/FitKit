@@ -20,7 +20,7 @@ const UserReviewsList = props => {
   }
 
   return (
-    <ul className="reviews-list">
+    <ul className="user-reviews-list review-list flex justify-center">
       {props.items.map(review => (
         <UserReviewItem
           key={review.id}
@@ -33,7 +33,6 @@ const UserReviewsList = props => {
           description={review.description}
           likes={review.likes.length}
           dislikes={review.dislikes.length}
-          onDelete={props.onDeleteReview}
         />
       ))}
     </ul>

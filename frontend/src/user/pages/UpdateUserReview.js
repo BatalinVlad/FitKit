@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
 import Card from '../../shared/components/UIElements/Card';
+import Modal from '../../shared/components/UIElements/Modal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 
@@ -17,11 +18,12 @@ import { AuthContext } from '../../shared/context/auth-context';
 
 import './ReviewForm.css';
 
-const UpdateUserReview = () => {
+const UpdateUserReview = props => {
   const history = useHistory();
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedReview, setLoadedReview] = useState();
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const reviewId = useParams().reviewId;
 
   const [formState, inputHandler, setFormData] = useForm(
@@ -41,6 +43,14 @@ const UpdateUserReview = () => {
   const starsInputHandler = (value) => {
     inputHandler('stars', value, true);
   }
+
+  const showDeleteWarningHandler = () => {
+    setShowConfirmModal(true);
+  };
+
+  const cancelDeleteHandler = () => {
+    setShowConfirmModal(false);
+  };
 
   useEffect(() => {
     const fetchReview = async () => {
@@ -85,6 +95,16 @@ const UpdateUserReview = () => {
     } catch (err) { };
   };
 
+  const confirmDeleteHandler = async () => {
+    setShowConfirmModal(false);
+    try {
+      await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews/${props.id}`, 'DELETE', null, {
+        Authorization: 'Bearer ' + auth.token
+      });
+      props.onDelete(props.id);
+    } catch (err) { }
+  };
+
   if (isLoading) {
     return (
       <div className="center">
@@ -107,6 +127,27 @@ const UpdateUserReview = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
+      <Modal
+        show={showConfirmModal}
+        onCancel={cancelDeleteHandler}
+        header="Are you sure?"
+        footerClass="user-review-item__modal-actions"
+        footer={
+          <React.Fragment>
+            <Button inverse onClick={cancelDeleteHandler}>
+              CANCEL
+            </Button>
+            <Button danger onClick={confirmDeleteHandler}>
+              DELETE
+            </Button>
+          </React.Fragment>
+        }
+      >
+        <p>
+          Do you want to proceed and delete this review? Please note that it
+          can't be undone thereafter.
+        </p>
+      </Modal>
       {!isLoading && loadedReview && <form className="review-form" onSubmit={reviewUpdateSubmitHandler}>
         <div className="review-form-stars__container flex column align-start">
           <span>Update your rate:</span>
@@ -134,9 +175,14 @@ const UpdateUserReview = () => {
           initialValue={loadedReview.description}
           initialValid={true}
         />
-        <Button type="submit" action={true} disabled={!formState.isValid}>
-          UPDATE
-        </Button>
+        <div className="user-review-update-actions">
+          <Button danger onClick={showDeleteWarningHandler}>
+            DELETE
+          </Button>
+          <Button type="submit" action={true} disabled={!formState.isValid}>
+            UPDATE
+          </Button>
+        </div>
       </form>}
     </React.Fragment>
   );

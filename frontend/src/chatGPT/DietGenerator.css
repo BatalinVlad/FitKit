@@ -1,0 +1,58 @@
+.diet-generator__container {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 0px 10px;
+}
+
+.diet-generator__container h1,
+.diet-generator__container h2,
+.diet-generator__container p,
+.diet-generator__container label {
+  color: white;
+}
+.diet-generator__container h1 {
+  font-size: 4rem;
+}
+.diet-generator__result p {
+  margin: 3px 0px;
+}
+.diet-generator__container input {
+  margin: 0 auto;
+  width: 40%;
+}
+
+.diet-generator__container button {
+  margin-top: 10px;
+}
+
+.diet-generator__container .form-control {
+  margin: 0;
+  margin-top: 10px;
+}
+
+.get-your-diet-btn{
+  padding: 30px 0px;
+}
+.diet-generator__result {
+  padding: 5rem 0rem;
+}
+@media (min-width: 541px) and  (max-width: 830px) {
+  .diet-generator__container h1{
+    font-size: 3.5rem;
+  }
+}
+
+
+@media (max-width: 540px) {
+  .diet-generator__container h1{
+    font-size: 3rem;
+  }
+  .diet-generator__container {
+    width: 100%;
+    margin: 0;
+  }
+}

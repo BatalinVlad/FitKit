@@ -83,9 +83,9 @@
 .button:disabled,
 .button:hover:disabled,
 .button:active:disabled {
-  background: #ccc;
-  color: #979797;
-  border-color: #ccc;
+  background: linear-gradient(45deg, #a6a6a6, #9b9b9b);
+  color: #252525;
+  border-color: #cccccc47;
   cursor: not-allowed;
 }
 
@@ -96,5 +96,4 @@
 
 .button--big {
   font-size: 1rem;
-  width: 80%;
 }

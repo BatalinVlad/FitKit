@@ -73,7 +73,7 @@ const UserReviewItem = props => {
               <div className="user-review-item__info">
                 <div className="flex space-between">
                   <div className="flex align-center">
-                    <div className="review-item__user_image flex align-center">
+                    <div className="user-review-item__user_image flex align-center">
                       <img src={`${props.userImage}`} alt={props.title} />
                     </div>
                     <div className="user-review-item__name">

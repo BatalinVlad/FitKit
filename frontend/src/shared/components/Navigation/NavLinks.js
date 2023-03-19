@@ -9,6 +9,7 @@ import { FiLogIn } from 'react-icons/fi';
 import { AiOutlineStar } from 'react-icons/ai';
 import { FiPlusSquare } from 'react-icons/fi';
 import { RiWechatPayLine } from 'react-icons/ri';
+import { HiOutlineNewspaper } from 'react-icons/hi';
 
 import './NavLinks.css';
 
@@ -57,6 +58,14 @@ const NavLinks = props => {
           </span>
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/mydietplan">
+          <HiOutlineNewspaper />
+          <span>
+            DIET PLAN
+          </span>
+        </NavLink>
+      </li>
       <li className="livechat-nav">
         <NavLink to="/livechat" exact>
           <RiWechatPayLine />
@@ -65,6 +74,7 @@ const NavLinks = props => {
           </span>
         </NavLink>
       </li>
+      
       {!auth.isLoggedIn && (
         <li className='nav_login'>
           <NavLink to="/auth">

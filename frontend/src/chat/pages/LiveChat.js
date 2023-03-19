@@ -14,7 +14,7 @@ const LiveChat = ({ socket }) => {
     const [messageList, setMessageList] = useState([]);
 
     const unique_id = uuid();
-    const small_id = unique_id.slice(0, 8)
+    const small_id = unique_id.slice(0, 8);
 
 
 

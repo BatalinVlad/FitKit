@@ -14,6 +14,8 @@ import { AuthContext } from './shared/context/auth-context';
 import { useAuth } from './shared/hooks/auth-hook';
 import './shared/util/cssHelpers.css'
 
+// const UpdateMyDietDiet = React.lazy(() => import('./chatGPT/UpdateMyDietDiet'));
+const DietGenerator = React.lazy(() => import('./chatGPT/DietGenerator'));
 const About = React.lazy(() => import('./about/About'));
 const LiveChat = React.lazy(() => import('./chat/pages/LiveChat'));
 const Reviews = React.lazy(() => import('./reviews/pages/Reviews'));
@@ -35,6 +37,9 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <About socket={socket} />
+        </Route>
+        <Route path="/mydietplan" exact>
+          <DietGenerator />
         </Route>
         <Route path="/livechat" exact>
           <LiveChat socket={socket} />
@@ -62,6 +67,9 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <About socket={socket} />
+        </Route>
+        <Route path="/mydietplan" exact>
+          <DietGenerator />
         </Route>
         <Route path="/livechat" exact>
           <LiveChat socket={socket} />

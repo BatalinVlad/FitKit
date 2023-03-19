@@ -39,9 +39,6 @@ const UserReviews = () => {
       </div>
     );
   }
-  const reviewDeletedhandler = (deletedReviewId) => {
-    setLoadedUserReviews(prevReviews => prevReviews.filter(review => review.id !== deletedReviewId));
-  }
 
   return (
     <React.Fragment>
@@ -52,7 +49,7 @@ const UserReviews = () => {
         </div>
       )}
       {!isLoading && loadedUserReviews &&
-        <UserReviewsList items={loadedUserReviews} onDeleteReview={reviewDeletedhandler} />}
+        <UserReviewsList items={loadedUserReviews} />}
     </React.Fragment>
   )
 };

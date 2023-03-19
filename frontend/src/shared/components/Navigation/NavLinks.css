@@ -80,6 +80,7 @@
   }
 
   .nav-links a {
+    font-size: 0.7rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,7 +98,7 @@
   }
 }
 
-@media (min-width: 395px) and (max-width: 920px) {
+@media (min-width: 395px) and (max-width: 1165px) {
   .nav-links {
     display: flex;
     flex-direction: row;
@@ -118,6 +119,8 @@
   }
 }
 
-.livechat-nav a{
+.livechat-nav a,
+.livechat-nav svg {
+  font-weight: 800;
   color: #009900;
 }

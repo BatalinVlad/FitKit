@@ -56,7 +56,7 @@ const NewReview = ({ socket }) => {
         });
 
         //socket emit
-        await socket.emit("add_review", responseData.review); 
+        await socket.emit("add_review", responseData.review);
 
       } else {
         formData.append('name', 'guest');
@@ -67,7 +67,7 @@ const NewReview = ({ socket }) => {
         });
 
         //socket emit
-        await socket.emit("add_review", responseData.review); 
+        await socket.emit("add_review", responseData.review);
       }
       socket.off('connection');
       socket.off('receive_review');
@@ -110,7 +110,7 @@ const NewReview = ({ socket }) => {
           </div>
         </div>
         <ImageUpload id="image" onInput={inputHandler} errorText="please provide an image" />
-        <div className='fill flex justify-center'>
+        <div className='add-review-btn fill flex justify-center'>
           <Button type="submit" size={'big'} action={true} disabled={!formState.isValid}>
             ADD REVIEW
           </Button>

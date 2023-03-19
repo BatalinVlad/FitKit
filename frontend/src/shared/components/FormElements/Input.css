@@ -5,6 +5,7 @@
 .form-control label,
 .form-control input,
 .form-control textarea {
+  border-radius: 4px;
   display: block;
 }
 

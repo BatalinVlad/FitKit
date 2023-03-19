@@ -73,3 +73,11 @@
 .review-form-stars #one:checked ~ .result:before {
   content: "I hate it ";
 }
+
+.user-review-update-actions button:not(:first-child){
+  margin-left: 10px;  
+}
+
+.add-review-btn button{
+  width: 300px;
+}

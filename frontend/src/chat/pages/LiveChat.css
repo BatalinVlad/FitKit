@@ -157,3 +157,10 @@
 .hide {
   opacity: 0 !important;
 }
+
+
+@media (max-width: 400px){
+  .chat-container {
+    width: 90%;
+  }
+}

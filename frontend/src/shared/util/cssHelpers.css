@@ -14,7 +14,10 @@ main {
 
 h1,
 h2,
-h3 {
+h3,
+p,
+label {
+  color: white;
   margin: 0;
 }
 
@@ -90,7 +93,6 @@ h3 {
   margin-right: auto;
   width: 50%;
 }
-
 
 /* width */
 ::-webkit-scrollbar {
