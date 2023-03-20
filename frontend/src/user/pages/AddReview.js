@@ -13,7 +13,6 @@ import {
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import { useForm } from '../../shared/hooks/form-hook';
 import { AuthContext } from '../../shared/context/auth-context';
-import './ReviewForm.css';
 
 const NewReview = ({ socket }) => {
   const auth = useContext(AuthContext);
@@ -110,7 +109,7 @@ const NewReview = ({ socket }) => {
           </div>
         </div>
         <ImageUpload id="image" onInput={inputHandler} errorText="please provide an image" />
-        <div className='add-review-btn fill flex justify-center'>
+        <div className='add-review-btn fill-width flex justify-center'>
           <Button type="submit" size={'big'} action={true} disabled={!formState.isValid}>
             ADD REVIEW
           </Button>

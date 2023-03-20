@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
 .review-form {
-  position: relative;
-  list-style: none;
   margin: 6px auto 0 auto;
   padding: 1rem;
   width: 90%;
@@ -74,10 +72,10 @@
   content: "I hate it ";
 }
 
-.user-review-update-actions button:not(:first-child){
-  margin-left: 10px;  
+.user-review-update-actions button:not(:first-child) {
+  margin-left: 10px;
 }
 
-.add-review-btn button{
+.add-review-btn button {
   width: 300px;
 }

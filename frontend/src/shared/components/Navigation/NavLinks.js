@@ -28,7 +28,7 @@ const NavLinks = props => {
         <NavLink to="/" exact>
           <FiHome />
           <span>
-            ABOUT
+            HOME
           </span>
         </NavLink>
       </li>

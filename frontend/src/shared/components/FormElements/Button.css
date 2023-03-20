@@ -45,7 +45,7 @@
   border-color: #4681f4;
 }
 .button--inverse--regular_action {
-  background: hsl(220, 89%, 62%, 0.8);
+  background: #4881f4cc;
 }
 .button--inverse--regular_action:hover,
 .button--inverse--regular_action:active {

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import ReviewItem from './ReviewItem';
 import Card from '../../shared/components/UIElements/Card';
-import './ReviewsList.css';
 
 const ReviewsList = props => {
   const [reviewsList, setReviewsList] = useState([]);

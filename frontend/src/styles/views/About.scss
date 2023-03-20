@@ -1,0 +1,177 @@
+.about-page {
+  height: 80vh;
+}
+
+.about-page-container {
+  height: 100%;
+  align-items: end;
+  .about-title {
+    width: 50%;
+    padding-bottom: 40px;
+  }
+
+  h1 {
+    font-size: rem(100px);
+  }
+  h2 {
+    font-size: rem(30px);
+  }
+  p {
+    font-size: rem(12px);
+    margin: 2px 0px;
+  }
+  span {
+    color: $clr12;
+  }
+}
+
+.about-page-footer {
+  position: absolute;
+  bottom: 0;
+  padding: 5px 10%;
+  background-color: #211e1eb5;
+  box-shadow: 0px 0px 3px -2px #00000069;
+
+  p {
+    font-size: rem(10px);
+  }
+  svg {
+    font-size: rem(16px);
+    padding: 2px;
+    border-radius: 3px;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+  .icon {
+    margin-right: 10px;
+    &-linkedin {
+      background-color: #f0f1f2;
+      color: $clr6;
+    }
+    &-gmail {
+      background-color: #fafafa;
+      color: $clr1;
+    }
+    &-insta {
+      background-color: #fffaf2;
+      color: #cc9704;
+    }
+  }
+
+  .about {
+    &-trainer {
+      &-image {
+        background-image: url("../images/me2.png");
+      }
+      margin-right: 10px;
+      p {
+        margin-left: 10px;
+      }
+    }
+    &-programmer {
+      P {
+        margin: 10px 0px 10px 10px;
+      }
+      &-image {
+        background-image: url("../images/me1.png");
+      }
+    }
+    &-trainer,
+    &-programmer {
+      border-radius: 5px;
+      &-image {
+        border-radius: 4px;
+        width: 25px;
+        height: 25px;
+        background-size: cover;
+      }
+    }
+  }
+  .contact-me {
+    margin-top: 3px;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-page-container {
+    .about-title {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .about-page-container {
+    align-items: center;
+    padding: 0;
+    .about-title {
+      width: 80%;
+    }
+  }
+
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-page-footer {
+    flex-direction: column-reverse;
+    padding: 15px 5%;
+    .contact-me {
+      margin-top: 10px;
+      text-align: center;
+      &-icons {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .about-page {
+    height: 80vh;
+  }
+  .about-page-container {
+    .about-title {
+      width: 90%;
+      h1 {
+        font-size: rem(90px);
+      }
+      h2 {
+        font-size: rem(20px);
+      }
+    }
+  }
+  .about-page-footer {
+    background-color: $clr8;
+    position: inherit;
+    padding-bottom: rem(100px);
+  }
+}
+
+@media (max-width: 340px) {
+  .about-page{
+    height: 65vh;
+  }
+  .about-container {
+    &-professions {
+      flex-direction: column;
+
+      .about-programmer,
+      .about-trainer {
+        width: 160px;
+        justify-content: flex-end;
+      }
+    }
+  }
+  .contact-me {
+    .contact-me-icons {
+      width: 160px;
+      flex-direction: column;
+      align-items: baseline;
+      margin: 0 auto;
+      .icon {
+        justify-content: center;
+      }
+    }
+  }
+}

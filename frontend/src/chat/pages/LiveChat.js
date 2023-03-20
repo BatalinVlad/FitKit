@@ -4,7 +4,6 @@ import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import { v4 as uuid } from 'uuid';
-import './LiveChat.css';
 
 const LiveChat = ({ socket }) => {
     const { sendRequest, error, clearError } = useHttpClient();

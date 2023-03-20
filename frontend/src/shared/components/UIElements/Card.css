@@ -6,3 +6,9 @@
   overflow: hidden;
   background: white;
 }
+
+.card h1,
+.card h2,
+.card label {
+  color: #252525;
+}

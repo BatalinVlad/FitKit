@@ -10,16 +10,17 @@
 @import "basics/links.scss";
 @import "basics/buttons.scss";
 
-//Component for all reviews
-@import "components/LoadPage.scss";
+//Reviews Component
+@import "components/reviews/ReviewsList.scss";
+@import "components/reviews/ReviewItem.scss";
 
-//Components for user
+//User Components
 
-//splash
-@import "components/SplashMenu.scss";
-
-//task details componenets / helpers / modals
+//Shared components
+@import "components/shared/navigation/MainNavigation.scss";
 
 //views
-@import "views/HomePage.scss";
-@import "views/BoardPage.scss";
+@import "views/AddReview.scss";
+@import "views/LiveChat.scss";
+@import "views/DietGenerator.scss";
+@import "views/About.scss";

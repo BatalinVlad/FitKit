@@ -63,7 +63,7 @@ const UserReviewItem = props => {
         </p>
       </Modal>
       <li className="user-review-item flex">
-        <Card className="user-review-item__content fill flex column space-between">
+        <Card className="user-review-item__content fill-width flex column space-between">
           <div className='user-review-item__content-container'>
             {isLoading && <LoadingSpinner asOverlay />}
             <div className="user-review-item__image">
@@ -101,7 +101,7 @@ const UserReviewItem = props => {
             )}
           </div>
 
-          <div className="user-review__likes_container fill flex space-between">
+          <div className="user-review__likes_container fill-width flex space-between">
             <div className="user-review__dislike_buttom flex justify-center align-center">
               <SlDislike />
               <p>

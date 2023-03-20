@@ -1,22 +1,5 @@
 @import "./typography.scss";
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.541);
-  border-radius: 4px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background: #98969669;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -27,9 +10,13 @@ html {
 }
 
 body {
+  overflow-x:hidden;
   margin: 0;
+  height: 100vh;
   width: 100vw;
-  overflow-x: hidden;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 img {
@@ -42,13 +29,13 @@ h3,
 h4,
 h5,
 h6 {
+  line-height: initial;
+  color: white;
   margin: 0;
   font-weight: normal;
 }
 
 h1 {
-  font-size: 2.2rem;
-  color: white;
   font-family: montserratBold, "sans-sarif";
 }
 
@@ -63,6 +50,7 @@ h2 {
 }
 
 p {
+  color: white;
   font-size: rem(14px);
   margin: 0;
   font-family: montserratLight, "sans-sarif";
@@ -103,45 +91,22 @@ a {
   text-decoration: none;
 }
 
-.modal-enter {
-  opacity: 0;
-  transform: translate(100%, 0);
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
 }
 
-.modal-enter-active {
-  opacity: 1;
-  transform: translate(0, 0);
-  transition: 0.7s ease;
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(241, 241, 241, 0.043);
 }
 
-.modal-exit {
-  opacity: 1;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(227, 227, 227, 0.8);
 }
 
-.modal-exit-active {
-  opacity: 0;
-  transform: translate(100%, 0);
-  transition: 0.7s ease;
-}
-
-.MuiSvgIcon-root {
-  cursor: pointer;
-}
-
-.login-btn {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  transition: 0.2s;
-  padding: 2px 4px;
-  text-transform: capitalize;
-
-  &:hover {
-    border-radius: 4px;
-    background-color: rgba(165, 165, 165, 0.829);
-  }
-
-  p {
-    color: white;
-  }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(235, 235, 235);
 }

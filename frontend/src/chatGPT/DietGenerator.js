@@ -16,7 +16,7 @@ import {
 // import { useHttpClient } from '../shared/hooks/http-hook';
 import { useForm } from '../shared/hooks/form-hook';
 // import { AuthContext } from '../../shared/context/auth-context';
-import './DietGenerator.css';
+// import './DietGenerator.css';
 
 const DietGenerator = () => {
     //   const auth = useContext(AuthContext);
@@ -150,7 +150,7 @@ const DietGenerator = () => {
                         onInput={inputHandler}
                     />
 
-                    <div className='get-your-diet-btn fill flex justify-center'>
+                    <div className='get-your-diet-btn fill-width flex justify-center'>
                         <Button type="submit" size={'big'} action={true} disabled={!formState.isValid}>
                             GET YOUR DIET PLAN NOW
                         </Button>

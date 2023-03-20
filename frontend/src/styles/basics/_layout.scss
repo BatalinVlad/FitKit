@@ -1,17 +1,24 @@
 .container {
-    margin: 0 auto;
-    padding-left: 10px;
-    padding-right: 10px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
 
-    @include for-narrow-layout {
-        max-width: $mobile-breakpoint;
-    }
+  &-reviews {
+    height: 86vh;
+    display: flex;
+    justify-content: center;
+    overflow-y: hidden;
+  }
 
-    @include for-normal-layout {
-        max-width: $narrow-breakpoint;
-    }
+  @include for-narrow-layout {
+    max-width: $mobile-breakpoint;
+  }
 
-    @include for-wide-layout {
-        max-width: $normal-breakpoint;
-    }
+  @include for-normal-layout {
+    max-width: $narrow-breakpoint;
+  }
+
+  @include for-wide-layout {
+    max-width: $normal-breakpoint;
+  }
 }

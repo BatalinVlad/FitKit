@@ -12,7 +12,6 @@ import MainNavigation from './shared/components/Navigation/MainNavigation';
 import LoadingSpinner from './shared/components/UIElements/LoadingSpinner';
 import { AuthContext } from './shared/context/auth-context';
 import { useAuth } from './shared/hooks/auth-hook';
-import './shared/util/cssHelpers.css'
 
 // const UpdateMyDietDiet = React.lazy(() => import('./chatGPT/UpdateMyDietDiet'));
 const DietGenerator = React.lazy(() => import('./chatGPT/DietGenerator'));

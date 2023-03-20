@@ -5,7 +5,6 @@ import { AuthContext } from '../../shared/context/auth-context';
 import ReviewsList from '../../reviews/components/ReviewsList';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
-import './Reviews.css';
 
 const Reviews = ({ socket }) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -46,7 +45,7 @@ const Reviews = ({ socket }) => {
         </div>
       )}
       {!isLoading && loadedReviews && user &&
-        <div className='reviews-container'>
+        <div className='container-reviews'>
           <ReviewsList socket={socket} reviews={loadedReviews} user={user} />
         </div>
       }

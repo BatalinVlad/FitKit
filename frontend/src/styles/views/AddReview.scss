@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+.review-form {
+  margin: 6px auto 0 auto;
+  padding: 1rem;
+  width: 60%;
+  max-width: 40rem;
+  box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  background: white;
+
+  .form-control {
+    margin: 0;
+  }
+
+  &-stars__container {
+    span {
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .review-form-stars {
+      text-align: center;
+
+      input {
+        display: none;
+      }
+      label {
+        cursor: pointer;
+        float: right;
+        font-size: 2rem;
+        color: lightgrey;
+        text-shadow: 1px 1px #bbb;
+      }
+    }
+  }
+}
+
+.review-form-stars label:before {
+  content: "★";
+}
+.review-form-stars input:checked ~ label {
+  color: gold;
+  text-shadow: 1px 1px #c60;
+}
+.review-form-stars:not(:checked) > label:hover,
+.review-form-stars:not(:checked) > label:hover ~ label {
+  color: gold;
+}
+.review-form-stars input:checked > label:hover,
+.review-form-stars input:checked > label:hover ~ label {
+  color: gold;
+  text-shadow: 1px 1px goldenrod;
+}
+.review-form-stars .result:before {
+  content: "";
+  width: 100%;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: gold;
+  font-family: "Poppins", sans-serif;
+  display: none;
+}
+.review-form-stars input:checked ~ .result:before {
+  display: block;
+}
+.review-form-stars #five:checked ~ .result:before {
+  content: "I love it ";
+}
+.review-form-stars #four:checked ~ .result:before {
+  content: "I like it ";
+}
+.review-form-stars #three:checked ~ .result:before {
+  content: "It's good ";
+}
+.review-form-stars #two:checked ~ .result:before {
+  content: "I don't like it ";
+}
+.review-form-stars #one:checked ~ .result:before {
+  content: "I hate it ";
+}
+
+.user-review-update-actions button:not(:first-child) {
+  margin-left: 10px;
+}
+
+.add-review-btn button {
+  margin-top: 30px;
+  width: 70%;
+}
+
+@media (max-width: 500px) {
+  .review-form {
+    width: 90%;
+  }
+}
