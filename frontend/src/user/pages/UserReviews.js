@@ -4,6 +4,7 @@ import { useHttpClient } from '../../shared/hooks/http-hook';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 
+import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 import UserReviewsList from '../../user/components/UserReviewsList';
 import Card from '../../shared/components/UIElements/Card';
 import Button from '../../shared/components/FormElements/Button';
@@ -31,7 +32,8 @@ const UserReviews = () => {
   if (addReview) {
     setAddReview(false);
     return (
-      <div className="reviews-list center">
+      <div className="reviews-list-page center">
+        <MainNavigation />
         <Card>
           <h2>No reviews found. Maybe create one?</h2>
           <Button to="/addreview">Create Review</Button>

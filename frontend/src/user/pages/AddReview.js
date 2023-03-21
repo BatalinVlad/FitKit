@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
@@ -82,39 +83,42 @@ const NewReview = ({ socket }) => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      <form className="review-form flex column" onSubmit={reviewSubmitHandler}>
-        {isLoading && <LoadingSpinner asOverlay />}
-        <Input
-          id="description"
-          element="textarea"
-          label="Your Review"
-          validators={[VALIDATOR_MINLENGTH(5)]}
-          errorText="Please enter a valid description (at least 5 characters)."
-          onInput={inputHandler}
-        />
-        <div className="review-form-stars__container flex column align-start">
-          <span>Your rate:</span>
-          <div className="review-form-stars">
-            <input type="radio" id="five" name="rate" onClick={() => starsInputHandler(5)} />
-            <label htmlFor="five"></label>
-            <input type="radio" id="four" name="rate" onClick={() => starsInputHandler(4)} />
-            <label htmlFor="four"></label>
-            <input type="radio" id="three" name="rate" onClick={() => starsInputHandler(3)} />
-            <label htmlFor="three"></label>
-            <input type="radio" id="two" name="rate" onClick={() => starsInputHandler(2)} />
-            <label htmlFor="two"></label>
-            <input type="radio" id="one" name="rate" onClick={() => starsInputHandler(1)} />
-            <label htmlFor="one"></label>
-            <span className="result"></span>
+      <div className='add-review-page'>
+        <MainNavigation />
+        <form className="review-form flex column" onSubmit={reviewSubmitHandler}>
+          {isLoading && <LoadingSpinner asOverlay />}
+          <Input
+            id="description"
+            element="textarea"
+            label="Your Review"
+            validators={[VALIDATOR_MINLENGTH(5)]}
+            errorText="Please enter a valid description (at least 5 characters)."
+            onInput={inputHandler}
+          />
+          <div className="review-form-stars__container flex column align-start">
+            <span>Your rate:</span>
+            <div className="review-form-stars">
+              <input type="radio" id="five" name="rate" onClick={() => starsInputHandler(5)} />
+              <label htmlFor="five"></label>
+              <input type="radio" id="four" name="rate" onClick={() => starsInputHandler(4)} />
+              <label htmlFor="four"></label>
+              <input type="radio" id="three" name="rate" onClick={() => starsInputHandler(3)} />
+              <label htmlFor="three"></label>
+              <input type="radio" id="two" name="rate" onClick={() => starsInputHandler(2)} />
+              <label htmlFor="two"></label>
+              <input type="radio" id="one" name="rate" onClick={() => starsInputHandler(1)} />
+              <label htmlFor="one"></label>
+              <span className="result"></span>
+            </div>
           </div>
-        </div>
-        <ImageUpload id="image" onInput={inputHandler} errorText="please provide an image" />
-        <div className='add-review-btn fill-width flex justify-center'>
-          <Button type="submit" size={'big'} action={true} disabled={!formState.isValid}>
-            ADD REVIEW
-          </Button>
-        </div>
-      </form >
+          <ImageUpload id="image" onInput={inputHandler} errorText="please provide an image" />
+          <div className='add-review-btn fill-width flex justify-center'>
+            <Button type="submit" size={'big'} action={true} disabled={!formState.isValid}>
+              ADD REVIEW
+            </Button>
+          </div>
+        </form >
+      </div>
     </React.Fragment >
   );
 };

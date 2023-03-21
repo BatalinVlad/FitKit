@@ -8,7 +8,6 @@ import {
 
 import io from 'socket.io-client';
 
-import MainNavigation from './shared/components/Navigation/MainNavigation';
 import LoadingSpinner from './shared/components/UIElements/LoadingSpinner';
 import { AuthContext } from './shared/context/auth-context';
 import { useAuth } from './shared/hooks/auth-hook';
@@ -103,7 +102,6 @@ const App = () => {
       }}
     >
       <Router>
-        <MainNavigation />
         <main>
           <Suspense fallback={
             <div className='center'>

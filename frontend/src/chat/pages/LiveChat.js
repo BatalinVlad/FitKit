@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 import ScrollToBottom from "react-scroll-to-bottom";
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
@@ -74,51 +75,54 @@ const LiveChat = ({ socket }) => {
             } catch (err) { };
         };
         fetchMainCHatMessages();
-    }, [sendRequest , socket]);
+    }, [sendRequest, socket]);
 
     return <React.Fragment>
         <ErrorModal error={error} onClear={clearError} />
-        <div className='chat-container flex justify-center '>
-            <div className='chat-window flex column space-between'>
-                <div className='chat-header'>
-                    <p>live chat</p>
-                </div>
-                <div className="chat-body">
-                    <ScrollToBottom className="message-container">
-                        {messageList.map((messageContent) => {
-                            return (
-                                <div
-                                    className="message"
-                                    id={auth.userId === messageContent.authorId ? "you" : "other"}
-                                    key={messageContent.msgId}
-                                >
-                                    <div>
-                                        <div className="message-content flex justify-center">
-                                            <p>{messageContent.messageBody}</p>
-                                        </div>
-                                        <div className="message-meta">
-                                            <p id="time">{messageContent.date}</p>
-                                            <p id="author">{messageContent.authorName}</p>
+        <div className='live-chat-page'>
+            <MainNavigation />
+            <div className='chat-container flex justify-center '>
+                <div className='chat-window flex column space-between'>
+                    <div className='chat-header'>
+                        <p>live chat</p>
+                    </div>
+                    <div className="chat-body">
+                        <ScrollToBottom className="message-container">
+                            {messageList.map((messageContent) => {
+                                return (
+                                    <div
+                                        className="message"
+                                        id={auth.userId === messageContent.authorId ? "you" : "other"}
+                                        key={messageContent.msgId}
+                                    >
+                                        <div>
+                                            <div className="message-content flex justify-center">
+                                                <p>{messageContent.messageBody}</p>
+                                            </div>
+                                            <div className="message-meta">
+                                                <p id="time">{messageContent.date}</p>
+                                                <p id="author">{messageContent.authorName}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            );
-                        })}
-                    </ScrollToBottom>
-                </div>
-                <div className="chat-footer">
-                    <input
-                        type="text"
-                        value={currentMessage}
-                        placeholder="Hey..."
-                        onChange={(event) => {
-                            setCurrentMessage(event.target.value);
-                        }}
-                        onKeyPress={(event) => {
-                            event.key === "Enter" && sendMessage();
-                        }}
-                    />
-                    <button onClick={sendMessage}>&#9658;</button>
+                                );
+                            })}
+                        </ScrollToBottom>
+                    </div>
+                    <div className="chat-footer">
+                        <input
+                            type="text"
+                            value={currentMessage}
+                            placeholder="Hey..."
+                            onChange={(event) => {
+                                setCurrentMessage(event.target.value);
+                            }}
+                            onKeyPress={(event) => {
+                                event.key === "Enter" && sendMessage();
+                            }}
+                        />
+                        <button onClick={sendMessage}>&#9658;</button>
+                    </div>
                 </div>
             </div>
         </div>

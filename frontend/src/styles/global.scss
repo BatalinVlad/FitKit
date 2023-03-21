@@ -18,9 +18,14 @@
 
 //Shared components
 @import "components/shared/navigation/MainNavigation.scss";
+@import "components/shared/navigation/MainHeader.scss";
+@import "components/shared/navigation/NavLinks.scss";
+@import "components/shared/navigation/SlideDrawer.scss";
 
 //views
 @import "views/AddReview.scss";
 @import "views/LiveChat.scss";
 @import "views/DietGenerator.scss";
 @import "views/About.scss";
+@import "views/Auth.scss";
+@import "views/UserReviews.scss";

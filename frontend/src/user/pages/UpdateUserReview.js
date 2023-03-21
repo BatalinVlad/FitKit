@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
+import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
 import Card from '../../shared/components/UIElements/Card';
@@ -15,8 +16,6 @@ import {
 import { useForm } from '../../shared/hooks/form-hook';
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
-
-import './ReviewForm.css';
 
 const UpdateUserReview = props => {
   const history = useHistory();
@@ -115,11 +114,13 @@ const UpdateUserReview = props => {
 
   if (!loadedReview && !error) {
     return (
-      <div className="center">
-        <Card>
-          <h2>Could not find your review!</h2>
-        </Card>
-      </div>
+      <React.Fragment>
+        <div className="center">
+          <Card>
+            <h2>Could not find your review!</h2>
+          </Card>
+        </div>
+      </React.Fragment>
     );
   }
 
@@ -148,43 +149,47 @@ const UpdateUserReview = props => {
           can't be undone thereafter.
         </p>
       </Modal>
-      {!isLoading && loadedReview && <form className="review-form" onSubmit={reviewUpdateSubmitHandler}>
-        <div className="review-form-stars__container flex column align-start">
-          <span>Update your rate:</span>
-          <div className="review-form-stars">
-            <input type="radio" id="five" name="rate" onClick={() => starsInputHandler(5)} />
-            <label htmlFor="five"></label>
-            <input type="radio" id="four" name="rate" onClick={() => starsInputHandler(4)} />
-            <label htmlFor="four"></label>
-            <input type="radio" id="three" name="rate" onClick={() => starsInputHandler(3)} />
-            <label htmlFor="three"></label>
-            <input type="radio" id="two" name="rate" onClick={() => starsInputHandler(2)} />
-            <label htmlFor="two"></label>
-            <input type="radio" id="one" name="rate" onClick={() => starsInputHandler(1)} />
-            <label htmlFor="one"></label>
-            <span className="result"></span>
+      {!isLoading && loadedReview && <div>
+        <MainNavigation />
+        <form className="review-form" onSubmit={reviewUpdateSubmitHandler}>
+          <div className="review-form-stars__container flex column align-start">
+            <span>Update your rate:</span>
+            <div className="review-form-stars">
+              <input type="radio" id="five" name="rate" onClick={() => starsInputHandler(5)} />
+              <label htmlFor="five"></label>
+              <input type="radio" id="four" name="rate" onClick={() => starsInputHandler(4)} />
+              <label htmlFor="four"></label>
+              <input type="radio" id="three" name="rate" onClick={() => starsInputHandler(3)} />
+              <label htmlFor="three"></label>
+              <input type="radio" id="two" name="rate" onClick={() => starsInputHandler(2)} />
+              <label htmlFor="two"></label>
+              <input type="radio" id="one" name="rate" onClick={() => starsInputHandler(1)} />
+              <label htmlFor="one"></label>
+              <span className="result"></span>
+            </div>
           </div>
-        </div>
-        <Input
-          id="description"
-          element="textarea"
-          label="Your Review"
-          validators={[VALIDATOR_MINLENGTH(5)]}
-          errorText="Please enter a valid description (at least 5 characters)."
-          onInput={inputHandler}
-          initialValue={loadedReview.description}
-          initialValid={true}
-        />
-        <div className="user-review-update-actions">
-          <Button danger onClick={showDeleteWarningHandler}>
-            DELETE
-          </Button>
-          <Button type="submit" action={true} disabled={!formState.isValid}>
-            UPDATE
-          </Button>
-        </div>
-      </form>}
-    </React.Fragment>
+          <Input
+            id="description"
+            element="textarea"
+            label="Your Review"
+            validators={[VALIDATOR_MINLENGTH(5)]}
+            errorText="Please enter a valid description (at least 5 characters)."
+            onInput={inputHandler}
+            initialValue={loadedReview.description}
+            initialValid={true}
+          />
+          <div className="user-review-update-actions">
+            <Button danger onClick={showDeleteWarningHandler}>
+              DELETE
+            </Button>
+            <Button type="submit" action={true} disabled={!formState.isValid}>
+              UPDATE
+            </Button>
+          </div>
+        </form>
+      </div>
+      }
+    </React.Fragment >
   );
 };
 

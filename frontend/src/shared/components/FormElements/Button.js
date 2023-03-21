@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './Button.css';
-
 const Button = props => {
   if (props.href) {
     return (
@@ -10,6 +8,7 @@ const Button = props => {
         className={`button button--${props.size || 'default'} 
         ${props.danger && 'button--danger'} 
         ${props.action && 'button--call_to_action'} 
+        ${props.getStarted && 'button--get_started'} 
         ${props.regularAction && 'button--regular_action'}
         ${props.inverse && props.regularAction && 'button--inverse--regular_action'} 
         ${props.edit && 'button--edit'}
@@ -30,6 +29,7 @@ const Button = props => {
         exact={props.exact}
         className={`button button--${props.size || 'default'} 
         ${props.danger && 'button--danger'} 
+        ${props.getStarted && 'button--get_started'} 
         ${props.action && 'button--call_to_action'} 
         ${props.regularAction && 'button--regular_action'} 
         ${props.inverse && props.regularAction && 'button--inverse--regular_action'} 
@@ -47,6 +47,7 @@ const Button = props => {
     <button
       className={`button button--${props.size || 'default'} 
       ${props.danger && 'button--danger'} 
+      ${props.getStarted && 'button--get_started'} 
       ${props.action && 'button--call_to_action'}
       ${props.regularAction && 'button--regular_action'} 
       ${props.inverse && props.regularAction && 'button--inverse--regular_action'} 

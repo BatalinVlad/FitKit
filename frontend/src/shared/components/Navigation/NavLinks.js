@@ -11,9 +11,7 @@ import { FiPlusSquare } from 'react-icons/fi';
 import { RiWechatPayLine } from 'react-icons/ri';
 import { HiOutlineNewspaper } from 'react-icons/hi';
 
-import './NavLinks.css';
-
-const NavLinks = props => {
+const NavLinks = () => {
   const auth = useContext(AuthContext);
   const history = useHistory();
 

@@ -32,26 +32,28 @@ const ReviewsList = props => {
   }
 
   return (
-    <ul className="reviews-list">
-      {reviewsList && reviewsList.map((review) => {
-        return (
-          <ReviewItem
-            key={review.id}
-            reviewId={review.id}
-            image={review.image}
-            userImage={review.userImage}
-            name={review.name}
-            stars={review.stars}
-            description={review.description}
-            reviewLikes={review.likes}
-            reviewDislikes={review.dislikes}
-            creatorId={review.creator}
-            user={props.user}
-          />
-        )
-      }
-      )}
-    </ul>
+    <React.Fragment>
+        <ul className="reviews-list-container">
+          {reviewsList && reviewsList.map((review) => {
+            return (
+              <ReviewItem
+                key={review.id}
+                reviewId={review.id}
+                image={review.image}
+                userImage={review.userImage}
+                name={review.name}
+                stars={review.stars}
+                description={review.description}
+                reviewLikes={review.likes}
+                reviewDislikes={review.dislikes}
+                creatorId={review.creator}
+                user={props.user}
+              />
+            )
+          }
+          )}
+        </ul>
+    </React.Fragment>
   );
 };
 

@@ -1,0 +1,19 @@
+.main-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff29;
+    padding: 10px 10%;
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  @media (min-width: 500px) {
+    .main-header {
+      justify-content: space-between;
+    }
+  }
+  
