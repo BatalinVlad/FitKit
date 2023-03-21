@@ -36,29 +36,27 @@
     font-size: rem(10px);
   }
   svg {
-    font-size: rem(16px);
-    padding: 2px;
+    font-size: rem(25px);
     border-radius: 3px;
     margin-right: 5px;
-    margin-top: 5px;
   }
   .icon {
     margin-right: 10px;
     &-linkedin {
-      background-color: #f0f1f2;
       color: $clr6;
     }
     &-gmail {
-      background-color: #fafafa;
       color: $clr1;
     }
     &-insta {
-      background-color: #fffaf2;
       color: #cc9704;
     }
   }
 
   .about {
+    &-container-professions {
+      justify-content: flex-end;
+    }
     &-trainer {
       &-image {
         background-image: url("../images/me2.png");
@@ -70,7 +68,7 @@
     }
     &-programmer {
       P {
-        margin: 10px 0px 10px 10px;
+        margin-left: 10px;
       }
       &-image {
         background-image: url("../images/me1.png");
@@ -87,9 +85,6 @@
       }
     }
   }
-  .contact-me {
-    margin-top: 3px;
-  }
 }
 
 @media (max-width: 900px) {
@@ -100,7 +95,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 630px) {
   .about-page-container {
     align-items: center;
     padding: 0;
@@ -109,18 +104,33 @@
     }
   }
 
-  .about-container {
-    flex-direction: column;
-    align-items: center;
-  }
   .about-page-footer {
     flex-direction: column-reverse;
     padding: 15px 5%;
+    .about-container {
+      &-title {
+        margin-bottom: 5px;
+      }
+      flex-direction: column;
+      align-items: center;
+      &-professions {
+        width: 270px;
+        justify-content: space-between;
+      }
+      .about-trainer {
+        margin-right: 10px;
+      }
+    }
     .contact-me {
       margin-top: 10px;
       text-align: center;
       &-icons {
-        justify-content: center;
+        margin: 0 auto;
+        width: 270px;
+        justify-content: space-between;
+        .icon {
+          margin: 0;
+        }
       }
     }
   }
@@ -143,34 +153,46 @@
   }
   .about-page-footer {
     background-color: $clr8;
-    position: inherit;
-    padding-bottom: rem(100px);
   }
 }
 
 @media (max-width: 340px) {
-  .about-page{
+  .about-page {
     height: 65vh;
   }
-  .about-container {
-    &-professions {
-      flex-direction: column;
-
-      .about-programmer,
-      .about-trainer {
-        width: 160px;
-        justify-content: flex-end;
+  .about-page-container {
+    .about-title {
+      h1 {
+        font-size: rem(50px);
       }
     }
   }
-  .contact-me {
-    .contact-me-icons {
-      width: 160px;
-      flex-direction: column;
-      align-items: baseline;
-      margin: 0 auto;
-      .icon {
-        justify-content: center;
+  .about-page-footer {
+    .about-container {
+      &-professions {
+        flex-direction: column;
+        align-items: center;
+        .about-trainer {
+          margin: 0;
+          margin-bottom: 5px;
+        }
+
+        .about-programmer,
+        .about-trainer {
+          width: 160px;
+          justify-content: flex-end;
+        }
+      }
+    }
+    .contact-me {
+      .contact-me-icons {
+        width: 160px;
+        flex-direction: column;
+        align-items: baseline;
+        margin: 0 auto;
+        .icon {
+          justify-content: center;
+        }
       }
     }
   }

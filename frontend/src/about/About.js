@@ -45,8 +45,8 @@ const About = () => {
                         </div>
                     </div>
                     <div className='about-container flex column'>
-                        <p className='flex uppercase'>who am I?</p>
-                        <div className='about-container-professions flex justify-end'>
+                        <p className='about-container-title flex uppercase'>who am I?</p>
+                        <div className='about-container-professions flex'>
                             <div className='about-trainer flex text-center align-center row-rev'>
                                 <p>Fitness Trainer</p>
                                 <div className='about-trainer-image'>
