@@ -82,7 +82,7 @@
   &.align-baseline {
     align-items: baseline;
   }
-  
+
   &.align-start {
     align-items: flex-start;
   }
@@ -217,8 +217,8 @@
 
 // Positioning
 .center {
-  text-align: center;
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
 }

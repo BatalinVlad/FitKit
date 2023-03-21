@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  overflow-x:hidden;
+  overflow-x: hidden;
   margin: 0;
   height: 100vh;
   width: 100vw;
@@ -20,6 +20,10 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+// main {
+//   height: calc(100vh - 50px);
+// }
 
 img {
   border-radius: 4px;

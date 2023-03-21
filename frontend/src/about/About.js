@@ -7,7 +7,7 @@ const About = () => {
     return (
         <React.Fragment>
             <div className='about-page'>
-                <div className='about-page-container flex justify-center'>
+                <div className='about-page-about-container flex justify-center align-center'>
                     <div className='about-title flex column text-center fill-half-width'>
                         <h1>FIT<span>KIT</span></h1>
                         <h2 className='bold'>THE FITNESS KIT <br /> THAT EVERY COACH NEEDS</h2>
@@ -24,6 +24,25 @@ const About = () => {
                             by using AI to generate personalized nutrition plans based on the clients dietary preferences,
                             and offers a variety of workout plans that can be customized to suit the clients fitness level and goals.
                         </p> */}
+                    </div>
+                </div>
+                <div className='about-page-services-container center'>
+                    <div className='service-container'>
+                        <p className='uppercase'>create<br />workout plans</p>
+                        <div className='service-img workout-plan'>
+                        </div>
+                    </div>
+
+                    <div className='service-container'>
+                        <p className='uppercase'>create<br />diet plans</p>
+                        <div className='service-img diet-plan'>
+                        </div>
+                    </div>
+
+                    <div className='service-container'>
+                        <p className='uppercase'>share<br />with your clients</p>
+                        <div className='service-img share-plan'>
+                        </div>
                     </div>
                 </div>
                 <div className='about-page-footer fill-width flex space-between'>

@@ -1,94 +1,130 @@
+// .about-page {
+//   height: calc(100vh - 50px);
+// }
+
 .about-page {
-  height: 80vh;
-}
-
-.about-page-container {
-  height: 100%;
-  align-items: end;
-  .about-title {
-    width: 50%;
-    padding-bottom: 40px;
-  }
-
-  h1 {
-    font-size: rem(100px);
-  }
-  h2 {
-    font-size: rem(30px);
-  }
-  p {
-    font-size: rem(12px);
-    margin: 2px 0px;
-  }
-  span {
-    color: $clr12;
-  }
-}
-
-.about-page-footer {
-  position: absolute;
-  bottom: 0;
-  padding: 5px 10%;
-  background-color: #211e1eb5;
-  box-shadow: 0px 0px 3px -2px #00000069;
-
-  p {
-    font-size: rem(10px);
-  }
-  svg {
-    font-size: rem(25px);
-    border-radius: 3px;
-    margin-right: 5px;
-  }
-  .icon {
-    margin-right: 10px;
-    &-linkedin {
-      color: $clr6;
+  &-about-container {
+    padding-top: 15%;
+    align-items: end;
+    .about-title {
+      width: 50%;
+      padding-bottom: 40px;
     }
-    &-gmail {
-      color: $clr1;
+
+    h1 {
+      font-size: rem(100px);
     }
-    &-insta {
-      color: #cc9704;
+    h2 {
+      font-size: rem(30px);
+    }
+    p {
+      font-size: rem(12px);
+      margin: 2px 0px;
+    }
+    span {
+      color: $clr12;
     }
   }
-
-  .about {
-    &-container-professions {
-      justify-content: flex-end;
-    }
-    &-trainer {
-      &-image {
-        background-image: url("../images/me2.png");
+  &-services-container {
+    margin-bottom: 20px;
+    .service {
+      &-container {
+        background-color: white;
+        border-radius: 10px;
+        margin-right: 20px;
+        &:last-child {
+          margin: 0;
+        }
+        p {
+          color: $clr12;
+          font-weight: bold;
+          padding: 10px;
+        }
       }
+      &-img {
+        height: 150px;
+        width: 200px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        &.workout-plan {
+          background-image: url("../images/workoutplan.jpg");
+          background-size: cover;
+        }
+        &.diet-plan {
+          background-image: url("../images/dietplan.jpg");
+          background-size: cover;
+        }
+        &.share-plan {
+          background-image: url("../images/shareonline.jpg");
+          background-size: cover;
+        }
+      }
+    }
+  }
+  &-footer {
+    padding: 5px 10%;
+    background-color: $clr8;
+    box-shadow: 0px 0px 3px -2px #00000069;
+
+    p {
+      font-size: rem(10px);
+    }
+
+    svg {
+      font-size: rem(25px);
+      border-radius: 3px;
+      margin-right: 5px;
+    }
+
+    .icon {
       margin-right: 10px;
-      p {
-        margin-left: 10px;
+      &-linkedin {
+        color: $clr6;
+      }
+      &-gmail {
+        color: $clr1;
+      }
+      &-insta {
+        color: #cc9704;
       }
     }
-    &-programmer {
-      P {
-        margin-left: 10px;
+    .about {
+      &-container-professions {
+        justify-content: flex-end;
       }
-      &-image {
-        background-image: url("../images/me1.png");
+      &-trainer {
+        &-image {
+          background-image: url("../images/me2.png");
+        }
+        margin-right: 10px;
+        p {
+          margin-left: 10px;
+        }
       }
-    }
-    &-trainer,
-    &-programmer {
-      border-radius: 5px;
-      &-image {
-        border-radius: 4px;
-        width: 25px;
-        height: 25px;
-        background-size: cover;
+      &-programmer {
+        P {
+          margin-left: 10px;
+        }
+        &-image {
+          background-image: url("../images/me1.png");
+        }
+      }
+      &-trainer,
+      &-programmer {
+        border-radius: 5px;
+        &-image {
+          border-radius: 4px;
+          width: 25px;
+          height: 25px;
+          background-size: cover;
+        }
       }
     }
   }
 }
 
 @media (max-width: 900px) {
-  .about-page-container {
+  .about-page-about-container {
     .about-title {
       width: 60%;
     }
@@ -96,7 +132,7 @@
 }
 
 @media (max-width: 630px) {
-  .about-page-container {
+  .about-page-about-container {
     align-items: center;
     padding: 0;
     .about-title {
@@ -137,10 +173,9 @@
 }
 
 @media (max-width: 400px) {
-  .about-page {
-    height: 80vh;
-  }
-  .about-page-container {
+  // .about-page {
+  // }
+  .about-page-about-container {
     .about-title {
       width: 90%;
       h1 {
@@ -152,15 +187,15 @@
     }
   }
   .about-page-footer {
+    position: inherit;
     background-color: $clr8;
   }
 }
 
 @media (max-width: 340px) {
-  .about-page {
-    height: 65vh;
-  }
-  .about-page-container {
+  // .about-page {
+  // }
+  .about-page-about-container {
     .about-title {
       h1 {
         font-size: rem(50px);
