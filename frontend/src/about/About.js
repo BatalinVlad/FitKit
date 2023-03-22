@@ -27,7 +27,7 @@ const About = ({ socket }) => {
                 </div>
                 <div className='about-page-services-container flex column center'>
                     <div className='service-container workout flex row-rev fill-width   justify-center'>
-                        <div className='flex column'>
+                        <div className='flex column align-center'>
                             <h2 className='uppercase'>create<br />workout plans</h2>
                             <p>description about creating workout plans</p>
                         </div>
@@ -36,7 +36,7 @@ const About = ({ socket }) => {
                     </div>
 
                     <div className='service-container diet flex fill-width  justify-center'>
-                        <div className='flex column'>
+                        <div className='flex column align-center'>
                             <h2 className='uppercase'>create<br />diet plans</h2>
                             <p>description about creating diet plans</p>
                         </div>
@@ -45,7 +45,7 @@ const About = ({ socket }) => {
                     </div>
 
                     <div className='service-container share flex row-rev fill-width justify-center'>
-                        <div className='flex column'>
+                        <div className='flex column align-center'>
                             <h2 className='uppercase'>share<br />with your clients</h2>
                             <p>description about shering with your clients</p>
                         </div>
@@ -54,7 +54,7 @@ const About = ({ socket }) => {
                     </div>
                 </div>
                 <div className='about-page-reviews'>
-                    <h2 className='to uppercase text-center'>people rate us</h2>
+                    <h2 className='to uppercase text-center fs40 bold'>people rate us</h2>
                     <Reviews socket={socket} />
                 </div>
                 <div className='about-page-footer fill-width flex space-between'>

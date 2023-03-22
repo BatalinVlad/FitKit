@@ -114,51 +114,53 @@ const Auth = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      <div className='authentication-page flex center'>
+      <div className='authentication-page flex column'>
         <MainNavigation />
-        <Card className="authentication">
-          {isLoading && <LoadingSpinner asOverlay />}
-          <h2>Login Required</h2>
-          <hr />
-          <form onSubmit={authSubmitHandler}>
-            {!isLoginMode && (
+        <div className='authentication-containe center fill-height'>
+          <Card className="authentication">
+            {isLoading && <LoadingSpinner asOverlay />}
+            <h2>Login Required</h2>
+            <hr />
+            <form onSubmit={authSubmitHandler}>
+              {!isLoginMode && (
+                <Input
+                  element="input"
+                  id="name"
+                  type="text"
+                  label="Your Name"
+                  validators={[VALIDATOR_REQUIRE()]}
+                  errorText="Please enter a name."
+                  onInput={inputHandler}
+                />
+              )}
+              {!isLoginMode && <ImageUpload id="image" center onInput={inputHandler} errorText="please provide an image" />}
               <Input
                 element="input"
-                id="name"
-                type="text"
-                label="Your Name"
-                validators={[VALIDATOR_REQUIRE()]}
-                errorText="Please enter a name."
+                id="email"
+                type="email"
+                label="E-Mail"
+                validators={[VALIDATOR_EMAIL()]}
+                errorText="Please enter a valid email address."
                 onInput={inputHandler}
               />
-            )}
-            {!isLoginMode && <ImageUpload id="image" center onInput={inputHandler} errorText="please provide an image" />}
-            <Input
-              element="input"
-              id="email"
-              type="email"
-              label="E-Mail"
-              validators={[VALIDATOR_EMAIL()]}
-              errorText="Please enter a valid email address."
-              onInput={inputHandler}
-            />
-            <Input
-              element="input"
-              id="password"
-              type="password"
-              label="Password"
-              validators={[VALIDATOR_MINLENGTH(6)]}
-              errorText="Please enter a valid password, at least 6 characters."
-              onInput={inputHandler}
-            />
-            <Button type="submit" regularAction={true} disabled={!formState.isValid}>
-              {isLoginMode ? 'LOGIN' : 'SIGNUP'}
+              <Input
+                element="input"
+                id="password"
+                type="password"
+                label="Password"
+                validators={[VALIDATOR_MINLENGTH(6)]}
+                errorText="Please enter a valid password, at least 6 characters."
+                onInput={inputHandler}
+              />
+              <Button type="submit" regularAction={true} disabled={!formState.isValid}>
+                {isLoginMode ? 'LOGIN' : 'SIGNUP'}
+              </Button>
+            </form>
+            <Button inverse regularAction={true} onClick={switchModeHandler}>
+              SWITCH TO {isLoginMode ? 'SIGNUP' : 'LOGIN'}
             </Button>
-          </form>
-          <Button inverse regularAction={true} onClick={switchModeHandler}>
-            SWITCH TO {isLoginMode ? 'SIGNUP' : 'LOGIN'}
-          </Button>
-        </Card>
+          </Card>
+        </div>
       </div>
     </React.Fragment>
   );

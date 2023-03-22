@@ -4,27 +4,14 @@
     position: absolute;
     top: 0;
   }
-  &-about-container {
-    height: 90vh;
-    background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679463906/background_yah8br.jpg");
-    background-size: cover;
-    background-position-x: center;
 
-    .between-about-services {
-      height: 70px;
-      width: 100%;
-      background: linear-gradient(#ffffff00, $background_black);
-    }
-
-    .about-title {
-      position: relative;
-    }
-
+  &-about-container,
+  &-services-container {
     h1 {
       font-size: rem(130px);
     }
     h2 {
-      font-size: rem(30px);
+      font-size: rem(40px);
     }
     p {
       font-size: rem(12px);
@@ -40,6 +27,23 @@
     }
   }
 
+  &-about-container {
+    height: 90vh;
+    background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679463906/background_yah8br.jpg");
+    background-size: cover;
+    background-position-x: center;
+
+    .between-about-services {
+      height: 70px;
+      width: 100%;
+      background: linear-gradient(#ffffff00, $background_black);
+    }
+
+    .about-title {
+      position: relative;
+    }
+  }
+
   &-services-container {
     margin: 20px 5%;
     .service {
@@ -48,6 +52,7 @@
         &not:last-child {
           margin-top: 0px;
         }
+        height: 400px;
         border-radius: 10px;
         h2 {
           font-weight: bold;
@@ -59,6 +64,7 @@
         p {
           font-size: rem(20px);
           padding: 10px;
+          width: 75%;
           color: $clr7;
         }
       }
@@ -84,13 +90,29 @@
   }
 
   &-reviews {
-    padding: 150px 10px;
+    padding: 150px 0px;
     .reviews-page {
       height: auto;
       background-color: $background_black;
       background-image: none;
       .reviews-list-container {
         height: auto;
+        overflow-x: scroll;
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        margin: 0 auto;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        padding: 0;
+        .review-item {
+          &:first-child {
+            margin-left: 0;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+        }
       }
       .main-header {
         display: none;
@@ -164,10 +186,10 @@
       .service-container {
         flex-direction: column;
         align-items: center;
-        p{
+        p {
           margin-bottom: 10px;
         }
-        .service-img{
+        .service-img {
           height: 400px;
         }
       }
@@ -235,7 +257,7 @@
         font-size: rem(90px);
       }
       h2 {
-        font-size: rem(20px);
+        font-size: rem(30px);
       }
     }
   }
