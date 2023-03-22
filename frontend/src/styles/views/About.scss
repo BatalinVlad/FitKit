@@ -180,10 +180,11 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: $narrow-breakpoint) {
   .about-page {
     &-services-container {
       .service-container {
+        height: 400px;
         flex-direction: column;
         align-items: center;
         p {
@@ -194,6 +195,27 @@
         }
       }
     }
+    &-reviews {
+      .reviews-list-container {
+        .review-item {
+          padding: 0;
+          &:not(:first-child),
+          &:not(:last-child) {
+            margin: 5px 10px;
+          }
+        }
+      }
+    }
+
+    // .review-item:not(:first-child) {
+    //   margin-top: 40px;
+    //   width: 20rem;
+    //   cursor: pointer;
+    // }
+
+    // .review-item:last-child {
+    //   padding-bottom: 50px;
+    // }
   }
 }
 
