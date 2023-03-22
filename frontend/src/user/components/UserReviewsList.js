@@ -8,9 +8,9 @@ import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 const UserReviewsList = props => {
   if (props.items.length === 0) {
     return (
-      <div className="user-reviews-list-page">
+      <div className="user-reviews-list-page flex column">
         <MainNavigation />
-        <div className='center'>
+        <div className='fill-height center'>
           <Card>
             <div className='no-reviews-found'>
               <h2>No reviews found. Maybe create one?</h2>

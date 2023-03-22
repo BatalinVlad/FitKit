@@ -79,7 +79,7 @@ const LiveChat = ({ socket }) => {
 
     return <React.Fragment>
         <ErrorModal error={error} onClear={clearError} />
-        <div className='live-chat-page'>
+        <div className='live-chat-page flex column'>
             <MainNavigation />
             <div className='chat-container flex justify-center '>
                 <div className='chat-window flex column space-between'>

@@ -1,4 +1,5 @@
 .live-chat-page {
+  background-color: $background_white;
   height: 100vh;
   .main-header {
     background-color: $main_nav_262626;
@@ -6,10 +7,8 @@
   }
 }
 .chat-container {
-  margin-top: 30px;
-  height: 80vh;
-  width: 60%;
-  margin: 0 auto;
+  width: 80%;
+  margin: 30px auto 0 auto;
 }
 
 .chat-window {
@@ -165,8 +164,8 @@
   opacity: 0 !important;
 }
 
-@media (max-width: 400px) {
+@media (max-width: $mobile-breakpoint) {
   .chat-container {
-    width: 90%;
+    width: 100%;
   }
 }

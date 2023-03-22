@@ -2,30 +2,31 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
+import Reviews from '../reviews/pages/Reviews'
 import Button from '../shared/components/FormElements/Button'
 import { TfiLinkedin } from 'react-icons/tfi';
 import { SiGmail } from 'react-icons/si';
 import { TfiInstagram } from 'react-icons/tfi';
 
-const About = () => {
+const About = ({ socket }) => {
     const history = useHistory();
     const getStarted = () => {
         history.push('/mydietplan')
     }
     return (
         <React.Fragment>
-            <MainNavigation />
             <div className='about-page'>
+                <MainNavigation />
                 <div className='about-page-about-container flex column justify-end align-center'>
-                    <div className='about-title flex column text-center fill-half-width'>
+                    <div className='about-title flex column text-center'>
                         <h1>FIT<span>KIT</span></h1>
                         <h2 className='bold'>THE FITNESS KIT <br /> THAT EVERY COACH NEEDS</h2>
                     </div>
                     <Button type="button" getStarted={true} onClick={getStarted}>TRY IT NOW</Button>
                     <div className='between-about-services'></div>
                 </div>
-                <div className='about-page-services-container center'>
-                    <div className='service-container workout flex column space-between'>
+                <div className='about-page-services-container flex column center'>
+                    <div className='service-container workout flex row-rev fill-width   justify-center'>
                         <div className='flex column'>
                             <h2 className='uppercase'>create<br />workout plans</h2>
                             <p>description about creating workout plans</p>
@@ -34,7 +35,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className='service-container diet flex column space-between'>
+                    <div className='service-container diet flex fill-width  justify-center'>
                         <div className='flex column'>
                             <h2 className='uppercase'>create<br />diet plans</h2>
                             <p>description about creating diet plans</p>
@@ -43,7 +44,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className='service-container share flex column space-between'>
+                    <div className='service-container share flex row-rev fill-width justify-center'>
                         <div className='flex column'>
                             <h2 className='uppercase'>share<br />with your clients</h2>
                             <p>description about shering with your clients</p>
@@ -51,6 +52,10 @@ const About = () => {
                         <div className='service-img share-plan'>
                         </div>
                     </div>
+                </div>
+                <div className='about-page-reviews'>
+                    <h2 className='to uppercase text-center'>people rate us</h2>
+                    <Reviews socket={socket} />
                 </div>
                 <div className='about-page-footer fill-width flex space-between'>
                     <div className='contact-me flex column'>

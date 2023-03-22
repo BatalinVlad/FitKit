@@ -1,24 +1,27 @@
 .about-page {
   position: relative;
+  .main-header {
+    position: absolute;
+    top: 0;
+  }
   &-about-container {
     height: 90vh;
-    background-image: url("../images/background.jpg");
+    background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679463906/background_yah8br.jpg");
     background-size: cover;
     background-position-x: center;
 
     .between-about-services {
       height: 70px;
       width: 100%;
-      background: linear-gradient(#ffffff00, $clr8);
+      background: linear-gradient(#ffffff00, $background_black);
     }
 
     .about-title {
       position: relative;
-      width: 50%;
     }
 
     h1 {
-      font-size: rem(100px);
+      font-size: rem(130px);
     }
     h2 {
       font-size: rem(30px);
@@ -38,51 +41,66 @@
   }
 
   &-services-container {
-    margin: 30px 20px 30px 20px;
-    padding-bottom: 40px;
+    margin: 20px 5%;
     .service {
       &-container {
-        height: 350px;
-        width: 320px;
-        background-color: white;
-        border-radius: 10px;
-        margin-right: 20px;
-        &:last-child {
-          margin: 0;
+        margin-top: 20%;
+        &not:last-child {
+          margin-top: 0px;
         }
+        border-radius: 10px;
         h2 {
-          color: $clr12;
+          font-weight: bold;
+          font-size: rem(35px);
+          color: $clr7;
           font-weight: bold;
           padding: 10px;
         }
         p {
-          color: $clr12;
+          font-size: rem(20px);
+          padding: 10px;
+          color: $clr7;
         }
       }
 
       &-img {
-        height: 240px;
-        width: 100%;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
+        height: 100%;
+        width: 400px;
+        border-radius: 5px;
         &.workout-plan {
-          background-image: url("../images/workoutplan.jpg");
+          background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434813/workoutplan_x6reyi.jpg");
           background-size: cover;
         }
         &.diet-plan {
-          background-image: url("../images/dietplan.jpg");
+          background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434902/dietplan_vxvsfd.jpg");
           background-size: cover;
         }
         &.share-plan {
-          background-image: url("../images/shareonline.jpg");
+          background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434860/shareonline_rmpch7.jpg");
           background-size: cover;
         }
       }
     }
   }
+
+  &-reviews {
+    padding: 150px 10px;
+    .reviews-page {
+      height: auto;
+      background-color: $background_black;
+      background-image: none;
+      .reviews-list-container {
+        height: auto;
+      }
+      .main-header {
+        display: none;
+      }
+    }
+  }
+
   &-footer {
     padding: 15px 10%;
-    background-color: $main_nav_262626;
+    background-color: $footer_black;
     p {
       font-size: rem(10px);
     }
@@ -111,7 +129,7 @@
       }
       &-trainer {
         &-image {
-          background-image: url("../images/me2.png");
+          background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434681/me2_xcvfef.png");
         }
         margin-right: 10px;
         p {
@@ -123,7 +141,7 @@
           margin-left: 10px;
         }
         &-image {
-          background-image: url("../images/me1.png");
+          background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434697/me1_kjjcwa.png");
         }
       }
       &-trainer,
@@ -140,24 +158,18 @@
   }
 }
 
-@media (max-width: 900px) {
-  .about-page-about-container {
-    .about-title {
-      width: 60%;
-    }
-  }
-}
 @media (max-width: 720px) {
   .about-page {
     &-services-container {
-      flex-direction: column;
       .service-container {
-        &:last-child {
-          margin: 0;
-          margin-top: 20px;
+        flex-direction: column;
+        align-items: center;
+        p{
+          margin-bottom: 10px;
         }
-        margin: 0;
-        margin-top: 20px;
+        .service-img{
+          height: 400px;
+        }
       }
     }
   }
@@ -168,7 +180,7 @@
     &-about-container {
       align-items: center;
       .about-title {
-        width: 80%;
+        width: 90%;
       }
     }
   }
@@ -208,7 +220,7 @@
 @media (max-width: 500px) {
   .about-page-about-container {
     button {
-      width: 60%;
+      width: 70%;
     }
   }
 }
@@ -216,10 +228,9 @@
 @media (max-width: $mobile-breakpoint) {
   .about-page-about-container {
     button {
-      width: 80%;
+      width: 90%;
     }
     .about-title {
-      width: 90%;
       h1 {
         font-size: rem(90px);
       }
@@ -231,13 +242,6 @@
 }
 
 @media (max-width: 340px) {
-  .about-page-about-container {
-    .about-title {
-      h1 {
-        font-size: rem(50px);
-      }
-    }
-  }
   .about-page-footer {
     .about-container {
       &-professions {
