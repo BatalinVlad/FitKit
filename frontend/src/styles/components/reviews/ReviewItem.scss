@@ -1,6 +1,6 @@
 .review-item {
   margin: 5px 10px;
-  width: 20rem;
+  width: 320px;
   cursor: pointer;
   &__content_link {
     position: relative;
@@ -11,7 +11,7 @@
     justify-content: space-between;
     text-decoration: none;
     color: white;
-    transition: 0.5s;
+    transition: $transition_fast;
   }
   &__content_link:hover,
   &__content_link:active {
@@ -149,14 +149,14 @@
   &__dislike_buttom,
   &__like_buttom {
     padding-bottom: 5px;
-    transition: 0.8s;
+    transition: $transition_slow;
   }
 }
 
 @media (max-width: $narrow-breakpoint) {
   .review-item:not(:first-child) {
     margin-top: 40px;
-    width: 20rem;
+    width: 320px;
     cursor: pointer;
   }
 

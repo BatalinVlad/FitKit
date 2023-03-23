@@ -23,7 +23,8 @@
     button {
       margin-top: 15px;
       font-size: rem(24px);
-      width: 40%;
+      padding: 10px 30px;
+      width: auto;
     }
   }
 
@@ -90,17 +91,18 @@
   }
 
   &-reviews {
-    padding: 150px 0px;
+    padding: 150px 20px;
     .reviews-page {
       height: auto;
       background-color: $background_black;
       background-image: none;
       .reviews-list-container {
         height: auto;
-        overflow-x: scroll;
+        overflow-x: auto;
         display: flex;
         flex-direction: row;
-        width: 90%;
+        max-width: 900px;
+        min-width: 320px;
         margin: 0 auto;
         justify-content: flex-start;
         flex-wrap: nowrap;
@@ -116,6 +118,12 @@
       }
       .main-header {
         display: none;
+      }
+    }
+    a {
+      &.button {
+        font-size: rem(10px);
+        margin-top: 10px;
       }
     }
   }
@@ -184,7 +192,7 @@
   .about-page {
     &-services-container {
       .service-container {
-        height: 400px;
+        height: auto;
         flex-direction: column;
         align-items: center;
         p {
@@ -206,16 +214,6 @@
         }
       }
     }
-
-    // .review-item:not(:first-child) {
-    //   margin-top: 40px;
-    //   width: 20rem;
-    //   cursor: pointer;
-    // }
-
-    // .review-item:last-child {
-    //   padding-bottom: 50px;
-    // }
   }
 }
 

@@ -53,9 +53,12 @@ const About = ({ socket }) => {
                         </div>
                     </div>
                 </div>
-                <div className='about-page-reviews'>
+                <div className='about-page-reviews flex column justify-center'>
                     <h2 className='to uppercase text-center fs40 bold'>people rate us</h2>
                     <Reviews socket={socket} />
+                    <div className='text-center'>
+                        <Button type="to" to='/addReview' regularAction={true} >ADD REVIEW</Button>
+                    </div>
                 </div>
                 <div className='about-page-footer fill-width flex space-between'>
                     <div className='contact-me flex column'>
