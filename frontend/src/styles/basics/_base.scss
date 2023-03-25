@@ -12,15 +12,12 @@ html {
 }
 
 body {
-  // overflow-x: hidden;
+  overflow-x: hidden;
   margin: 0;
-  // width: 100vw;
+  width: 100vw;
   background-color: $background_black;
 }
 
-// main {
-//   height: calc(100vh - 50px);
-// }
 
 img {
   border-radius: 4px;
