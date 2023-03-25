@@ -15,7 +15,7 @@ import { useHttpClient } from '../../shared/hooks/http-hook';
 import { useForm } from '../../shared/hooks/form-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 
-const NewReview = ({ socket }) => {
+const NewReview = ({ socket, onAddReviewModalHandler }) => {
   const auth = useContext(AuthContext);
   const history = useHistory();
   const { isLoading, sendRequest, error, clearError } = useHttpClient();
@@ -83,7 +83,7 @@ const NewReview = ({ socket }) => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      <div className='add-review-page'>
+      <div className='add-review-page flex column'>
         <MainNavigation />
         <form className="review-form flex column" onSubmit={reviewSubmitHandler}>
           {isLoading && <LoadingSpinner asOverlay />}
@@ -118,6 +118,9 @@ const NewReview = ({ socket }) => {
             </Button>
           </div>
         </form >
+        <div className='flex justify-center'>
+          <Button type="button" danger={true} onClick={onAddReviewModalHandler}>BACK</Button>
+        </div>
       </div>
     </React.Fragment >
   );

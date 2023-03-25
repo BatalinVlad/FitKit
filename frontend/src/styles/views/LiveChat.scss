@@ -2,8 +2,8 @@
   background-color: $background_white;
   height: 100vh;
   .main-header {
+    position: relative;
     background-color: $main_nav_262626;
-    position: inherit;
   }
 }
 .chat-container {

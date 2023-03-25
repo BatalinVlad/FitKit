@@ -30,9 +30,9 @@
 
   &-about-container {
     height: 90vh;
-    background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679463906/background_yah8br.jpg");
-    background-size: cover;
-    background-position-x: center;
+    // background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679463906/background_yah8br.jpg");
+    // background-size: cover;
+    // background-position-x: center;
 
     .between-about-services {
       height: 70px;
@@ -91,7 +91,7 @@
   }
 
   &-reviews {
-    padding: 150px 20px;
+    padding: 100px 0px;
     .reviews-page {
       height: auto;
       background-color: $background_black;
@@ -120,10 +120,21 @@
         display: none;
       }
     }
-    a {
+    button {
       &.button {
         font-size: rem(10px);
         margin-top: 10px;
+      }
+    }
+    .add-review-page {
+      background-color: #262626cc;
+      height: auto;
+      width: 100%;
+      .main-header {
+        display: none;
+      }
+      .review-form {
+        max-width: 420px;
       }
     }
   }
@@ -132,7 +143,7 @@
     padding: 15px 10%;
     background-color: $footer_black;
     p {
-      font-size: rem(10px);
+      font-size: rem(16px);
     }
 
     svg {
@@ -217,7 +228,7 @@
   }
 }
 
-@media (max-width: 630px) {
+@media (max-width: 900px) {
   .about-page {
     &-about-container {
       align-items: center;
@@ -237,7 +248,6 @@
       flex-direction: column;
       align-items: center;
       &-professions {
-        width: 270px;
         justify-content: space-between;
       }
       .about-trainer {
@@ -249,7 +259,6 @@
       text-align: center;
       &-icons {
         margin: 0 auto;
-        width: 270px;
         justify-content: space-between;
         .icon {
           margin: 0;
@@ -281,9 +290,6 @@
       }
     }
   }
-}
-
-@media (max-width: 340px) {
   .about-page-footer {
     .about-container {
       &-professions {
@@ -296,14 +302,18 @@
 
         .about-programmer,
         .about-trainer {
-          width: 160px;
+          width: 220px;
           justify-content: flex-end;
         }
       }
     }
     .contact-me {
+      p {
+        line-height: 1;
+        margin-left: 5px;
+      }
       .contact-me-icons {
-        width: 160px;
+        width: 220px;
         flex-direction: column;
         align-items: baseline;
         margin: 0 auto;
@@ -311,6 +321,10 @@
           justify-content: center;
         }
       }
+    }
+    .about-container,
+    .contact-me {
+      padding: 30px;
     }
   }
 }

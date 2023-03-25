@@ -1,29 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
-import Reviews from '../reviews/pages/Reviews'
-import Button from '../shared/components/FormElements/Button'
+import Reviews from '../reviews/pages/Reviews';
+import AddReview from '../user/pages/AddReview'
+import Button from '../shared/components/FormElements/Button';
 import { TfiLinkedin } from 'react-icons/tfi';
 import { SiGmail } from 'react-icons/si';
 import { TfiInstagram } from 'react-icons/tfi';
 
 const About = ({ socket }) => {
     const history = useHistory();
+    const [openAddReviewModal, setOpenAddReviewModal] = useState(false);
+
     const getStarted = () => {
         history.push('/mydietplan')
+    }
+    const addReviewModalHandler = () => {
+        setOpenAddReviewModal(!openAddReviewModal);
     }
     return (
         <React.Fragment>
             <div className='about-page'>
                 <MainNavigation />
                 <div className='about-page-about-container flex column justify-end align-center'>
+                    <div className='about-page-about-container-bg_img_container fill-height fill-width'>
+                        <div className='about-page-about-container_img'>
+                        </div>
+                    </div>
                     <div className='about-title flex column text-center'>
                         <h1>FIT<span>KIT</span></h1>
                         <h2 className='bold'>THE FITNESS KIT <br /> THAT EVERY COACH NEEDS</h2>
                     </div>
                     <Button type="button" getStarted={true} onClick={getStarted}>TRY IT NOW</Button>
-                    <div className='between-about-services'></div>
                 </div>
                 <div className='about-page-services-container flex column center'>
                     <div className='service-container workout flex row-rev fill-width   justify-center'>
@@ -54,15 +63,19 @@ const About = ({ socket }) => {
                     </div>
                 </div>
                 <div className='about-page-reviews flex column justify-center'>
-                    <h2 className='to uppercase text-center fs40 bold'>people rate us</h2>
-                    <Reviews socket={socket} />
-                    <div className='text-center'>
-                        <Button type="to" to='/addReview' regularAction={true} >ADD REVIEW</Button>
-                    </div>
+                    {openAddReviewModal ?
+                        <AddReview onAddReviewModalHandler={addReviewModalHandler} /> : <div className='flex column'>
+                            <h2 className='to uppercase text-center fs40 bold'>people rate us</h2>
+                            <Reviews socket={socket} />
+                            <div className='text-center'>
+                                <Button type="button" regularAction={true} onClick={addReviewModalHandler}>ADD REVIEW</Button>
+                            </div>
+                        </div>
+                    }
                 </div>
                 <div className='about-page-footer fill-width flex space-between'>
                     <div className='contact-me flex column'>
-                        <p className='uppercase'>contact me</p>
+                        <p className='uppercase bold'>contact me</p>
                         <div className='contact-me-icons flex'>
                             <div className='icon flex align-end pointer'>
                                 <TfiLinkedin className='icon-linkedin' />
@@ -79,7 +92,7 @@ const About = ({ socket }) => {
                         </div>
                     </div>
                     <div className='about-container flex column'>
-                        <p className='about-container-title flex uppercase'>who am I?</p>
+                        <p className='about-container-title flex uppercase bold'>who am I?</p>
                         <div className='about-container-professions flex'>
                             <div className='about-trainer flex text-center align-center row-rev'>
                                 <p>Fitness Trainer</p>

@@ -5,14 +5,16 @@
 }
 
 html {
+  overflow-x: hidden;
+  background-color: $background_black;
   font-family: montserratRegular, sans-serif;
   line-height: 1.6;
 }
 
 body {
-  overflow-x: hidden;
+  // overflow-x: hidden;
   margin: 0;
-  width: 100vw;
+  // width: 100vw;
   background-color: $background_black;
 }
 

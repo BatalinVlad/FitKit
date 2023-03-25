@@ -100,7 +100,7 @@ const ReviewItem = props => {
   return (
     <React.Fragment>
       <li className="review-item">
-        <Card className="review-item__content">
+        <Card className="review-item__content flex">
           <div className="review-item__content_link"
             onClick={() => reviewEditHandler()}
             onMouseEnter={() => reviewHoverEnterHandler()}
@@ -123,24 +123,24 @@ const ReviewItem = props => {
               </h3>
               <hr className="review-item__hr" />
             </div>
-            <div className="review-item__review_image fill-width">
+            <div className="review-item__review_image flex relative">
               <img src={`${props.image.secure_url}`} alt={props.title} />
-            </div>
-            <div className="review-item__likes_container fill-width">
-              <div className="review-item__dislike_buttom half-fill-width flex justify-center align-end"
-                onClick={(event) => reviewLikesHandler(event, 'dislike')}>
-                {isDisliked ?
-                  <AiFillDislike style={{ color: "#F32013" }} /> :
-                  <AiFillDislike />
-                }
-                <p>{reviewDislikes && reviewDislikes.length}</p>
-              </div>
-              <div className="review-item__like_buttom half-fill-width flex justify-center align-baseline"
-                onClick={(event) => reviewLikesHandler(event, 'like')}>
-                <p>{reviewLikes && reviewLikes.length}</p>
-                {isLiked ?
-                  <AiFillLike style={{ color: "#33b249" }} /> :
-                  <AiFillLike />}
+              <div className="review-item__likes_container fill-width">
+                <div className="review-item__dislike_buttom half-fill-width flex justify-center align-end"
+                  onClick={(event) => reviewLikesHandler(event, 'dislike')}>
+                  {isDisliked ?
+                    <AiFillDislike style={{ color: "#F32013" }} /> :
+                    <AiFillDislike />
+                  }
+                  <p>{reviewDislikes && reviewDislikes.length}</p>
+                </div>
+                <div className="review-item__like_buttom half-fill-width flex justify-center align-baseline"
+                  onClick={(event) => reviewLikesHandler(event, 'like')}>
+                  <p>{reviewLikes && reviewLikes.length}</p>
+                  {isLiked ?
+                    <AiFillLike style={{ color: "#33b249" }} /> :
+                    <AiFillLike />}
+                </div>
               </div>
             </div>
           </div>

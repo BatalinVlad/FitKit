@@ -1,0 +1,96 @@
+.user-review-item {
+    width: 25rem;
+    margin: 0px 5px 15px 5px;
+    box-shadow: 0px 0px 2px 0px #ffffff6b;
+  }
+  .user-review-item__content {
+    height: 570px;
+    padding: 0;
+    position: relative;
+  }
+  
+  .user-review-item__info {
+    padding: 1rem;
+    text-align: center;
+  }
+  .user-review-item__info h2,
+  .user-review-item__info p {
+    color: #252525;
+  }
+  
+  .user-review-item__image {
+    width: 100%;
+    height: 20rem;
+    margin-right: 1.5rem;
+  }
+  
+  .user-review-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .user-review-item__user_image img {
+    object-fit: fill;
+    height: 41px;
+    width: 41px;
+    border-radius: 100%;
+    box-shadow: 0px 0px 1px 1px #252525;
+  }
+  
+  .user-review-item__name h2 {
+    margin-left: 6px;
+  }
+  
+  .review-item__info h3,
+  .review-item__info p {
+    margin: 0 0 0.5rem 0;
+  }
+  .user-review-item__info-description {
+    height: 120px;
+    overflow-y: scroll;
+  }
+  .review-item__actions {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid #ccc;
+  }
+  
+  .user-review-item__modal-content {
+    padding: 0;
+  }
+  
+  .user-review-item__modal-actions {
+    text-align: right;
+  }
+  
+  .user-review-item__actions button,
+  .user-review-item__actions a {
+    margin: 0.5rem;
+  }
+  
+  .user-review__likes_container {
+    background-image: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0),
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.8)
+    );
+    padding: 20px;
+    position: absolute;
+    top: 0;
+  }
+  
+  .user-review__likes_container p,
+  .user-review__likes_container svg {
+    font-size: 20px;
+    color: white;
+  }
+  
+  .user-review__likes_container p {
+    margin: 0;
+    font-size: 1.3rem;
+    padding: 0px 5px;
+  }
+  
