@@ -1,13 +1,7 @@
 .reviews {
   &-page {
     height: 100vh;
-    background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434770/reviewspage-bg_og11s9.jpg");
-    background-position:bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
-
     .main-header {
-      background-color: $main_nav_262626;
       position: inherit;
     }
   }

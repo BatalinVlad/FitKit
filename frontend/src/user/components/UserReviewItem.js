@@ -13,7 +13,6 @@ import { getStars } from '../../shared/util/utils';
 
 import { SlLike } from 'react-icons/sl';
 import { SlDislike } from 'react-icons/sl';
-import './UserReviewItem.css';
 
 const UserReviewItem = props => {
   const auth = useContext(AuthContext);

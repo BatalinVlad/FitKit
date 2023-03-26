@@ -6,6 +6,20 @@
   z-index: 1;
 }
 
+.card {
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 4px;
+  background: white;
+  overflow: hidden;
+}
+
+.card h1,
+.card h2,
+.card label {
+  color: #252525;
+}
+
 .hide {
   display: none;
 }

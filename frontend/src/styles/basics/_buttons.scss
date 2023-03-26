@@ -1,6 +1,6 @@
 .button {
   font: inherit;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 0.5rem 1.5rem;
   color: white;
   cursor: pointer;
@@ -16,52 +16,51 @@
 .button--get_started {
   border: 1px solid $clr12;
   background: $clr12;
-}
-.button--get_started:hover,
-.button--get_started:active {
-  background: $clr121;
-  border-color: $clr121;
+  &:hover,
+  &:active {
+    background: $clr121;
+    border-color: $clr121;
+  }
 }
 
 /*  ---------- call to action ---------- */
 .button--call_to_action {
   background: #33b249;
   border: 1px solid #33b249;
+  &:hover,
+  &:active {
+    background: #33b200;
+    border-color: #33b200;
+  }
 }
-.button--call_to_action:hover,
-.button--call_to_action:active {
-  background: #33b200;
-  border-color: #33b200;
-}
-
 /* -------------- Edit -------------- */
 .button--edit {
   background: #ffbd63;
   border: 1px solid #ffbd63;
+  &:hover,
+  &:active {
+    background: #ffbd03;
+    border-color: #ffbd03;
+  }
 }
-.button--edit:hover,
-.button--edit:active {
-  background: #ffbd03;
-  border-color: #ffbd03;
-}
-
 /*  ---------- regular action ---------- */
 .button--regular_action {
-  background: #33b249;
-  border: 1px solid #33b249;
+  background: #266df9;
+  border: 1px solid #266df9;
+  &:hover,
+  &:active {
+    background: #4681f4;
+    border-color: #4681f4;
+  }
 }
-.button--regular_action,
-.button--regular_action:active {
-  background: #4681f4;
-  border-color: #4681f4;
-}
+
 .button--inverse--regular_action {
   background: #4881f4cc;
-}
-.button--inverse--regular_action:hover,
-.button--inverse--regular_action:active {
-  color: white;
-  background: #4681f4;
+  &:hover,
+  &:active {
+    color: white;
+    background: #4681f4;
+  }
 }
 
 /*  ---------- upload ---------- */
@@ -69,12 +68,13 @@
   color: white;
   background: #a881af;
   border: 1px solid #a881af;
+  &:hover,
+  &:active {
+    background: #80669d;
+    border-color: #80669d;
+  }
 }
-.button--upload:hover,
-.button--upload:active {
-  background: #80669d;
-  border-color: #80669d;
-}
+
 .button--inverse--upload:hover,
 .button--inverse--upload:active {
   background: #80669d;
@@ -85,12 +85,13 @@
 .button--danger {
   background: #830000;
   border-color: #830000;
+  &:hover,
+  &:active {
+    background: #f34343;
+    border-color: #f34343;
+  }
 }
-.button--danger:hover,
-.button--danger:active {
-  background: #f34343;
-  border-color: #f34343;
-}
+
 .button:disabled,
 .button:hover:disabled,
 .button:active:disabled {

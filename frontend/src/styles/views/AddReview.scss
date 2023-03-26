@@ -2,10 +2,8 @@
 
 .add-review-page {
   height: 100vh;
-  background-color: $background_white;
   .main-header {
     position: inherit;
-    background-color: $main_nav_262626;
   }
 }
 
@@ -95,6 +93,9 @@
 .add-review-btn button {
   margin-top: 30px;
   width: 70%;
+}
+.add-review-go-back-btn{
+  display: none;
 }
 
 @media (max-width: 500px) {

@@ -118,7 +118,7 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
             </Button>
           </div>
         </form >
-        <div className='flex justify-center'>
+        <div className='add-review-go-back-btn flex justify-center'>
           <Button type="button" danger={true} onClick={onAddReviewModalHandler}>BACK</Button>
         </div>
       </div>

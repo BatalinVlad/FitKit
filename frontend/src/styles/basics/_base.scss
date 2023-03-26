@@ -6,18 +6,18 @@
 
 html {
   overflow-x: hidden;
-  background-color: $background_black;
   font-family: montserratRegular, sans-serif;
   line-height: 1.6;
+  background-color: $background_black;
 }
 
 body {
   overflow-x: hidden;
   margin: 0;
   width: 100vw;
-  background-color: $background_black;
+  background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679820939/bg_piydqk.png");
+  background-size: contin;
 }
-
 
 img {
   border-radius: 4px;
@@ -94,6 +94,7 @@ a {
 ::-webkit-scrollbar {
   width: 5px;
   height: 3px;
+  display: none;
 }
 
 /* Track */

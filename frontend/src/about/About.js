@@ -24,10 +24,6 @@ const About = ({ socket }) => {
             <div className='about-page'>
                 <MainNavigation />
                 <div className='about-page-about-container flex column justify-end align-center'>
-                    <div className='about-page-about-container-bg_img_container fill-height fill-width'>
-                        <div className='about-page-about-container_img'>
-                        </div>
-                    </div>
                     <div className='about-title flex column text-center'>
                         <h1>FIT<span>KIT</span></h1>
                         <h2 className='bold'>THE FITNESS KIT <br /> THAT EVERY COACH NEEDS</h2>

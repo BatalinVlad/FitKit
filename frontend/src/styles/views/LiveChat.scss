@@ -1,9 +1,7 @@
 .live-chat-page {
-  background-color: $background_white;
   height: 100vh;
   .main-header {
     position: relative;
-    background-color: $main_nav_262626;
   }
 }
 .chat-container {
@@ -141,7 +139,7 @@
   border-right: 1px dotted #607d8b;
   outline: none;
   font-family: "Open Sans", sans-serif;
-  border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 5px;
 }
 
 .chat-window .chat-footer button {

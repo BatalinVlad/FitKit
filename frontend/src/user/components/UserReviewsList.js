@@ -25,7 +25,7 @@ const UserReviewsList = props => {
   return (
     <div className='user-reviews-list-page'>
       <MainNavigation />
-      <ul className="user-reviews-list review-list flex justify-center">
+      <ul className="user-reviews-list review-list flex wrap justify-center">
         {props.items.map(review => (
           <UserReviewItem
             key={review.id}

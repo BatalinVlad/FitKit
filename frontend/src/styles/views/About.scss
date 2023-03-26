@@ -1,5 +1,8 @@
 .about-page {
   position: relative;
+  ::-webkit-scrollbar {
+    display: block;
+  }
   .main-header {
     position: absolute;
     top: 0;
@@ -31,16 +34,6 @@
 
   &-about-container {
     height: 90vh;
-    // background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679463906/background_yah8br.jpg");
-    // background-size: cover;
-    // background-position-x: center;
-
-    .between-about-services {
-      height: 70px;
-      width: 100%;
-      background: linear-gradient(#ffffff00, $background_black);
-    }
-
     .about-title {
       position: relative;
     }
@@ -95,21 +88,19 @@
     padding: 100px 0px;
     .reviews-page {
       height: auto;
-      background-color: $background_black;
-      background-image: none;
+      background: none;
       .reviews-list-container {
         height: auto;
         overflow-x: auto;
         display: flex;
         flex-direction: row;
-        max-width: 900px;
+        max-width: 880px;
         min-width: 320px;
         margin: 0 auto;
         justify-content: flex-start;
         flex-wrap: nowrap;
         padding: 0;
         .review-item {
-          border-radius: 15px;
           &:first-child {
             margin-left: 0;
           }
@@ -128,8 +119,11 @@
         margin-top: 1rem;
       }
     }
+    .add-review-go-back-btn {
+      display: flex;
+    }
     .add-review-page {
-      background-color: #262626cc;
+      background: none;
       height: auto;
       width: 100%;
       .main-header {
@@ -143,7 +137,7 @@
 
   &-footer {
     padding: 15px 10%;
-    background-color: $footer_black;
+    background: none;
     p {
       font-size: rem(16px);
     }

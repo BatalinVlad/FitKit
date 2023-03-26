@@ -1,5 +1,8 @@
 .user-reviews-list {
+  height: 90vh;
+  overflow-y: scroll;
   &-page {
+    overflow-y: hidden;
     height: 100vh;
     background-color: $background_white;
     .main-header {
