@@ -71,14 +71,36 @@ button {
 textarea,
 input {
   resize: none;
-  // border-radius: 2px;
   border: none;
-  font-size: rem(14px);
+  font-size: rem(20px);
   font-family: montserratLight, "sans-sarif";
+}
 
-  // &:focus {
-  //   box-shadow: inset 0 0 0 2px #0079bf;
-  // }
+.form-control input:focus,
+.form-control textarea:focus {
+  outline: none;
+  background: #ebebeb;
+  border-color: #510077;
+}
+
+.form-control--invalid label,
+.form-control--invalid p {
+  color: red;
+}
+
+.MuiFormControl-root {
+  &.MuiTextField-root {
+    margin-top: 20px;
+    .MuiOutlinedInput-root {
+      border-radius: 15px;
+      &:hover {
+        background-color: #51007758;
+      }
+    }
+  }
+  .MuiOutlinedInput-notchedOutline {
+    border-color: #510077;
+  }
 }
 
 label {
@@ -90,6 +112,8 @@ a {
   text-decoration: none;
 }
 
+// SCROLLER
+
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
@@ -99,19 +123,15 @@ a {
 
 /* Track */
 ::-webkit-scrollbar-track {
-
-
   background: rgba(241, 241, 241, 0.043);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-
   background: rgba(227, 227, 227, 0.279);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-
   background: rgba(235, 235, 235, 0.477);
 }

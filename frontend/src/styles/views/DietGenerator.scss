@@ -1,5 +1,4 @@
 .diet-generator-page {
-  background-color: white;
   height: 100vh;
   .main-header {
     position: relative;
@@ -18,7 +17,7 @@
   h2,
   p,
   label {
-    color: $clr8;
+    color: $clr7;
   }
 
   h1 {
@@ -34,6 +33,9 @@
   &.form-control {
     margin: 0;
     margin-top: 10px;
+  }
+  #outlined-basic{
+    border-color: white;
   }
 }
 

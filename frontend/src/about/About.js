@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
@@ -9,8 +9,11 @@ import { TfiLinkedin } from 'react-icons/tfi';
 import { SiGmail } from 'react-icons/si';
 import { TfiInstagram } from 'react-icons/tfi';
 
+import { AuthContext } from '../shared/context/auth-context';
+
 const About = ({ socket }) => {
     const history = useHistory();
+    const auth = useContext(AuthContext);
     const [openAddReviewModal, setOpenAddReviewModal] = useState(false);
 
     const getStarted = () => {
@@ -66,6 +69,8 @@ const About = ({ socket }) => {
                             <div className='text-center'>
                                 <Button type="button" action={true} onClick={addReviewModalHandler}>ADD REVIEW</Button>
                                 <Button type="to" href="/reviews" regularAction={true} >ALL REVIEWS</Button>
+                                {auth.isLoggedIn &&
+                                    < Button type="to" href={`${auth.userId}/reviews`} regularAction={true} >MY REVIEWS</Button>}
                             </div>
                         </div>
                     }
@@ -105,7 +110,7 @@ const About = ({ socket }) => {
                     </div>
                 </div>
             </div>
-        </React.Fragment>
+        </React.Fragment >
     )
 };
 

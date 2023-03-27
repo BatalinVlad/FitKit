@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 // import { useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
-import Input from '../shared/components/FormElements/Input';
-import Button from '../shared/components/FormElements/Button';
+// import Input from '../shared/components/FormElements/Input';
+// import Button from '../shared/components/FormElements/Button';
 // import ErrorModal from '../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../shared/components/UIElements/LoadingSpinner';
 // import ImageUpload from '../../shared/components/FormElements/ImageUpload';
 import TextField from '@mui/material/TextField'
-import {
-    VALIDATOR_REQUIRE,
-    VALIDATOR_MAX,
-    VALIDATOR_MIN
-} from '../shared/util/validators';
+// import {
+//     VALIDATOR_REQUIRE,
+//     VALIDATOR_MAX,
+//     VALIDATOR_MIN
+// } from '../shared/util/validators';
 // import { useHttpClient } from '../shared/hooks/http-hook';
 import { useForm } from '../shared/hooks/form-hook';
 // import { AuthContext } from '../../shared/context/auth-context';
@@ -103,8 +103,12 @@ const DietGenerator = () => {
             <div className='diet-generator-page'>
                 <MainNavigation />
                 <div className="diet-generator__container">
-                    <h1>FREE 8 WEEKS DIET PLAN</h1>
+                    <h1 className='bold uppercase'>step 1</h1>
                     <TextField id="outlined-basic" label="name" variant="outlined" />
+                    <TextField id="outlined-basic" label="age" variant="outlined" />
+                    <TextField id="outlined-basic" label="height" variant="outlined" />
+                    <TextField id="outlined-basic" label="weight" variant="outlined" />
+
                     {isLoading && <LoadingSpinner asOverlay />}
 
                     {/* <ErrorModal error={error} onClear={clearError} /> */}
