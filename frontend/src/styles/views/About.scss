@@ -1,8 +1,10 @@
 .about-page {
   position: relative;
+
   ::-webkit-scrollbar {
     display: block;
   }
+
   .main-header {
     position: absolute;
     top: 0;
@@ -13,16 +15,20 @@
     h1 {
       font-size: rem(130px);
     }
+
     h2 {
       font-size: rem(40px);
     }
+
     p {
       font-size: rem(12px);
       margin: 2px 0px;
     }
+
     span {
       color: $clr12;
     }
+
     button {
       margin-top: 15px;
       margin-bottom: 2rem;
@@ -34,6 +40,7 @@
 
   &-about-container {
     height: 90vh;
+
     .about-title {
       position: relative;
     }
@@ -41,14 +48,18 @@
 
   &-services-container {
     margin: 20px 5%;
+
     .service {
       &-container {
         margin-top: 20%;
+
         &not:last-child {
           margin-top: 0px;
         }
+
         height: 400px;
         border-radius: 10px;
+
         h2 {
           font-weight: bold;
           font-size: rem(35px);
@@ -56,6 +67,7 @@
           font-weight: bold;
           padding: 10px;
         }
+
         p {
           font-size: rem(20px);
           padding: 10px;
@@ -68,14 +80,17 @@
         height: 100%;
         width: 400px;
         border-radius: 5px;
+
         &.workout-plan {
           background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434813/workoutplan_x6reyi.jpg");
           background-size: cover;
         }
+
         &.diet-plan {
           background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434902/dietplan_vxvsfd.jpg");
           background-size: cover;
         }
+
         &.share-plan {
           background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434860/shareonline_rmpch7.jpg");
           background-size: cover;
@@ -86,9 +101,11 @@
 
   &-reviews {
     padding: 100px 0px;
+
     .reviews-page {
       height: auto;
       background: none;
+
       .reviews-list-container {
         height: auto;
         overflow-x: auto;
@@ -100,35 +117,50 @@
         justify-content: flex-start;
         flex-wrap: nowrap;
         padding: 0;
+
         .review-item {
           &:first-child {
             margin-left: 0;
           }
+
           &:last-child {
             margin-right: 0;
           }
         }
       }
+
       .main-header {
         display: none;
       }
     }
-    button {
+
+    button,
+    a {
       &.button {
         font-size: rem(10px);
         margin-top: 1rem;
       }
     }
+
+    a {
+      &.button {
+        margin-left: 10px;
+      }
+    }
+
     .add-review-go-back-btn {
       display: flex;
     }
+
     .add-review-page {
       background: none;
       height: auto;
       width: 100%;
+
       .main-header {
         display: none;
       }
+
       .review-form {
         max-width: 420px;
       }
@@ -138,6 +170,7 @@
   &-footer {
     padding: 15px 10%;
     background: none;
+
     p {
       font-size: rem(16px);
     }
@@ -150,40 +183,51 @@
 
     .icon {
       margin-right: 10px;
+
       &-linkedin {
         color: $clr6;
       }
+
       &-gmail {
         color: $clr1;
       }
+
       &-insta {
         color: #cc9704;
       }
     }
+
     .about {
       &-container-professions {
         justify-content: flex-end;
       }
+
       &-trainer {
         &-image {
           background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434681/me2_xcvfef.png");
         }
+
         margin-right: 10px;
+
         p {
           margin-left: 10px;
         }
       }
+
       &-programmer {
         P {
           margin-left: 10px;
         }
+
         &-image {
           background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434697/me1_kjjcwa.png");
         }
       }
+
       &-trainer,
       &-programmer {
         border-radius: 5px;
+
         &-image {
           border-radius: 4px;
           width: 25px;
@@ -202,18 +246,22 @@
         height: auto;
         flex-direction: column;
         align-items: center;
+
         p {
           margin-bottom: 10px;
         }
+
         .service-img {
           height: 400px;
         }
       }
     }
+
     &-reviews {
       .reviews-list-container {
         .review-item {
           padding: 0;
+
           &:not(:first-child),
           &:not(:last-child) {
             margin: 5px 10px;
@@ -228,6 +276,7 @@
   .about-page {
     &-about-container {
       align-items: center;
+
       .about-title {
         width: 90%;
       }
@@ -237,25 +286,32 @@
   .about-page-footer {
     flex-direction: column-reverse;
     padding: 15px 5%;
+
     .about-container {
       &-title {
         margin-bottom: 5px;
       }
+
       flex-direction: column;
       align-items: center;
+
       &-professions {
         justify-content: space-between;
       }
+
       .about-trainer {
         margin-right: 10px;
       }
     }
+
     .contact-me {
       margin-top: 10px;
       text-align: center;
+
       &-icons {
         margin: 0 auto;
         justify-content: space-between;
+
         .icon {
           margin: 0;
         }
@@ -277,20 +333,24 @@
     button {
       width: 90%;
     }
+
     .about-title {
       h1 {
         font-size: rem(90px);
       }
+
       h2 {
         font-size: rem(30px);
       }
     }
   }
+
   .about-page-footer {
     .about-container {
       &-professions {
         flex-direction: column;
         align-items: center;
+
         .about-trainer {
           margin: 0;
           margin-bottom: 5px;
@@ -303,21 +363,25 @@
         }
       }
     }
+
     .contact-me {
       p {
         line-height: 1;
         margin-left: 5px;
       }
+
       .contact-me-icons {
         width: 220px;
         flex-direction: column;
         align-items: baseline;
         margin: 0 auto;
+
         .icon {
           justify-content: center;
         }
       }
     }
+
     .about-container,
     .contact-me {
       padding: 30px;

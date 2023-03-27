@@ -7,7 +7,7 @@ import Button from '../shared/components/FormElements/Button';
 // import ErrorModal from '../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../shared/components/UIElements/LoadingSpinner';
 // import ImageUpload from '../../shared/components/FormElements/ImageUpload';
-
+import TextField from '@mui/material/TextField'
 import {
     VALIDATOR_REQUIRE,
     VALIDATOR_MAX,
@@ -104,10 +104,11 @@ const DietGenerator = () => {
                 <MainNavigation />
                 <div className="diet-generator__container">
                     <h1>FREE 8 WEEKS DIET PLAN</h1>
+                    <TextField id="outlined-basic" label="name" variant="outlined" />
                     {isLoading && <LoadingSpinner asOverlay />}
 
                     {/* <ErrorModal error={error} onClear={clearError} /> */}
-                    <form className="flex column" onSubmit={dietSubmitHandler}>
+                    {/* <form className="flex column" onSubmit={dietSubmitHandler}>
                         <Input
                             element="input"
                             id="name"
@@ -149,14 +150,14 @@ const DietGenerator = () => {
                             validators={[VALIDATOR_MIN(30), VALIDATOR_MAX(200)]}
                             errorText="Please enter a valid weight."
                             onInput={inputHandler}
-                        />
+                        /> */}
 
-                        <div className='get-your-diet-btn fill-width flex justify-center'>
+                        {/* <div className='get-your-diet-btn fill-width flex justify-center'>
                             <Button type="submit" size={'big'} action={true} disabled={!formState.isValid}>
                                 GET YOUR DIET PLAN NOW
                             </Button>
                         </div>
-                    </form >
+                    </form > */}
                     {
                         myDietPlan &&
                         <div className="diet-generator__result flex column text-center">

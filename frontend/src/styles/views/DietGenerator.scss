@@ -1,4 +1,5 @@
 .diet-generator-page {
+  background-color: white;
   height: 100vh;
   .main-header {
     position: relative;
@@ -27,10 +28,6 @@
     margin: 3px 0px;
   }
 
-  input {
-    margin: 0 auto;
-    width: 40%;
-  }
   button {
     margin-top: 10px;
   }

@@ -64,7 +64,8 @@ const About = ({ socket }) => {
                             <h2 className='to uppercase text-center fs40 bold'>people rate us</h2>
                             <Reviews socket={socket} />
                             <div className='text-center'>
-                                <Button type="button" regularAction={true} onClick={addReviewModalHandler}>ADD REVIEW</Button>
+                                <Button type="button" action={true} onClick={addReviewModalHandler}>ADD REVIEW</Button>
+                                <Button type="to" href="/reviews" regularAction={true} >ALL REVIEWS</Button>
                             </div>
                         </div>
                     }
