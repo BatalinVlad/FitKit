@@ -2,17 +2,14 @@ import React, { useState } from 'react';
 // import { useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
-// import Input from '../shared/components/FormElements/Input';
-// import Button from '../shared/components/FormElements/Button';
+import Input from '../shared/components/FormElements/Input';
+import Button from '../shared/components/FormElements/Button';
 // import ErrorModal from '../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../shared/components/UIElements/LoadingSpinner';
-// import ImageUpload from '../../shared/components/FormElements/ImageUpload';
-import TextField from '@mui/material/TextField'
-// import {
-//     VALIDATOR_REQUIRE,
-//     VALIDATOR_MAX,
-//     VALIDATOR_MIN
-// } from '../shared/util/validators';
+
+import {
+    VALIDATOR_REQUIRE,
+} from '../shared/util/validators';
 // import { useHttpClient } from '../shared/hooks/http-hook';
 import { useForm } from '../shared/hooks/form-hook';
 // import { AuthContext } from '../../shared/context/auth-context';
@@ -39,7 +36,7 @@ const DietGenerator = () => {
             weight: {
                 value: '',
                 isValid: false
-            },
+            }
         },
         false
     );
@@ -52,7 +49,7 @@ const DietGenerator = () => {
         my weight is: ${formState.inputs.weight.value},
         my height is: ${formState.inputs.height.value}
         can you write me a simple diet plan,
-        for 8 weeks please?
+        for 2 weeks please?
         `;
         const model = "text-davinci-003";
         const temperature = 0.5;
@@ -100,77 +97,87 @@ const DietGenerator = () => {
 
     return (
         <React.Fragment>
-            <div className='diet-generator-page'>
+            <div className='diet-generator-page flex column'>
                 <MainNavigation />
-                <div className="diet-generator__container">
-                    <h1 className='bold uppercase'>step 1</h1>
-                    <TextField id="outlined-basic" label="name" variant="outlined" />
-                    <TextField id="outlined-basic" label="age" variant="outlined" />
-                    <TextField id="outlined-basic" label="height" variant="outlined" />
-                    <TextField id="outlined-basic" label="weight" variant="outlined" />
+                <div className='fill-height center'>
+                    {!myDietPlan &&
 
-                    {isLoading && <LoadingSpinner asOverlay />}
+                        <div className="card diet-generator__container flex column align-center">
+                            <h1 className='bold uppercase'>step 1</h1>
+                            {isLoading && <LoadingSpinner asOverlay />}
+                            {/* <ErrorModal error={error} onClear={clearError} /> */}
+                            <form className="flex column" onSubmit={dietSubmitHandler}>
+                                <Input
+                                    element="input"
+                                    id="name"
+                                    type="text"
+                                    required={true}
+                                    label="Name"
+                                    placeholder="full name..."
+                                    validators={[VALIDATOR_REQUIRE()]}
+                                    errorText="Please enter a name."
+                                    variant='outlined'
+                                    onInput={inputHandler}
+                                />
+                                <div className='flex'>
+                                    <Input
+                                        element="input"
+                                        id="age"
+                                        type="number"
+                                        label="age"
+                                        placeholder="age..."
+                                        min="10"
+                                        max="99"
+                                        validators={[VALIDATOR_REQUIRE]}
+                                        errorText="Please enter a valid age."
+                                        onInput={inputHandler}
+                                    />
+                                    <Input
+                                        element="input"
+                                        id="height"
+                                        type="number"
+                                        label="Height"
+                                        placeholder="160cm..."
+                                        min="140"
+                                        max="210"
+                                        validators={[VALIDATOR_REQUIRE]}
+                                        errorText="Please enter a valid height."
+                                        onInput={inputHandler}
+                                    />
+                                    <Input
+                                        element="input"
+                                        id="weight"
+                                        type="number"
+                                        label="Weight"
+                                        placeholder="70kg..."
+                                        min="30"
+                                        max="200"
+                                        validators={[VALIDATOR_REQUIRE]}
+                                        errorText="Please enter a valid weight."
+                                        onInput={inputHandler}
+                                    />
+                                </div>
 
-                    {/* <ErrorModal error={error} onClear={clearError} /> */}
-                    {/* <form className="flex column" onSubmit={dietSubmitHandler}>
-                        <Input
-                            element="input"
-                            id="name"
-                            type="text"
-                            label="Name"
-                            validators={[VALIDATOR_REQUIRE()]}
-                            errorText="Please enter a name."
-                            onInput={inputHandler}
-                        />
-                        <Input
-                            element="input"
-                            id="age"
-                            type="number"
-                            label="Age (10 - 99)"
-                            min="10"
-                            max="99"
-                            validators={[VALIDATOR_MIN(10), VALIDATOR_MAX(99)]}
-                            errorText="Please enter a valid age."
-                            onInput={inputHandler}
-                        />
-                        <Input
-                            element="input"
-                            id="height"
-                            type="number"
-                            label="Height (140cm - 210cm)"
-                            min="140"
-                            max="210"
-                            validators={[VALIDATOR_MIN(140), VALIDATOR_MAX(210)]}
-                            errorText="Please enter a valid height."
-                            onInput={inputHandler}
-                        />
-                        <Input
-                            element="input"
-                            id="weight"
-                            type="number"
-                            label="Weight (30kg - 200kg)"
-                            min="30"
-                            max="200"
-                            validators={[VALIDATOR_MIN(30), VALIDATOR_MAX(200)]}
-                            errorText="Please enter a valid weight."
-                            onInput={inputHandler}
-                        /> */}
-
-                        {/* <div className='get-your-diet-btn fill-width flex justify-center'>
-                            <Button type="submit" size={'big'} action={true} disabled={!formState.isValid}>
-                                GET YOUR DIET PLAN NOW
-                            </Button>
+                                <div className='get-your-diet-btn fill-width flex justify-center'>
+                                    <Button type="submit" size={'small'} action={true} disabled={!formState.isValid}>
+                                        GET YOUR DIET PLAN NOW
+                                    </Button>
+                                </div>
+                            </form >
                         </div>
-                    </form > */}
+                    }
                     {
                         myDietPlan &&
-                        <div className="diet-generator__result flex column text-center">
-                            <h1>YOUR DIET PLAN</h1>
-                            {myDietPlan.map((textRow) => {
-                                const unique_id = uuid();
-                                const small_id = unique_id.slice(0, 8);
-                                return <p key={small_id}>{textRow}</p>
-                            })};
+                        <div className="card diet-generator__result flex column">
+                            <h1 className='text-center'>YOUR DIET PLAN</h1>
+                            <hr></hr>
+                            <div className='diet-generator__result_container'>
+                                {myDietPlan.map((textRow) => {
+                                    const unique_id = uuid();
+                                    const small_id = unique_id.slice(0, 8);
+                                    return <p key={small_id}>{textRow}</p>
+                                })};
+                            </div>
                         </div>
                     }
                 </div>

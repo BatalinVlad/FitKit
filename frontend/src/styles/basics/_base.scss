@@ -68,41 +68,6 @@ button {
   font-family: montserratRegular, "sans-sarif";
 }
 
-textarea,
-input {
-  resize: none;
-  border: none;
-  font-size: rem(20px);
-  font-family: montserratLight, "sans-sarif";
-}
-
-.form-control input:focus,
-.form-control textarea:focus {
-  outline: none;
-  background: #ebebeb;
-  border-color: #510077;
-}
-
-.form-control--invalid label,
-.form-control--invalid p {
-  color: red;
-}
-
-.MuiFormControl-root {
-  &.MuiTextField-root {
-    margin-top: 20px;
-    .MuiOutlinedInput-root {
-      border-radius: 15px;
-      &:hover {
-        background-color: #51007758;
-      }
-    }
-  }
-  .MuiOutlinedInput-notchedOutline {
-    border-color: #510077;
-  }
-}
-
 label {
   cursor: pointer;
   font-family: montserratBold, "sans-sarif";
@@ -113,12 +78,10 @@ a {
 }
 
 // SCROLLER
-
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 3px;
   height: 3px;
-  display: none;
 }
 
 /* Track */

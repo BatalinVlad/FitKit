@@ -1,49 +1,64 @@
 .diet-generator-page {
   height: 100vh;
+  background-color: $background_white;
   .main-header {
-    position: relative;
+    background-color: $main_nav_262626;
   }
 }
-.diet-generator__container {
-  width: 60%;
-  margin: 0 auto;
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 0px 10px;
+.card {
+  &.diet-generator__container {
+    width: 400px;
 
-  h1,
-  h2,
-  p,
-  label {
-    color: $clr7;
-  }
+    h1 {
+      color: $clr12;
+      font-size: 3rem;
+    }
+    p {
+      margin: 1px 0px;
+      color: $clr8;
+    }
 
-  h1 {
-    font-size: 3rem;
-  }
-  p {
-    margin: 3px 0px;
-  }
+    button {
+      margin-top: 10px;
+    }
 
-  button {
-    margin-top: 10px;
-  }
-  &.form-control {
-    margin: 0;
-    margin-top: 10px;
-  }
-  #outlined-basic{
-    border-color: white;
+    .form-control {
+      margin: 7px;
+      label {
+        margin-bottom: 0px;
+        text-align: initial;
+        margin-left: 5px;
+      }
+    }
   }
 }
 
 .get-your-diet-btn {
-  padding: 30px 0px;
+  margin-top: 20px;
 }
-.diet-generator__result {
-  padding: 5rem 0rem;
+.card {
+  &.diet-generator__result {
+    height: 80vh;
+    margin: 20px 0px;
+    text-align: start;
+    width: 450px;
+    h1 {
+      color: $clr12;
+      font-size: 2rem;
+    }
+    p {
+      margin: 1px 0px;
+      color: $clr8;
+    }
+    hr {
+      color: $clr8;
+      width: 80%;
+    }
+    &_container {
+      height: 90%;
+      overflow-y: scroll;
+    }
+  }
 }
 
 @media (min-width: 541px) and (max-width: 830px) {
