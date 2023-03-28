@@ -7,6 +7,7 @@
 }
 .card {
   &.diet-generator__container {
+    border-radius: 20px;
     width: 400px;
 
     h1 {
@@ -38,7 +39,8 @@
 }
 .card {
   &.diet-generator__result {
-    height: 80vh;
+    border-radius: 20px;
+    max-height: 80vh;
     margin: 20px 0px;
     text-align: start;
     width: 450px;
@@ -55,7 +57,7 @@
       width: 80%;
     }
     &_container {
-      height: 90%;
+      max-height: 90%;
       overflow-y: scroll;
     }
   }
@@ -63,17 +65,21 @@
 
 @media (min-width: 541px) and (max-width: 830px) {
   .diet-generator__container h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
 }
 
 @media (max-width: 540px) {
-  .diet-generator__container {
-    width: 100%;
-    margin: 0;
-
-    h1 {
-      font-size: 3rem;
+  .card {
+    &.diet-generator__container,
+    &.diet-generator__result {
+      margin: 0 10px;
+      h1 {
+        font-size: 2rem;
+      }
+    }
+    &.diet-generator__result {
+      overflow-y: scroll;
     }
   }
 }

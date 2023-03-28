@@ -44,11 +44,11 @@ const DietGenerator = () => {
 
     const dietSubmitHandler = async event => {
         event.preventDefault();
-        const prompt = `hey my name is: ${formState.inputs.name.value}, 
+        const prompt = `
         i am ${formState.inputs.age.value} years old, 
         my weight is: ${formState.inputs.weight.value},
         my height is: ${formState.inputs.height.value}
-        can you write me a simple diet plan,
+        write me a simple diet plan,
         for 2 weeks please?
         `;
         const model = "text-davinci-003";
@@ -176,7 +176,7 @@ const DietGenerator = () => {
                                     const unique_id = uuid();
                                     const small_id = unique_id.slice(0, 8);
                                     return <p key={small_id}>{textRow}</p>
-                                })};
+                                })}
                             </div>
                         </div>
                     }
