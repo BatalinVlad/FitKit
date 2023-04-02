@@ -174,7 +174,6 @@ const updateReviewLikes = async (req, res, next) => {
   const reviewId = req.params.rid;
   const userId = req.params.uid;
   const action = req.params.act;
-  console.log('the action: ' + action);
 
   let review;
 
@@ -195,23 +194,17 @@ const updateReviewLikes = async (req, res, next) => {
     const error = new HttpError('Something went wrong, could not find user', 500);
     return next(error);
   }
-  console.log('our user:', user);
   let updatedUserLikes = [...user.likedReviews];
   let updatedUserDislikes = [...user.dislikedReviews];
-
-  console.log(`reviews likes: ${updatedReviewLikes} reviews dislikes: ${updatedReviewDislikes}`);
-  console.log(`user likes: ${updatedUserLikes} user dislikes: ${updatedUserDislikes}`);
 
 
   const isLikedByUser = !!updatedReviewLikes.find(likeId => {
     return likeId.toString() === userId;
   });
-  console.log('is liked by user before?:  ' + isLikedByUser);
 
   const isDislikedByUser = !!updatedReviewDislikes.find(dislikeId => {
     return dislikeId.toString() === userId;
   });
-  console.log('is disliked by user before?:  ' + isDislikedByUser);
 
   if (action === 'like') {
     if (isLikedByUser) {
@@ -238,13 +231,6 @@ const updateReviewLikes = async (req, res, next) => {
       updatedUserDislikes.push(reviewId);
     }
   }
-  console.log(`updated reviews likes: ${updatedReviewLikes} updated reviews dislikes: ${updatedReviewDislikes}`);
-  console.log(`updated user likes: ${updatedUserLikes} updated user dislikes: ${updatedUserDislikes}`);
-
-  console.log('-');
-  console.log('-');
-  console.log('-');
-
   //update
 
   review.likes = [...updatedReviewLikes];

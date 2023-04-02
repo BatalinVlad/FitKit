@@ -4,21 +4,20 @@ import { v4 as uuid } from 'uuid';
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
 import Input from '../shared/components/FormElements/Input';
 import Button from '../shared/components/FormElements/Button';
-// import ErrorModal from '../shared/components/UIElements/ErrorModal';
+import ErrorModal from '../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../shared/components/UIElements/LoadingSpinner';
 
 import {
     VALIDATOR_REQUIRE,
 } from '../shared/util/validators';
-// import { useHttpClient } from '../shared/hooks/http-hook';
+import { useHttpClient } from '../shared/hooks/http-hook';
 import { useForm } from '../shared/hooks/form-hook';
 // import { AuthContext } from '../../shared/context/auth-context';
 
 const DietGenerator = () => {
     //   const auth = useContext(AuthContext);
-    // const { isLoading, sendRequest, error, clearError } = useHttpClient();
+    const { isLoading, sendRequest, error, clearError } = useHttpClient();
     const [myDietPlan, setMydietPlan] = useState();
-    const [isLoading, setIsLoading] = useState(false)
     const [formState, inputHandler] = useForm(
         {
             name: {
@@ -49,50 +48,19 @@ const DietGenerator = () => {
         my weight is: ${formState.inputs.weight.value},
         my height is: ${formState.inputs.height.value}
         write me a simple diet plan,
-        for 2 weeks please?
-        `;
-        const model = "text-davinci-003";
-        const temperature = 0.5;
-        const maxTokens = 1000;
-
-        // try {
-
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + process.env.REACT_APP_OPENAI_API_KEY,
-            },
-            body: JSON.stringify({
-                prompt: prompt,
-                temperature: temperature,
-                max_tokens: maxTokens,
-            }),
-        };
-        setIsLoading(true);
-        fetch('https://api.openai.com/v1/engines/' + model + '/completions', requestOptions)
-            .then(response => response.json())
-            .then(data => {
-                const textArray = data.choices[0].text.replaceAll('\n', '  ').split("  ");
-                setMydietPlan(textArray);
-                setIsLoading(false);
-            })
-            .catch(error => console.error(error));
-
-        // try {
-        //     const responseData = await sendRequest(`'https://api.openai.com/v1/engines/' + ${model} + '/completions'`, 'POST',
-        //         JSON.stringify({
-        //             prompt: prompt,
-        //             temperature: temperature,
-        //             max_tokens: maxTokens,
-        //         }),
-        //         {
-        //             'Content-Type': 'application/json',
-        //             'Authorization': 'Bearer ' + process.env.REACT_APP_OPENAI_API_KEY,
-        //         });
-        //     const generatedText = responseData.data.choices[0].text;
-        //     setMydietPlan(generatedText);
-        // } catch (err) { };
+        for 2 weeks please?`
+        try {
+            const responseData = await sendRequest(`${process.env.REACT_APP_ENDPOINT}openai`, 'POST',
+                JSON.stringify({
+                    message: prompt,
+                }),
+                {
+                    'Content-Type': 'application/json',
+                });
+            const generatedText = responseData.completion;
+            const textArray = generatedText.replaceAll('\n', '  ').split("  ");
+            setMydietPlan(textArray);
+        } catch (err) { };
     };
 
     return (
@@ -101,11 +69,10 @@ const DietGenerator = () => {
                 <MainNavigation />
                 <div className='fill-height center'>
                     {!myDietPlan &&
-
                         <div className="card diet-generator__container flex column align-center">
                             <h1 className='bold uppercase'>step 1</h1>
                             {isLoading && <LoadingSpinner asOverlay />}
-                            {/* <ErrorModal error={error} onClear={clearError} /> */}
+                            <ErrorModal error={error} onClear={clearError} />
                             <form className="flex column" onSubmit={dietSubmitHandler}>
                                 <Input
                                     element="input"

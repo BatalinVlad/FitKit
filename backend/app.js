@@ -2,11 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const { Configuration, OpenAIApi } = require('openai');
 
 // routes
 const reviewsRoutes = require('./routes/reviews-routes');
 const usersRoutes = require('./routes/users-routes');
 const mainChatRoutes = require('./routes/mainchat-routes');
+// const openAiRoutes = require('./routes/openai-routes');
+
 const HttpError = require('./models/http-error');
 
 // sockets
@@ -17,6 +20,18 @@ const { Server } = require('socket.io');
 const app = express();
 
 app.use(cors());
+
+app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers',
+    'Origin, X-requested-With, Content-Type, Accept, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET ,POST, PATCH, DELETE');
+
+  next();
+})
+
 
 const server = http.createServer(app);
 
@@ -48,20 +63,36 @@ io.on("connection", (socket) => {
   });
 });
 
-app.use(bodyParser.json());
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers',
-    'Origin, X-requested-With, Content-Type, Accept, Authorization');
-  res.setHeader('Access-Control-Allow-Methods', 'GET ,POST, PATCH, DELETE');
-
-  next();
-})
 
 app.use('/api/reviews', reviewsRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/mainchat', mainChatRoutes);
+// app.use('/api/openai', openAiRoutes);
+
+
+const configuration = new Configuration({
+  organization: process.env.ORGANIZATION,
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
+app.post('/openai', async (req, res) => {
+  const { message } = req.body;
+  console.log(message)
+  const completion = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: message,
+    max_tokens: 1000,
+    temperature: 0
+    
+
+  });
+  console.log(completion.data.choices[0].text)
+  res.json({
+    completion: completion.data.choices[0].text
+  })
+})
+
 
 app.use((req, res, next) => {
   const error = new HttpError('Could not find this route.', 404);
@@ -80,7 +111,7 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.0qc0rdq.mongodb.net/${process.env.MONGO_NAME}?retryWrites=true&w=majority`)
   .then(() => {
-    server.listen(process.env.PORT || 3001 , () => {
+    server.listen(process.env.PORT || 3001, () => {
       console.log('SERVER IS RUNNING');
     });
   })

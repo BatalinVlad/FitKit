@@ -49,17 +49,23 @@
       font-size: 2rem;
     }
     p {
-      margin: 1px 0px;
+      margin-right: 15px;
       color: $clr8;
     }
     hr {
       color: $clr8;
       width: 80%;
     }
-    &_container {
-      max-height: 90%;
-      overflow-y: scroll;
-    }
+  }
+}
+.diet-generator__result {
+  &_container {
+    max-height: 90%;
+    overflow-y: auto;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    display: block;
   }
 }
 

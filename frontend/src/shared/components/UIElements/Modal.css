@@ -16,11 +16,15 @@
 }
 
 .modal__header h2 {
+  color: black;
   margin: 0.5rem;
 }
 
 .modal__content {
   padding: 1rem 0.5rem;
+}
+.modal__content p {
+  color: black;
 }
 
 .modal__footer {
