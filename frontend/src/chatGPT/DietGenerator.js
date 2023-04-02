@@ -50,7 +50,7 @@ const DietGenerator = () => {
         write me a simple diet plan,
         for 2 weeks please?`
         try {
-            const responseData = await sendRequest(`${process.env.REACT_APP_ENDPOINT}openai`, 'POST',
+            const responseData = await sendRequest(`${process.env.REACT_APP_ENDPOINT}/openai`, 'POST',
                 JSON.stringify({
                     message: prompt,
                 }),
