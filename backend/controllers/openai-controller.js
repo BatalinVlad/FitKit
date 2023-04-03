@@ -19,7 +19,7 @@ const createPlans = ('/cors', async (req, res, next) => {
 
 
     });
-    res.set('Access-Control-Allow-Origin', 'https://reviewsapp-bv.web.app');
+    res.set('Access-Control-Allow-Origin', '*');
 
     res.json({
         completion: completion.data.choices[0].text
