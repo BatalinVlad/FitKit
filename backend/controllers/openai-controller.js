@@ -1,29 +1,26 @@
 
 const { Configuration, OpenAIApi } = require('openai');
-const HttpError = require('../models/http-error');
+// const HttpError = require('../models/http-error');
 
 const createPlans = async (req, res, next) => {
     const configuration = new Configuration({
-        organization: "org-5CmzXvC0ycf9nzumxecn9JL6",
-        apiKey: "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",
+        organization: process.env.ORGANIZATION,
+        apiKey: process.env.OPENAI_API_KEY,
     });
     const openai = new OpenAIApi(configuration);
 
-    try {
+        const { message } = req.body;
         const completion = await openai.createCompletion({
-            model: "gpt-4",
-            messeges: [
-                { role: "user", content: "hello world" },
-            ]
+            model: "text-davinci-003",
+            prompt: message,
+            max_tokens: 1000,
+            temperature: 0
+
+
         });
-        console.log(completion.data.choices[0].messege);
-        // res.status(200).json({
-        //     plan: response.data.choices[0].text
-        // });
-    } catch (err) {
-        const error = new HttpError('Something went wrong... try again later', 500);
-        return next(error);
-    }
+        res.json({
+            completion: completion.data.choices[0].text
+        })
 }
 
 
