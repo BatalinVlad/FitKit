@@ -8,9 +8,10 @@ import { FiLogOut } from 'react-icons/fi';
 import { FiLogIn } from 'react-icons/fi';
 import { AiOutlineStar } from 'react-icons/ai';
 import { FiPlusSquare } from 'react-icons/fi';
+
 import { RiWechatPayLine } from 'react-icons/ri';
 import { HiOutlineNewspaper } from 'react-icons/hi';
-
+import {MdOutlineLocalGroceryStore} from 'react-icons/md'
 const NavLinks = () => {
   const auth = useContext(AuthContext);
   const history = useHistory();
@@ -31,14 +32,22 @@ const NavLinks = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/reviews" exact>
-          <AiOutlineStar />
+        <NavLink to="/products" exact>
+          <MdOutlineLocalGroceryStore />
           <span>
-            ALL REVIEWS
+            PRODUCTS
           </span>
         </NavLink>
       </li>
-      {auth.isLoggedIn && (
+      <li>
+        <NavLink to="/reviews" exact>
+          <AiOutlineStar />
+          <span>
+            REVIEWS
+          </span>
+        </NavLink>
+      </li>
+      {/* {auth.isLoggedIn && (
         <li>
           <NavLink to={`/${auth.userId}/reviews`}>
             <FiClipboard />
@@ -47,15 +56,15 @@ const NavLinks = () => {
             </span>
           </NavLink>
         </li>
-      )}
-      <li>
+      )} */}
+      {/* <li>
         <NavLink to="/addreview">
           <FiPlusSquare />
           <span>
             ADD REVIEW
           </span>
         </NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink to="/mydietplan">
           <HiOutlineNewspaper />
@@ -72,7 +81,7 @@ const NavLinks = () => {
           </span>
         </NavLink>
       </li>
-      
+
       {!auth.isLoggedIn && (
         <li className='nav_login'>
           <NavLink to="/auth">

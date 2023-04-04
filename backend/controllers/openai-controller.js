@@ -50,8 +50,6 @@ const createPlans = functions.https.onRequest((req, res) => {
                 prompt: message,
                 max_tokens: 1000,
                 temperature: 0
-
-
             });
             res.json({ completion: completion.data.choices[0].text });
         } catch (err) {
