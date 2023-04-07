@@ -18,12 +18,16 @@ const { Server } = require('socket.io');
 
 const app = express();
 
-app.use(cors({
-  origin: ['https://reviewsapp-bv.web.app', 'http://localhost:3000']
-}));
-
 app.use(bodyParser.json());
 
+
+// app.use(cors({
+// origin: '*'
+// }));
+
+app.use(cors({
+  origin: ['https://reviewsapp-bv.web.app', 'https://reviewsapp-bv.web.app/api/openai', 'http://localhost:3000']
+}));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

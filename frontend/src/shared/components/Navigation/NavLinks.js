@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 
 import { AuthContext } from '../../context/auth-context';
-import { FiClipboard } from 'react-icons/fi';
+// import { FiClipboard } from 'react-icons/fi';
 import { FiHome } from 'react-icons/fi';
 import { FiLogOut } from 'react-icons/fi';
 import { FiLogIn } from 'react-icons/fi';
 import { AiOutlineStar } from 'react-icons/ai';
-import { FiPlusSquare } from 'react-icons/fi';
+// import { FiPlusSquare } from 'react-icons/fi';
 
 import { RiWechatPayLine } from 'react-icons/ri';
 import { HiOutlineNewspaper } from 'react-icons/hi';
