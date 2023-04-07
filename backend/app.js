@@ -18,19 +18,18 @@ const { Server } = require('socket.io');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: ['https://reviewsapp-bv.web.app', 'http://localhost:3000']
+}));
 
 app.use(bodyParser.json());
 
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-//   res.setHeader('Access-Control-Allow-Headers',
-//     'Origin, X-requested-With, Content-Type, Accept, Authorization');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET ,POST, PATCH, DELETE');
-
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers',
+    'Origin, X-requested-With, Content-Type, Accept, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET ,POST, PATCH, DELETE');
   next();
 });
 
