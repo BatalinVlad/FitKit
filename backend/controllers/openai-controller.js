@@ -61,3 +61,29 @@ const createPlans = functions.https.onRequest((req, res) => {
 
 
 exports.createPlans = createPlans;
+
+
+
+// const functions = require('firebase-functions');
+// const fetch = require('node-fetch');
+
+// exports.createPlans = functions.https.onRequest((req, res) => {
+//   const url = 'https://reviewsapp-production.up.railway.app/api/openai';
+
+//   fetch(url)
+//     .then(response => response.json())
+//     .then(data => {
+//       res.set('Access-Control-Allow-Origin', '*');
+//       res.json(data);
+//     })
+//     .catch(error => {
+//       console.error(error);
+//       res.status(500).send('Error fetching data from API');
+//     });
+// });
+
+
+
+
+
+
