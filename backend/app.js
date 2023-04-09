@@ -21,7 +21,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin: ['https://reviewsapp-bv.web.app','http://localhost:3000']
+  origin: '*'
 }));
 
 const server = http.createServer(app);
