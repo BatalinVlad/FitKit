@@ -31,7 +31,7 @@
 
 
 
-const cors = require('cors')({ origin: '*' });
+const cors = require('cors')({ origin: 'https://your-domain.com' });
 const functions = require('firebase-functions');
 const { Configuration, OpenAIApi } = require('openai');
 const HttpError = require('../models/http-error');
