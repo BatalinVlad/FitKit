@@ -51,13 +51,13 @@ const DietGenerator = () => {
         for 2 weeks please?`
         try {
             const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/openai`, 'POST',
-                JSON.stringify({
+                JSON.stringify({ //body
                     message: prompt,
                 }),
-                {
-                    'Content-Type': 'application/json',
+                { //headers
+                    'Content-Type': 'application/json'
                 },
-                'cors',
+                'cors', //mode
             );
             const generatedText = responseData.completion;
             const textArray = generatedText.replaceAll('\n', '  ').split("  ");
