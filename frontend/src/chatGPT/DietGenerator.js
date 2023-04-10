@@ -64,9 +64,16 @@ const DietGenerator = () => {
         //     const textArray = generatedText.replaceAll('\n', '  ').split("  ");
         //     setMydietPlan(textArray);
         // } catch (err) { };
+        let responseData;
+        try {
+            responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/keys`);
+            console.log(responseData.openAiKey)
+        } catch (error) {
+            console.error(error);
+            throw new Error('Error fetching from OpenAI API');
+        }
 
         try {
-            const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/keys`);
             const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
                 prompt: prompt,
                 max_tokens: 1000,
