@@ -2,6 +2,6 @@ const express = require('express');
 const router = express.Router();
 const openAiController = require('../controllers/openai-controllers');
 
-router.post('/', openAiController.createPlans);
+router.get('/', openAiController.getApiKey);
 
 module.exports = router;

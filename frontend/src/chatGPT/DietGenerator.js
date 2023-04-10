@@ -66,22 +66,23 @@ const DietGenerator = () => {
         // } catch (err) { };
 
         try {
+            const OPENAI_API_KEY = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/openai`);
             const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
-              prompt: prompt,
-              max_tokens: 1000,
+                prompt: prompt,
+                max_tokens: 1000,
             }, {
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
-              }
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${OPENAI_API_KEY.apiKey}`
+                }
             });
             const generatedText = response.data.choices[0].text;
             const textArray = generatedText.replaceAll('\n', '  ').split("  ");
             setMydietPlan(textArray);
-          } catch (error) {
+        } catch (error) {
             console.error(error);
             throw new Error('Error fetching from OpenAI API');
-          }
+        }
 
         // fetch(`${process.env.REACT_APP_BACKEND_URL}/openai`, {
         //     method: 'POST',
