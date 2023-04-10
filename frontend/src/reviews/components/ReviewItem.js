@@ -17,8 +17,8 @@ const ReviewItem = props => {
 
   const history = useHistory();
   const [access, setAccess] = useState(false);
-  const [isLiked, setIsLiked] = useState();
-  const [isDisliked, setIsDisliked] = useState();
+  const [isLiked, setIsLiked] = useState(false);
+  const [isDisliked, setIsDisliked] = useState(false);
 
   const [reviewLikes, setReviewLikes] = useState();
   const [reviewDislikes, setReviewDislikes] = useState();

@@ -46,7 +46,7 @@ const Products = ({ socket }) => {
                 </div>
             )} */}
             {/* {!isLoading && loadedReviews &&  */}
-            <div className='reviews-page'>
+            <div className='products-page'>
                 <MainNavigation />
                 <h1>
                     PRODUCTS PAGE

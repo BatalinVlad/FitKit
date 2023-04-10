@@ -9,6 +9,7 @@ const reviewsRoutes = require('./routes/reviews-routes');
 const usersRoutes = require('./routes/users-routes');
 const mainChatRoutes = require('./routes/mainchat-routes');
 const openAiRoutes = require('./routes/openai-routes');
+const productsRoutes = require('./routes/products-routes');
 
 const HttpError = require('./models/http-error');
 
@@ -21,7 +22,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin: '*'
+  origin: ['https://reviewsapp-bv.web.app','http://localhost:3000']
 }));
 
 const server = http.createServer(app);
@@ -54,12 +55,11 @@ io.on("connection", (socket) => {
   });
 });
 
-
 app.use('/api/reviews', reviewsRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/mainchat', mainChatRoutes);
 app.use('/api/openai', openAiRoutes);
-
+app.use('/api/products', productsRoutes);
 
 app.use((req, res, next) => {
   const error = new HttpError('Could not find this route.', 404);

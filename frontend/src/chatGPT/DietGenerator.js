@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 // import { useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
@@ -64,23 +65,41 @@ const DietGenerator = () => {
         //     setMydietPlan(textArray);
         // } catch (err) { };
 
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/openai`, {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                message: prompt
-            })
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error(error);
+        try {
+            const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
+              prompt: prompt,
+              max_tokens: 1000,
+            }, {
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
+              }
             });
+            const generatedText = response.data.choices[0].text;
+            const textArray = generatedText.replaceAll('\n', '  ').split("  ");
+            setMydietPlan(textArray);
+          } catch (error) {
+            console.error(error);
+            throw new Error('Error fetching from OpenAI API');
+          }
+
+        // fetch(`${process.env.REACT_APP_BACKEND_URL}/openai`, {
+        //     method: 'POST',
+        //     mode: 'cors',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         message: prompt
+        //     })
+        // })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     })
+        //     .catch(error => {
+        //         console.error(error);
+        //     });
     };
 
     return (
@@ -164,6 +183,7 @@ const DietGenerator = () => {
                                     const small_id = unique_id.slice(0, 8);
                                     return <p key={small_id}>{textRow}</p>
                                 })}
+                                {/* {myDietPlan} */}
                             </div>
                         </div>
                     }

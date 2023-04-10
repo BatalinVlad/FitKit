@@ -1,7 +1,7 @@
 const express = require('express');
 const { check } = require('express-validator');
 
-const mainChatController = require('../controllers/mainchat-controller');
+const mainChatController = require('../controllers/mainchat-controllers');
 
 const router = express.Router();
 
