@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const reviewsRoutes = require('./routes/reviews-routes');
 const usersRoutes = require('./routes/users-routes');
 const mainChatRoutes = require('./routes/mainchat-routes');
-const openAiRoutes = require('./routes/openai-routes');
+const apiKeysRoutes = require('./routes/keys-routes');
 const productsRoutes = require('./routes/products-routes');
 
 const HttpError = require('./models/http-error');
@@ -58,7 +58,7 @@ io.on("connection", (socket) => {
 app.use('/api/reviews', reviewsRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/mainchat', mainChatRoutes);
-app.use('/api/openai', openAiRoutes);
+app.use('/api/keys', apiKeysRoutes);
 app.use('/api/products', productsRoutes);
 
 app.use((req, res, next) => {

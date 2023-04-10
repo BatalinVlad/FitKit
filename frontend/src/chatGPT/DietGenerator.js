@@ -66,14 +66,14 @@ const DietGenerator = () => {
         // } catch (err) { };
 
         try {
-            const OPENAI_API_KEY = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/openai`);
+            const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/keys`);
             const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
                 prompt: prompt,
                 max_tokens: 1000,
             }, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${OPENAI_API_KEY.apiKey}`
+                    'Authorization': `Bearer ${responseData.openAiKey}`
                 }
             });
             const generatedText = response.data.choices[0].text;

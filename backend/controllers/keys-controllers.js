@@ -1,3 +1,20 @@
+const ApiKey = require('../models/api-key');
+
+const getApiKey = async (req, res, next) => {
+    let openAiKey;
+    try {
+        openAiKey = await ApiKey.findOne({ name: 'openai_api_key' });
+    } catch (err) {
+        const error = new HttpError('fetching keys failed, please try again later', 500)
+        return next(error);
+    }
+    res.json({ openAiKey: openAiKey.key })
+};
+
+exports.getApiKey = getApiKey;
+
+
+
 // const cors = require('cors')({ origin: ['https://reviewsapp-bv.web.app', 'http://localhost:3000'] });
 // const functions = require('firebase-functions');
 // const { Configuration, OpenAIApi } = require('openai');
@@ -28,13 +45,5 @@
 
 
 // exports.createPlans = createPlans;
-
-const getApiKey = (req, res) => {    
-        res.json({ apiKey : process.env.OPENAI_API_KEY });
-}
-
-exports.getApiKey = getApiKey;
-
-
 
 
