@@ -50,20 +50,18 @@ const DietGenerator = () => {
         write me a simple diet plan,
         for 2 weeks please?`
         try {
-            // const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/openai`, 'POST',
-            //     JSON.stringify({ //body
-            //         message: prompt,
-            //     }),
-            //     { //headers
-            //         'Content-Type': 'application/json'
-            //     },
-            //     'cors', //mode
-            // );
-            const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/products`);
-            console.log(responseData);
-            // const generatedText = responseData.completion;
-            // const textArray = generatedText.replaceAll('\n', '  ').split("  ");
-            // setMydietPlan(textArray);
+            const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/openai`, 'POST',
+                JSON.stringify({ //body
+                    message: prompt,
+                }),
+                { //headers
+                    'Content-Type': 'application/json'
+                },
+                'cors', //mode
+            );
+            const generatedText = responseData.completion;
+            const textArray = generatedText.replaceAll('\n', '  ').split("  ");
+            setMydietPlan(textArray);
         } catch (err) { };
     };
 
