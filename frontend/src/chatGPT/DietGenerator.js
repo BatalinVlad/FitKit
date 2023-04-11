@@ -49,35 +49,23 @@ const DietGenerator = () => {
         my height is: ${formState.inputs.height.value}
         write me a simple diet plan,
         for 2 weeks please?`
-        // try {
-        //     const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/openai`, 'POST',
-        //         JSON.stringify({ //body
-        //             message: prompt,
-        //         }),
-        //         { //headers
-        //             'Content-Type': 'application/json'
-        //         },
-        //         'cors', //mode
-        //     );
-        //     const generatedText = responseData.completion;
-        //     const textArray = generatedText.replaceAll('\n', '  ').split("  ");
-        //     setMydietPlan(textArray);
-        // } catch (err) { };
-        fetch('https://api.openai.com/v1/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
-            },
-            body: JSON.stringify({
-                prompt: prompt,
-                max_tokens: 1000,
-                model:'text-davinci-003'
-            })
-        })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error(error));
+        try {
+            const responseData = await sendRequest('https://api.openai.com/v1/completions', 'POST',
+                JSON.stringify({ //body
+                    message: prompt,
+                    max_tokens: 1000,
+                    model: 'text-davinci-003'
+                }),
+                { //headers
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
+                },
+                'cors', //mode
+            );
+            const generatedText = responseData.data.choices[0].text;
+            const textArray = generatedText.replaceAll('\n', '  ').split("  ");
+            setMydietPlan(textArray);
+        } catch (err) { };
     };
 
     return (
