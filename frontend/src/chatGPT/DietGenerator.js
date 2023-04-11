@@ -80,7 +80,7 @@ const DietGenerator = () => {
             })
         })
             .then(response => response.json())
-            .then(data => console.log(data.choices[0].text))
+            .then(data => console.log(data))
             .catch(error => console.error(error));
     };
 
