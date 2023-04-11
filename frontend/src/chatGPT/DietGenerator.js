@@ -64,12 +64,12 @@ const DietGenerator = () => {
         //     setMydietPlan(textArray);
         // } catch (err) { };
 
-        console.log(process.env.OPENAI_API_KEY)
+        console.log(process.env.EACT_APP_OPENAI_API_KEY)
         fetch('https://api.openai.com/v1/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+                'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
             },
             body: JSON.stringify({
                 prompt: prompt,
