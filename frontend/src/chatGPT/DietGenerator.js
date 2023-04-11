@@ -50,16 +50,12 @@ const DietGenerator = () => {
         write me a simple diet plan,
         for 2 weeks please?`
         // try {
-        //     const responseData = await sendRequest('https://api.openai.com/v1/completions', 'POST',
+        //     const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/openai`, 'POST',
         //         JSON.stringify({ //body
         //             message: prompt,
-        //             max_tokens: 1000,
-        //             model: 'text-davinci-003'
         //         }),
         //         { //headers
-        //             'Content-Type': 'application/json',
-        //             'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
-
+        //             'Content-Type': 'application/json'
         //         },
         //         'cors', //mode
         //     );
@@ -76,7 +72,7 @@ const DietGenerator = () => {
             body: JSON.stringify({
                 prompt: prompt,
                 max_tokens: 1000,
-                model: 'text-davinci-003'
+                model:'text-davinci-003'
             })
         })
             .then(response => response.json())
