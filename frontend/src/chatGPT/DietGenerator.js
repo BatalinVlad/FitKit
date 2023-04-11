@@ -52,7 +52,7 @@ const DietGenerator = () => {
         try {
             const responseData = await sendRequest('https://api.openai.com/v1/completions', 'POST',
                 JSON.stringify({ //body
-                    message: prompt,
+                    prompt: prompt,
                     max_tokens: 1000,
                     model: 'text-davinci-003'
                 }),
