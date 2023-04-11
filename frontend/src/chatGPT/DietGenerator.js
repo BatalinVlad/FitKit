@@ -72,7 +72,7 @@ const DietGenerator = () => {
             body: JSON.stringify({
                 prompt: prompt,
                 max_tokens: 1000,
-                modal:'text-davinci-003'
+                model:'text-davinci-003'
             })
         })
             .then(response => response.json())
