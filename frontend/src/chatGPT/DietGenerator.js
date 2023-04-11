@@ -49,24 +49,39 @@ const DietGenerator = () => {
         my height is: ${formState.inputs.height.value}
         write me a simple diet plan,
         for 2 weeks please?`
-        try {
-            const responseData = await sendRequest('https://api.openai.com/v1/completions', 'POST',
-                JSON.stringify({ //body
-                    prompt: prompt,
-                    max_tokens: 1000,
-                    model: 'text-davinci-003'
-                }),
-                { //headers
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
-                },
-                'cors', //mode
-            );
-            console.log(responseData)
-            const generatedText = responseData.data.choices[0].text;
-            // const textArray = generatedText.replaceAll('\n', '  ').split("  ");
-            setMydietPlan(generatedText);
-        } catch (err) { };
+        // try {
+        //     const responseData = await sendRequest('https://api.openai.com/v1/completions', 'POST',
+        //         JSON.stringify({ //body
+        //             message: prompt,
+        //             max_tokens: 1000,
+        //             model: 'text-davinci-003'
+        //         }),
+        //         { //headers
+        //             'Content-Type': 'application/json',
+        //             'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
+
+        //         },
+        //         'cors', //mode
+        //     );
+        //     const generatedText = responseData.completion;
+        //     const textArray = generatedText.replaceAll('\n', '  ').split("  ");
+        //     setMydietPlan(textArray);
+        // } catch (err) { };
+        fetch('https://api.openai.com/v1/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
+            },
+            body: JSON.stringify({
+                prompt: prompt,
+                max_tokens: 1000,
+                model: 'text-davinci-003'
+            })
+        })
+            .then(response => response.json())
+            .then(data => console.log(data.choices[0].text))
+            .catch(error => console.error(error));
     };
 
     return (
@@ -145,12 +160,12 @@ const DietGenerator = () => {
                             <h1 className='text-center'>YOUR DIET PLAN</h1>
                             <hr></hr>
                             <div className='diet-generator__result_container'>
-                                {/* {myDietPlan.map((textRow) => {
+                                {myDietPlan.map((textRow) => {
                                     const unique_id = uuid();
                                     const small_id = unique_id.slice(0, 8);
                                     return <p key={small_id}>{textRow}</p>
-                                })} */}
-                                {myDietPlan}
+                                })}
+                                {/* {myDietPlan} */}
                             </div>
                         </div>
                     }
