@@ -63,8 +63,9 @@ const DietGenerator = () => {
                 'cors', //mode
             );
             const generatedText = responseData.data.choices[0].text;
-            const textArray = generatedText.replaceAll('\n', '  ').split("  ");
-            setMydietPlan(textArray);
+            console.log(generatedText)
+            // const textArray = generatedText.replaceAll('\n', '  ').split("  ");
+            setMydietPlan(generatedText);
         } catch (err) { };
     };
 
@@ -144,12 +145,12 @@ const DietGenerator = () => {
                             <h1 className='text-center'>YOUR DIET PLAN</h1>
                             <hr></hr>
                             <div className='diet-generator__result_container'>
-                                {myDietPlan.map((textRow) => {
+                                {/* {myDietPlan.map((textRow) => {
                                     const unique_id = uuid();
                                     const small_id = unique_id.slice(0, 8);
                                     return <p key={small_id}>{textRow}</p>
-                                })}
-                                {/* {myDietPlan} */}
+                                })} */}
+                                {myDietPlan}
                             </div>
                         </div>
                     }
