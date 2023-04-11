@@ -22,14 +22,14 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin: ['https://reviewsapp-bv.web.app','http://localhost:3000']
+  origin: ['https://reviewsapp-bv.web.app', 'https://fitkit-app.netlify.app/', 'http://localhost:3000']
 }));
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ['https://reviewsapp-bv.web.app', 'http://localhost:3000'],
+    origin: ['https://reviewsapp-bv.web.app', 'https://fitkit-app.netlify.app/', 'http://localhost:3000'],
     methods: ['GET', 'POST'],
   }
 });
