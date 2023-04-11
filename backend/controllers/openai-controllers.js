@@ -1,5 +1,5 @@
 
-const cors = require('cors')({ origin: ['https://reviewsapp-bv.web.app', 'https://master--fitkit-app.netlify.app/', 'http://localhost:3000'] });
+const cors = require('cors')({ origin: ['https://reviewsapp-bv.web.app', 'https://fitkit-app.netlify.app', 'http://localhost:3000'] });
 const functions = require('firebase-functions');
 const { Configuration, OpenAIApi } = require('openai');
 const HttpError = require('../models/http-error');
