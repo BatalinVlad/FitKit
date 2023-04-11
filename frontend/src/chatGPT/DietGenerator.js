@@ -49,8 +49,10 @@ const DietGenerator = () => {
         my height is: ${formState.inputs.height.value}
         write me a simple diet plan,
         for 2 weeks please?`
+
+        const url = 'https://corsproxy.io/?' + encodeURIComponent(`${process.env.REACT_APP_BACKEND_URL}/openai`);
         try {
-            const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/openai`, 'POST',
+            const responseData = await sendRequest(url, 'POST',
                 JSON.stringify({ //body
                     message: prompt,
                 }),
