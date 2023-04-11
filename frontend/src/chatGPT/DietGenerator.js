@@ -62,8 +62,8 @@ const DietGenerator = () => {
                 },
                 'cors', //mode
             );
+            console.log(responseData.data)
             const generatedText = responseData.data.choices[0].text;
-            console.log(generatedText)
             // const textArray = generatedText.replaceAll('\n', '  ').split("  ");
             setMydietPlan(generatedText);
         } catch (err) { };
