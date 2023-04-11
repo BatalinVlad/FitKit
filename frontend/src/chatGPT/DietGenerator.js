@@ -72,11 +72,15 @@ const DietGenerator = () => {
             body: JSON.stringify({
                 prompt: prompt,
                 max_tokens: 1000,
-                model:'text-davinci-003'
+                model: 'text-davinci-003'
             })
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                const generatedText = data.choices[0].text;
+                const textArray = generatedText.replaceAll('\n', '  ').split("  ");
+                setMydietPlan(textArray);
+            })
             .catch(error => console.error(error));
     };
 
