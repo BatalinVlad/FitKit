@@ -64,7 +64,7 @@ const DietGenerator = () => {
         //     setMydietPlan(textArray);
         // } catch (err) { };
 
-        console.log(process.env.REACT_APP_ENDPOINT)
+        console.log(process.env.REACT_APP_OPENAI_API_KEY)
         fetch('https://api.openai.com/v1/completions', {
             method: 'POST',
             headers: {
