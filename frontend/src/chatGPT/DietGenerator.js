@@ -57,7 +57,6 @@ const DietGenerator = () => {
         //         { //headers
         //             'Content-Type': 'application/json'
         //         },
-        //         'cors', //mode
         //     );
         //     const generatedText = responseData.completion;
         //     const textArray = generatedText.replaceAll('\n', '  ').split("  ");
