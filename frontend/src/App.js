@@ -16,7 +16,7 @@ import { useAuth } from './shared/hooks/auth-hook';
 const DietGenerator = React.lazy(() => import('./chatGPT/DietGenerator'));
 const About = React.lazy(() => import('./about/About'));
 const LiveChat = React.lazy(() => import('./chat/pages/LiveChat'));
-const Products = React.lazy(() => import('./products/Products'));
+const Products = React.lazy(() => import('./products/pages/Products'));
 const Reviews = React.lazy(() => import('./reviews/pages/Reviews'));
 const AddReview = React.lazy(() => import('./user/pages/AddReview'));
 const UserReviews = React.lazy(() => import('./user/pages/UserReviews'));

@@ -13,7 +13,6 @@
   border-radius: 4px;
   background: white;
   overflow: hidden;
-
 }
 
 .card h1,
@@ -79,6 +78,10 @@
 
   > *.full {
     flex: 1;
+  }
+
+  &.grow1{
+    flex-grow: 1;
   }
 
   &.row-rev {
@@ -162,7 +165,7 @@
 
 //grid helpers
 
-.grid-item {
+.grid {
   display: grid;
 }
 
@@ -189,6 +192,11 @@
 
 .fill-height {
   height: 100%;
+}
+
+.fill {
+  height: 100%;
+  width: 100%;
 }
 
 // Media helpers
@@ -251,4 +259,14 @@
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+
+// Image contain
+.img-cover{
+  object-fit: cover;
+}
+
+.img-contain{
+  object-fit: contain;
 }

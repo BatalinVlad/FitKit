@@ -1,0 +1,21 @@
+.products {
+    &-page {
+      height: 100vh;
+      .main-header {
+        position: inherit;
+      }
+    }
+    &-list {
+      &-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 1em;
+        padding: 0;
+        padding-top: 20px;
+        width: 80%;
+        margin: 0 auto;
+        list-style: none;
+        overflow-x: hidden;
+        height: 86vh;
+      }
+    }
+  }

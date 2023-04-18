@@ -11,6 +11,10 @@
 @import "basics/buttons.scss";
 @import "basics/inputs";
 
+//Components 
+//Products Component
+@import "components/products/ProductItem.scss";
+
 //Reviews Component
 @import "components/reviews/ReviewsList.scss";
 @import "components/reviews/ReviewItem.scss";
@@ -31,3 +35,5 @@
 @import "views/About.scss";
 @import "views/Auth.scss";
 @import "views/UserReviews.scss";
+@import "views/Products.scss";
+
