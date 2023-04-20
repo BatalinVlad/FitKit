@@ -16,7 +16,7 @@ import { useForm } from '../shared/hooks/form-hook';
 
 const DietGenerator = () => {
     //   const auth = useContext(AuthContext);
-    const { isLoading, sendRequest, error, clearError } = useHttpClient();
+    const { isLoading, error, clearError } = useHttpClient();
     const [myDietPlan, setMydietPlan] = useState();
     const [formState, inputHandler] = useForm(
         {

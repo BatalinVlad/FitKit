@@ -11,8 +11,10 @@ import io from 'socket.io-client';
 import LoadingSpinner from './shared/components/UIElements/LoadingSpinner';
 import { AuthContext } from './shared/context/auth-context';
 import { useAuth } from './shared/hooks/auth-hook';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import productsReducer from './features/ProductsSlice';
 
-// const UpdateMyDietDiet = React.lazy(() => import('./chatGPT/UpdateMyDietDiet'));
 const DietGenerator = React.lazy(() => import('./chatGPT/DietGenerator'));
 const About = React.lazy(() => import('./about/About'));
 const LiveChat = React.lazy(() => import('./chat/pages/LiveChat'));
@@ -23,8 +25,15 @@ const UserReviews = React.lazy(() => import('./user/pages/UserReviews'));
 const UpdateUserReview = React.lazy(() => import('./user/pages/UpdateUserReview'));
 const Auth = React.lazy(() => import('./user/pages/Auth'));
 
+
 const socket = io.connect(process.env.REACT_APP_ENDPOINT);
 socket.emit("join_room", 'reviews_room');
+
+const store = configureStore({
+  reducer: {
+    products: productsReducer
+  }
+});
 
 const App = () => {
   const { token, login, logout, userId, userName, userImage } = useAuth();
@@ -108,17 +117,19 @@ const App = () => {
         logout: logout
       }}
     >
-      <Router>
-        <main>
-          <Suspense fallback={
-            <div className='center'>
-              <LoadingSpinner />
-            </div>
-          }>
-            {routes}
-          </Suspense>
-        </main>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <main>
+            <Suspense fallback={
+              <div className='center'>
+                <LoadingSpinner />
+              </div>
+            }>
+              {routes}
+            </Suspense>
+          </main>
+        </Router>
+      </Provider>
     </AuthContext.Provider>
   );
 };

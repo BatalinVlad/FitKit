@@ -29,6 +29,22 @@
   display: block;
 }
 
+//margins
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+// paddings
+
+.pt10 {
+  padding-top: 10px;
+}
+
 // Font Sizes
 .fs12 {
   font-size: rem(12px);
@@ -80,7 +96,7 @@
     flex: 1;
   }
 
-  &.grow1{
+  &.grow1 {
     flex-grow: 1;
   }
 
@@ -261,12 +277,11 @@
   align-items: center;
 }
 
-
 // Image contain
-.img-cover{
+.img-cover {
   object-fit: cover;
 }
 
-.img-contain{
+.img-contain {
   object-fit: contain;
 }
