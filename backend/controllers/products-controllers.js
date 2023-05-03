@@ -1,5 +1,5 @@
 // const { validationResult } = require('express-validator');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 // const cloudinary = require('../utils/cloudinary');
 const HttpError = require('../models/http-error');
 const Product = require('../models/product');

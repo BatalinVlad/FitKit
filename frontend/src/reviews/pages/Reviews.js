@@ -41,9 +41,7 @@ const Reviews = ({ socket }) => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && (
-        <div className="center">
-          <LoadingSpinner />
-        </div>
+        <LoadingSpinner asOverlay />
       )}
       {!isLoading && loadedReviews && user &&
         <div className='reviews-page'>

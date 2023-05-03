@@ -1,37 +1,39 @@
-import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
+// import { useHistory } from 'react-router-dom';
 
 import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
-import ErrorModal from '../../shared/components/UIElements/ErrorModal';
-import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
+// import ErrorModal from '../../shared/components/UIElements/ErrorModal';
+// import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import ImageUpload from '../../shared/components/FormElements/ImageUpload';
 
 import {
   VALIDATOR_MINLENGTH
 } from '../../shared/util/validators';
-import { useHttpClient } from '../../shared/hooks/http-hook';
+// import { useHttpClient } from '../../shared/hooks/http-hook';
 import { useForm } from '../../shared/hooks/form-hook';
-import { AuthContext } from '../../shared/context/auth-context';
+// import { AuthContext } from '../../shared/context/auth-context';
 
-const NewReview = ({ socket, onAddReviewModalHandler }) => {
-  const auth = useContext(AuthContext);
-  const history = useHistory();
-  const { isLoading, sendRequest, error, clearError } = useHttpClient();
+const NewReview = () => {
+  // const auth = useContext(AuthContext);
+  // const history = useHistory();
+  // const { isLoading, sendRequest, error, clearError } = useHttpClient();
 
-  // productId={product.id}
-  // creatorId={product.creator}
-  // image={product.image}
-  // rate={product.rating}
-  // favorites={product.favorites}
-  // title={product.title}
-  // description_short={product.description_short}
-  // description={product.description}
+  // id: "3",
+  // creator: "user4",
+  // userImage: "https://feelgoodfoodie.net/wp-content/uploads/2019/02/Mediterranean-Chopped-Salad-12.jpg",
+  // image: "https://feelgoodfoodie.net/wp-content/uploads/2019/02/Mediterranean-Chopped-Salad-12.jpg",
+  // title: "advance plan",
+  // description_short: "great plan for begginers who just want to lose some pounds",
+  // description: "meal plan that get you to lose the first pounds without trying! simple diet plan that works!",
+  // favorites: ["user3", "user4", "user2"],
+  // rating: 2,
+  // price: 199.99
 
   const [formState, inputHandler] = useForm(
     {
-      stars: {
+      title: {
         value: '',
         isValid: false
       },
@@ -39,8 +41,21 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
         value: '',
         isValid: false
       },
+      description_short: {
+        value: '',
+        isValid: false
+      },
+    
+      rate: {
+        value: '',
+        isValid: false
+      },
       image: {
         value: null,
+        isValid: false
+      },
+      price: {
+        value: '',
         isValid: false
       }
     },
@@ -49,42 +64,7 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
 
   const reviewSubmitHandler = async event => {
     event.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append('stars', formState.inputs.stars.value);
-      formData.append('description', formState.inputs.description.value);
-      formData.append('image', formState.inputs.image.value);
-      formData.append('userImage', auth.userImage || 'https://res.cloudinary.com/dzeycmkct/image/upload/v1676724957/guestMode_sjwyx7.png');
-
-      if (auth.userId) {
-        const user = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/${auth.userId}`);
-        formData.append('name', user.name);
-        formData.append('isGuest', false);
-
-        const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews`, 'POST', formData, {
-          Authorization: 'Bearer ' + auth.token
-        });
-
-        //socket emit
-        await socket.emit("add_review", responseData.review);
-
-      } else {
-        formData.append('name', 'guest');
-        formData.append('isGuest', true);
-
-        const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews`, 'POST', formData, {
-          Authorization: 'Bearer guestMode'
-        });
-
-        //socket emit
-        await socket.emit("add_review", responseData.review);
-      }
-      socket.off('connection');
-      socket.off('receive_review');
-      socket.off('disconnect');
-      history.push('/reviews');
-    } catch (err) { };
-  };
+  }
 
   const starsInputHandler = (value) => {
     inputHandler('stars', value, true);
@@ -92,17 +72,38 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
 
   return (
     <React.Fragment>
-      <ErrorModal error={error} onClear={clearError} />
+      {/* <ErrorModal error={error} onClear={clearError} /> */}
       <div className='add-review-page flex column'>
         <MainNavigation />
         <form className="review-form flex column" onSubmit={reviewSubmitHandler}>
-          {isLoading && <LoadingSpinner asOverlay />}
+          {/* {isLoading && <LoadingSpinner asOverlay />} */}
+          <Input
+            id="title"
+            element="input"
+            label="title"
+            validators={[VALIDATOR_MINLENGTH(5)]}
+            errorText="Please enter a valid description (at least 5 characters)."
+            placeholder='add a title...'
+            onInput={inputHandler}
+          />
           <Input
             id="description"
             element="textarea"
-            label="Your Review"
-            validators={[VALIDATOR_MINLENGTH(5)]}
-            errorText="Please enter a valid description (at least 5 characters)."
+            label="describtion"
+            rows='2'
+            placeholder='describe in couple words...'
+            validators={[VALIDATOR_MINLENGTH(15)]}
+            errorText="Please enter a valid description (at least 15 characters)."
+            onInput={inputHandler}
+          />
+          <Input
+            id="description_short"
+            rows='3'
+            element="textarea"
+            label="tell us more"
+            placeholder='tell us more about the product...'
+            validators={[VALIDATOR_MINLENGTH(25)]}
+            errorText="Please enter a valid description (at least 25 characters)."
             onInput={inputHandler}
           />
           <div className="review-form-stars__container flex column align-start">
@@ -129,7 +130,7 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
           </div>
         </form >
         <div className='add-review-go-back-btn flex justify-center'>
-          <Button type="button" danger={true} onClick={onAddReviewModalHandler}>BACK</Button>
+          <Button type="button" danger={true} >BACK</Button>
         </div>
       </div>
     </React.Fragment >

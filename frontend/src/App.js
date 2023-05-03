@@ -129,9 +129,7 @@ const App = () => {
         <Router>
           <main>
             <Suspense fallback={
-              <div className='center'>
-                <LoadingSpinner />
-              </div>
+                <LoadingSpinner asOverlay/>
             }>
               {routes}
             </Suspense>

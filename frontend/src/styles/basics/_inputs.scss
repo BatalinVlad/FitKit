@@ -31,7 +31,7 @@ input {
 
 .form-control label {
   font-size: rem(12px);
-  margin-bottom: 3px;
+  margin: 3px 0px
 }
 
 .form-control input,
@@ -40,7 +40,7 @@ input {
   font: inherit;
   border: 1px solid #ccc;
   background: #f8f8f8;
-  padding: rem(7px) rem(5px);
+  padding: rem(2px) rem(5px);
   &:hover{
     background-color: #9c9c9c24;
   }
