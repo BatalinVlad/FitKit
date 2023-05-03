@@ -10,13 +10,14 @@ import LoadingSpinner from '../shared/components/UIElements/LoadingSpinner';
 import {
     VALIDATOR_REQUIRE,
 } from '../shared/util/validators';
-import { useHttpClient } from '../shared/hooks/http-hook';
+// import { useHttpClient } from '../shared/hooks/http-hook';
 import { useForm } from '../shared/hooks/form-hook';
 // import { AuthContext } from '../../shared/context/auth-context';
 
 const DietGenerator = () => {
     //   const auth = useContext(AuthContext);
-    const { isLoading, error, clearError } = useHttpClient();
+    // const { isLoading, error, clearError } = useHttpClient();
+    const [isLoading, setIsLoading] = useState(false);
     const [myDietPlan, setMydietPlan] = useState();
     const [formState, inputHandler] = useForm(
         {
@@ -43,6 +44,7 @@ const DietGenerator = () => {
 
     const dietSubmitHandler = async event => {
         event.preventDefault();
+        setIsLoading(true);
         const prompt = `
         i am ${formState.inputs.age.value} years old, 
         my weight is: ${formState.inputs.weight.value},
@@ -62,6 +64,8 @@ const DietGenerator = () => {
         //     const textArray = generatedText.replaceAll('\n', '  ').split("  ");
         //     setMydietPlan(textArray);
         // } catch (err) { };
+
+
         fetch('https://api.openai.com/v1/completions', {
             method: 'POST',
             headers: {
@@ -79,6 +83,7 @@ const DietGenerator = () => {
                 const generatedText = data.choices[0].text;
                 const textArray = generatedText.replaceAll('\n', '  ').split("  ");
                 setMydietPlan(textArray);
+                setIsLoading(false);
             })
             .catch(error => console.error(error));
     };
@@ -87,11 +92,11 @@ const DietGenerator = () => {
         <React.Fragment>
             <div className='diet-generator-page flex column'>
                 <MainNavigation />
+                {isLoading && <LoadingSpinner asOverlay />}
                 <div className='fill-height center'>
                     {!myDietPlan &&
                         <div className="card diet-generator__container flex column align-center">
                             <h1 className='bold uppercase'>step 1</h1>
-                            {isLoading && <LoadingSpinner asOverlay />}
                             <ErrorModal error={error} onClear={clearError} />
                             <form className="flex column" onSubmit={dietSubmitHandler}>
                                 <Input
