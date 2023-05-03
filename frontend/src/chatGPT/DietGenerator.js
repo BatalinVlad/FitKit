@@ -4,20 +4,19 @@ import { v4 as uuid } from 'uuid';
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
 import Input from '../shared/components/FormElements/Input';
 import Button from '../shared/components/FormElements/Button';
-import ErrorModal from '../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../shared/components/UIElements/LoadingSpinner';
+import ErrorModal from '../shared/components/UIElements/ErrorModal';
 
 import {
     VALIDATOR_REQUIRE,
 } from '../shared/util/validators';
-// import { useHttpClient } from '../shared/hooks/http-hook';
+import { useHttpClient } from '../shared/hooks/http-hook';
 import { useForm } from '../shared/hooks/form-hook';
 // import { AuthContext } from '../../shared/context/auth-context';
 
 const DietGenerator = () => {
     //   const auth = useContext(AuthContext);
-    // const { isLoading, error, clearError } = useHttpClient();
-    const [isLoading, setIsLoading] = useState(false);
+    const { isLoading, error, clearError, sendRequest } = useHttpClient();
     const [myDietPlan, setMydietPlan] = useState();
     const [formState, inputHandler] = useForm(
         {
@@ -44,59 +43,40 @@ const DietGenerator = () => {
 
     const dietSubmitHandler = async event => {
         event.preventDefault();
-        setIsLoading(true);
         const prompt = `
         i am ${formState.inputs.age.value} years old, 
         my weight is: ${formState.inputs.weight.value},
         my height is: ${formState.inputs.height.value}
         write me a simple diet plan,
         for 2 weeks please?`
-        // try {
-        //     const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/openai`, 'POST',
-        //         JSON.stringify({ //body
-        //             message: prompt,
-        //         }),
-        //         { //headers
-        //             'Content-Type': 'application/json'
-        //         },
-        //     );
-        //     const generatedText = responseData.completion;
-        //     const textArray = generatedText.replaceAll('\n', '  ').split("  ");
-        //     setMydietPlan(textArray);
-        // } catch (err) { };
 
-
-        fetch('https://api.openai.com/v1/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
-            },
-            body: JSON.stringify({
-                prompt: prompt,
-                max_tokens: 1000,
-                model: 'text-davinci-003'
-            })
-        })
-            .then(response => response.json())
-            .then(data => {
-                const generatedText = data.choices[0].text;
-                const textArray = generatedText.replaceAll('\n', '  ').split("  ");
-                setMydietPlan(textArray);
-                setIsLoading(false);
-            })
-            .catch(error => console.error(error));
+        try {
+            const responseData = await sendRequest('https://api.openai.com/v1/completions', 'POST',
+                JSON.stringify({ //body
+                    prompt: prompt,
+                    max_tokens: 1000,
+                    model: 'text-davinci-003'
+                }),
+                { //headers
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
+                },
+            );
+            const generatedText = responseData.choices[0].text;
+            const textArray = generatedText.replaceAll('\n', '  ').split("  ");
+            setMydietPlan(textArray);
+        } catch (err) { };
     };
 
     return (
         <React.Fragment>
+            <ErrorModal error={error} onClear={clearError} />
             <div className='diet-generator-page flex column'>
                 <MainNavigation />
                 <div className='fill-height center'>
                     {!myDietPlan &&
                         <div className="card diet-generator__container flex column align-center">
                             <h1 className='bold uppercase'>step 1</h1>
-                            <ErrorModal error={error} onClear={clearError} />
                             <form className="flex column" onSubmit={dietSubmitHandler}>
                                 <Input
                                     element="input"

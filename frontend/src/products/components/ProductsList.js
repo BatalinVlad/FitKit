@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import ProductItem from './ProductItem';
 import Button from '../../shared/components/FormElements/Button';
