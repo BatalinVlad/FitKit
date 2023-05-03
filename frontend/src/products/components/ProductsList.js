@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import ProductItem from './ProductItem';
+import Button from '../../shared/components/FormElements/Button';
 import Card from '../../shared/components/UIElements/Card';
 
+
 const ProductsList = props => {
-    console.log(props.products)
+
     if (props.products.length === 0) {
         return (
             <div className="center">
@@ -18,9 +20,9 @@ const ProductsList = props => {
     return (
         <React.Fragment>
             <div className='products-list'>
-                <h2 className='ml10'>
-                    Our meal plans!
-                </h2>
+                <div>
+                    <Button className="uppercase" type="to" href={`/addProduct`} regularAction={true} >add product</Button>
+                </div>
                 <ul className="products-list-container grid">
                     {props.products.map((product) => {
                         return (
@@ -34,11 +36,13 @@ const ProductsList = props => {
                                 title={product.title}
                                 description_short={product.description_short}
                                 description={product.description}
+                                price={product.price}
                             />
                         )
                     }
                     )}
                 </ul>
+
             </div>
         </React.Fragment>
     );

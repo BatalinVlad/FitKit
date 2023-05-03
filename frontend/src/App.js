@@ -11,6 +11,7 @@ import io from 'socket.io-client';
 import LoadingSpinner from './shared/components/UIElements/LoadingSpinner';
 import { AuthContext } from './shared/context/auth-context';
 import { useAuth } from './shared/hooks/auth-hook';
+
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import productsReducer from './features/ProductsSlice';
@@ -19,6 +20,7 @@ const DietGenerator = React.lazy(() => import('./chatGPT/DietGenerator'));
 const About = React.lazy(() => import('./about/About'));
 const LiveChat = React.lazy(() => import('./chat/pages/LiveChat'));
 const Products = React.lazy(() => import('./products/pages/Products'));
+const AddProduct = React.lazy(() => import('./user/pages/AddProduct'));
 const Reviews = React.lazy(() => import('./reviews/pages/Reviews'));
 const AddReview = React.lazy(() => import('./user/pages/AddReview'));
 const UserReviews = React.lazy(() => import('./user/pages/UserReviews'));
@@ -64,6 +66,9 @@ const App = () => {
         <Route path="/addreview" exact>
           <AddReview socket={socket} />
         </Route>
+        <Route path="/addproduct" exact>
+          <AddProduct socket={socket} />
+        </Route>
         <Route path="/reviews/:reviewId">
           <UpdateUserReview socket={socket} />
         </Route>
@@ -93,6 +98,9 @@ const App = () => {
         </Route>
         <Route path="/addreview" exact>
           <AddReview socket={socket} />
+        </Route>
+        <Route path="/addProduct" exact>
+          <AddProduct socket={socket} />
         </Route>
         <Route path="/:userId/reviews" exact>
           <UserReviews socket={socket} />

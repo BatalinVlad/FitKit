@@ -8,7 +8,8 @@ const DUMMY_DATA_PRODUCTS = [{
     description_short: "great plan for begginers who just want to lose some pounds",
     description: "meal plan that get you to lose the first pounds without trying! simple diet plan that works!",
     favorites: ["user3", "user4", "user2"],
-    rating: 5
+    rating: 5,
+    price: 99.99
 },
 {
     id: "2",
@@ -18,7 +19,8 @@ const DUMMY_DATA_PRODUCTS = [{
     description_short: "great plan for begginers who just want to lose some pounds",
     description: "meal plan that get you to lose the first pounds without trying! simple diet plan that works!",
     favorites: ["user3", "user4", "user2"],
-    rating: 4
+    rating: 4,
+    price: 59.99
 },
 {
     id: "3",
@@ -28,7 +30,8 @@ const DUMMY_DATA_PRODUCTS = [{
     description_short: "great plan for begginers who just want to lose some pounds",
     description: "meal plan that get you to lose the first pounds without trying! simple diet plan that works!",
     favorites: ["user3", "user4", "user2"],
-    rating: 2
+    rating: 2,
+    price: 199.99
 },
 ]
 

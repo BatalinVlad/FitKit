@@ -19,6 +19,16 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
   const auth = useContext(AuthContext);
   const history = useHistory();
   const { isLoading, sendRequest, error, clearError } = useHttpClient();
+
+  // productId={product.id}
+  // creatorId={product.creator}
+  // image={product.image}
+  // rate={product.rating}
+  // favorites={product.favorites}
+  // title={product.title}
+  // description_short={product.description_short}
+  // description={product.description}
+
   const [formState, inputHandler] = useForm(
     {
       stars: {

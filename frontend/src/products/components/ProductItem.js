@@ -1,10 +1,10 @@
 import React from 'react';
 
 // import { useHistory } from 'react-router-dom';
-
 import { getStars } from '../../shared/util/utils';
 
 const ProductItem = props => {
+
     // const history = useHistory();
 
     const productHandler = () => {
@@ -34,7 +34,8 @@ const ProductItem = props => {
                         </div>
                     </div>
                 </li>
-                <div className="flex justify-center">
+                <div className="product-item__footer flex space-between align-baseline ">
+                    <p> {props.price} $ </p>
                     <p className="product-item__stars flex">{getStars(props.rate)}</p>
                 </div>
             </div>
