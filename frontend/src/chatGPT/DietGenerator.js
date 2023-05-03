@@ -92,7 +92,6 @@ const DietGenerator = () => {
         <React.Fragment>
             <div className='diet-generator-page flex column'>
                 <MainNavigation />
-                {isLoading && <LoadingSpinner asOverlay />}
                 <div className='fill-height center'>
                     {!myDietPlan &&
                         <div className="card diet-generator__container flex column align-center">
@@ -151,6 +150,7 @@ const DietGenerator = () => {
                                 </div>
 
                                 <div className='get-your-diet-btn fill-width flex justify-center'>
+                                    {isLoading && <LoadingSpinner asOverlay />}
                                     <Button type="submit" size={'small'} action={true} disabled={!formState.isValid}>
                                         GET YOUR DIET PLAN NOW
                                     </Button>
