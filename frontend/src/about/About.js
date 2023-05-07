@@ -31,7 +31,7 @@ const About = ({ socket }) => {
                         <h1>FIT<span>KIT</span></h1>
                         <h2 className='bold'>THE FITNESS KIT <br /> THAT EVERY COACH NEEDS</h2>
                     </div>
-                    <Button type="button" getStarted={true} onClick={getStarted}>TRY IT NOW</Button>
+                    <Button type="button" getStarted onClick={getStarted}>TRY IT NOW</Button>
                 </div>
                 <div className='about-page-services-container flex column center'>
                     <div className='service-container workout flex row-rev fill-width   justify-center'>
@@ -67,10 +67,10 @@ const About = ({ socket }) => {
                             <h2 className='to uppercase text-center fs40 bold'>people rate us</h2>
                             <Reviews socket={socket} />
                             <div className='text-center'>
-                                <Button type="button" action={true} onClick={addReviewModalHandler}>ADD REVIEW</Button>
-                                <Button type="to" href="/reviews" regularAction={true} >ALL REVIEWS</Button>
+                                <Button type="button" action onClick={addReviewModalHandler}>ADD REVIEW</Button>
+                                <Button type="to" href="/reviews" regularAction >ALL REVIEWS</Button>
                                 {auth.isLoggedIn &&
-                                    < Button type="to" href={`${auth.userId}/reviews`} regularAction={true} >MY REVIEWS</Button>}
+                                    < Button type="to" href={`${auth.userId}/reviews`} regularAction >MY REVIEWS</Button>}
                             </div>
                         </div>
                     }

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 // import { useHistory } from 'react-router-dom';
+
 
 import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 import Input from '../../shared/components/FormElements/Input';
@@ -8,15 +9,21 @@ import Button from '../../shared/components/FormElements/Button';
 // import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import ImageUpload from '../../shared/components/FormElements/ImageUpload';
 
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../features/ProductsSlice';
+
 import {
   VALIDATOR_MINLENGTH
 } from '../../shared/util/validators';
 // import { useHttpClient } from '../../shared/hooks/http-hook';
 import { useForm } from '../../shared/hooks/form-hook';
-// import { AuthContext } from '../../shared/context/auth-context';
+import { AuthContext } from '../../shared/context/auth-context';
+
+import { v4 as uuidv4 } from 'uuid';
 
 const NewReview = () => {
-  // const auth = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const auth = useContext(AuthContext);
   // const history = useHistory();
   // const { isLoading, sendRequest, error, clearError } = useHttpClient();
 
@@ -45,18 +52,13 @@ const NewReview = () => {
         value: '',
         isValid: false
       },
-    
-      rate: {
-        value: '',
-        isValid: false
-      },
       image: {
-        value: null,
-        isValid: false
+        value: 'https://www.allrecipes.com/thmb/k0Yugx575taH6eaSpD51xIC3s-4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/AR-14452-GreenSalad-0025-4x3-527a1d42f2c042c9bcaf1a68223d34e5.jpg',
+        isValid: true
       },
       price: {
-        value: '',
-        isValid: false
+        value: 59.99,
+        isValid: true
       }
     },
     false
@@ -64,10 +66,16 @@ const NewReview = () => {
 
   const reviewSubmitHandler = async event => {
     event.preventDefault();
-  }
-
-  const starsInputHandler = (value) => {
-    inputHandler('stars', value, true);
+    dispatch(addProduct({
+      productId: uuidv4(),
+      creator: auth.userName,
+      title: formState.inputs.title.value,
+      description: formState.inputs.description.value,
+      description_short: formState.inputs.description_short.value,
+      rate: 0,
+      image: formState.inputs.image.value,
+      price: formState.inputs.price.value
+    }));
   }
 
   return (
@@ -87,9 +95,9 @@ const NewReview = () => {
             onInput={inputHandler}
           />
           <Input
-            id="description"
+            id="description_short"
             element="textarea"
-            label="describtion"
+            label="description"
             rows='2'
             placeholder='describe in couple words...'
             validators={[VALIDATOR_MINLENGTH(15)]}
@@ -97,7 +105,7 @@ const NewReview = () => {
             onInput={inputHandler}
           />
           <Input
-            id="description_short"
+            id="description"
             rows='3'
             element="textarea"
             label="tell us more"
@@ -106,32 +114,13 @@ const NewReview = () => {
             errorText="Please enter a valid description (at least 25 characters)."
             onInput={inputHandler}
           />
-          <div className="review-form-stars__container flex column align-start">
-            <span>Your rate:</span>
-            <div className="review-form-stars">
-              <input type="radio" id="five" name="rate" onClick={() => starsInputHandler(5)} />
-              <label htmlFor="five"></label>
-              <input type="radio" id="four" name="rate" onClick={() => starsInputHandler(4)} />
-              <label htmlFor="four"></label>
-              <input type="radio" id="three" name="rate" onClick={() => starsInputHandler(3)} />
-              <label htmlFor="three"></label>
-              <input type="radio" id="two" name="rate" onClick={() => starsInputHandler(2)} />
-              <label htmlFor="two"></label>
-              <input type="radio" id="one" name="rate" onClick={() => starsInputHandler(1)} />
-              <label htmlFor="one"></label>
-              <span className="result"></span>
-            </div>
-          </div>
           <ImageUpload id="image" onInput={inputHandler} errorText="please provide an image" />
           <div className='add-review-btn fill-width flex justify-center'>
-            <Button type="submit" size={'big'} action={true} disabled={!formState.isValid}>
-              ADD REVIEW
+            <Button type="submit" size={'big'} action className="uppercase" disabled={!formState.isValid}>
+              add product
             </Button>
           </div>
         </form >
-        <div className='add-review-go-back-btn flex justify-center'>
-          <Button type="button" danger={true} >BACK</Button>
-        </div>
       </div>
     </React.Fragment >
   );

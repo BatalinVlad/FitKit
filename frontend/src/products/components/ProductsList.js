@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import ProductItem from './ProductItem';
 import Button from '../../shared/components/FormElements/Button';
 import Card from '../../shared/components/UIElements/Card';
 
+import { AuthContext } from '../../shared/context/auth-context';
 
 const ProductsList = props => {
+    const auth = useContext(AuthContext);
 
     if (props.products.length === 0) {
         return (
@@ -20,16 +22,18 @@ const ProductsList = props => {
     return (
         <React.Fragment>
             <div className='products-list'>
-                <div>
-                    <Button className="uppercase" type="to" href={`/addProduct`} regularAction={true} >add product</Button>
-                </div>
+                {auth.isLoggedIn &&
+                    <div>
+                        <Button className="uppercase" type="to" href={`/addProduct`} regularAction={true} >add product</Button>
+                    </div>
+                }
                 <ul className="products-list-container grid">
                     {props.products.map((product) => {
                         return (
                             <ProductItem
-                                key={product.id}
-                                productId={product.id}
-                                creatorId={product.creator}
+                                key={product.productId}
+                                productId={product.productId}
+                                creatorId={product.creatorId}
                                 image={product.image}
                                 rate={product.rating}
                                 favorites={product.favorites}

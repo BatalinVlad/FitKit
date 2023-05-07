@@ -47,8 +47,7 @@ const DietGenerator = () => {
         i am ${formState.inputs.age.value} years old, 
         my weight is: ${formState.inputs.weight.value},
         my height is: ${formState.inputs.height.value}
-        write me a simple diet plan,
-        for 2 weeks please?`
+        write me a simple diet plan`
 
         try {
             const responseData = await sendRequest('https://api.openai.com/v1/completions', 'POST',

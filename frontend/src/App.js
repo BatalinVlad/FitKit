@@ -21,6 +21,8 @@ const About = React.lazy(() => import('./about/About'));
 const LiveChat = React.lazy(() => import('./chat/pages/LiveChat'));
 const Products = React.lazy(() => import('./products/pages/Products'));
 const AddProduct = React.lazy(() => import('./user/pages/AddProduct'));
+const UpdateUserProduct = React.lazy(() => import('./user/pages/UpdateUserProduct'));
+// const UserProducts = React.lazy(() => import('./user/pages/UserProducts'));
 const Reviews = React.lazy(() => import('./reviews/pages/Reviews'));
 const AddReview = React.lazy(() => import('./user/pages/AddReview'));
 const UserReviews = React.lazy(() => import('./user/pages/UserReviews'));
@@ -72,6 +74,9 @@ const App = () => {
         <Route path="/reviews/:reviewId">
           <UpdateUserReview socket={socket} />
         </Route>
+        <Route path="/products/:productId">
+          <UpdateUserProduct socket={socket} />
+        </Route>
         <Route path="/auth" exact>
           <Auth />
         </Route>
@@ -98,9 +103,6 @@ const App = () => {
         </Route>
         <Route path="/addreview" exact>
           <AddReview socket={socket} />
-        </Route>
-        <Route path="/addProduct" exact>
-          <AddProduct socket={socket} />
         </Route>
         <Route path="/:userId/reviews" exact>
           <UserReviews socket={socket} />
@@ -129,7 +131,7 @@ const App = () => {
         <Router>
           <main>
             <Suspense fallback={
-                <LoadingSpinner asOverlay/>
+              <LoadingSpinner asOverlay />
             }>
               {routes}
             </Suspense>
