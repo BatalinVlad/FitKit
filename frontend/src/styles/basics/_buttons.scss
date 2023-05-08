@@ -1,7 +1,7 @@
 .button {
   font: inherit;
   border-radius: 5px;
-  padding: 0.5rem 1.5rem;
+  padding: 0.4rem 1.3rem;
   color: white;
   cursor: pointer;
   text-decoration: none;
@@ -102,6 +102,10 @@
 }
 
 /* --------- size ---------- */
+.button--very_small {
+  font-size: 0.6rem;
+}
+
 .button--small {
   font-size: 0.8rem;
 }

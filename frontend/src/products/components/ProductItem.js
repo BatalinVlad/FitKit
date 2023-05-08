@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../shared/context/auth-context';
-import { AiFillEdit } from "react-icons/ai";
 
 import { getStars } from '../../shared/util/utils';
 import Button from '../../shared/components/FormElements/Button';
@@ -13,25 +12,12 @@ import { deleteProduct } from '../../features/ProductsSlice';
 const ProductItem = props => {
     const dispatch = useDispatch();
     const auth = useContext(AuthContext);
-    const [access, setAccess] = useState(false);
-
     const history = useHistory();
 
-    const productHandler = () => {
-        if (auth.userId === props.creatorId) {
-            history.push(`/products/${props.productId}`);
-        }
+    const updateProductHandler = (event) => {
+        event.stopPropagation();
+        history.push(`/products/${props.productId}`);
     }
-
-    const productHoverEnterHandler = () => {
-        if (auth.userId === props.creatorId) {
-            setAccess(true);
-        }
-    };
-
-    const productHoverLeaveHandler = () => {
-        setAccess(false);
-    };
 
     const deleteProductHandler = (event) => {
         event.stopPropagation();
@@ -42,26 +28,21 @@ const ProductItem = props => {
         <React.Fragment>
             <div>
                 <li className="product-item">
-                    <div className="product-item__link flex column fill-height"
-                        onClick={() => productHandler()}
-                        onMouseEnter={() => productHoverEnterHandler()}
-                        onMouseLeave={() => productHoverLeaveHandler()}
-                    >
+                    <div className="product-item__link flex column fill-height">
                         {
                             auth.userId === props.creatorId &&
-                            <div className="product-item__delete-btn flex">
-                                <Button type="button" className="delete uppercase" size="small" danger
+                            <div className="product-item__actions flex space-between fill-width">
+                                <Button type="button" className="delete uppercase" size="very_small" danger
                                     onClick={(event) => deleteProductHandler(event)}
                                 > delete </Button>
                                 <div className="ml10">
-                                    <Button type="button" className="delete uppercase" size="small" edit
-                                        onClick={(event) => deleteProductHandler(event)}
+                                    <Button type="button" className="delete uppercase" size="very_small" edit
+                                        onClick={(event) => updateProductHandler(event)}
                                     > update </Button>
                                 </div>
                             </div>
                         }
                         <div className="product-item__content_container">
-                            {access && <div className="product-item__edit-btn"> <AiFillEdit /> </div>}
                             <div className='flex column'>
                                 <h2 className='text-center bold uppercase'>{props.title}</h2>
                             </div>

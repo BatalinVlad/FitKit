@@ -68,11 +68,10 @@
     }
   }
 
-  &__delete-btn {
+  &__actions {
     position: absolute;
-    bottom: 10px;
-    right: 50%;
-    transform: translate(50%, 0);
+    padding: 0 5px;
+    bottom: 5px;
   }
   &__edit-btn {
     position: absolute;

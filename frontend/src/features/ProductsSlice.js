@@ -44,16 +44,26 @@ export const productSlice = createSlice({
         },
 
         deleteProduct: (state, action) => {
-            console.log(state.value)
             state.value = state.value.filter((product) =>
                 product.productId !== action.payload.productId)
         },
-
         updateProduct: (state, action) => {
-            state.value.push(action.payload)
+            const updatedProducts = state.value.map((product) => {
+                if (product.productId === action.payload.productId) {
+                    console.log(action.payload.description)
+                    return {
+                        ...product,
+                        description: action.payload.description
+                    };
+                }
+                return product;
+            });
+
+            state.value = updatedProducts;
+
         }
     }
 });
 
-export const { addProduct, deleteProduct, updateProduct } = productSlice.actions
+export const { getProductById, addProduct, deleteProduct, updateProduct } = productSlice.actions
 export default productSlice.reducer;
