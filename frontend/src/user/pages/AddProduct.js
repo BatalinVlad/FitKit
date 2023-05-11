@@ -21,7 +21,7 @@ import { AuthContext } from '../../shared/context/auth-context';
 
 import { v4 as uuidv4 } from 'uuid';
 
-const NewReview = () => {
+const NewProduct = () => {
   const dispatch = useDispatch();
   const auth = useContext(AuthContext);
   // const history = useHistory();
@@ -64,7 +64,7 @@ const NewReview = () => {
     false
   );
 
-  const reviewSubmitHandler = async event => {
+  const productSubmitHandler = async event => {
     event.preventDefault();
     dispatch(addProduct({
       productId: uuidv4(),
@@ -83,7 +83,7 @@ const NewReview = () => {
       {/* <ErrorModal error={error} onClear={clearError} /> */}
       <div className='add-review-page flex column'>
         <MainNavigation />
-        <form className="review-form flex column" onSubmit={reviewSubmitHandler}>
+        <form className="review-form flex column" onSubmit={productSubmitHandler}>
           {/* {isLoading && <LoadingSpinner asOverlay />} */}
           <Input
             id="title"
@@ -126,4 +126,4 @@ const NewReview = () => {
   );
 };
 
-export default NewReview;
+export default NewProduct;

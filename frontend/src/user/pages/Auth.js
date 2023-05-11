@@ -61,6 +61,10 @@ const Auth = () => {
           image: {
             value: null,
             isValid: false
+          },
+          role: {
+            value: '',
+            isValid: false
           }
         },
         false
@@ -71,7 +75,6 @@ const Auth = () => {
 
   const authSubmitHandler = async event => {
     event.preventDefault();
-
     if (isLoginMode) {
       try {
         const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/login`,
@@ -84,10 +87,12 @@ const Auth = () => {
             'Content-Type': 'application/json'
           }
         );
+        console.log(responseData)
         auth.login(responseData.userId,
           responseData.name,
           responseData.token,
-          responseData.userImage.secure_url);
+          responseData.userImage.secure_url,
+          responseData.role);
         history.push('/');
       } catch (err) {
       }
@@ -98,13 +103,15 @@ const Auth = () => {
         formData.append('name', formState.inputs.name.value);
         formData.append('password', formState.inputs.password.value);
         formData.append('image', formState.inputs.image.value);
+        formData.append('role', formState.inputs.role.value);
         const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/signup`, 'POST',
           formData
         );
         auth.login(responseData.userId,
           responseData.name,
           responseData.token,
-          responseData.userImage.secure_url);
+          responseData.userImage.secure_url,
+          responseData.role);
         history.push('/');
       } catch (err) {
       }
@@ -116,7 +123,7 @@ const Auth = () => {
       <ErrorModal error={error} onClear={clearError} />
       <div className='authentication-page flex column'>
         <MainNavigation />
-        <div className='authentication-containe center fill-height'>
+        <div className='authentication-page-container center fill-height'>
           <Card className="authentication">
             {isLoading && <LoadingSpinner asOverlay />}
             <h2>Login Required</h2>
@@ -134,6 +141,19 @@ const Auth = () => {
                 />
               )}
               {!isLoginMode && <ImageUpload id="image" center onInput={inputHandler} errorText="please provide an image" />}
+              {!isLoginMode &&
+                <div className="switch-container">
+                  <Input
+                    element="checkbox"
+                    id="role"
+                    type="checkbox"
+                    label="who are you?"
+                    validators={[VALIDATOR_REQUIRE()]}
+                    errorText="telll us your role..."
+                    onInput={inputHandler}
+                  />
+                </div>
+              }
               <Input
                 element="input"
                 id="email"

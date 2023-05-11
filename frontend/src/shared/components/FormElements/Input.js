@@ -48,26 +48,69 @@ const Input = props => {
     });
   };
 
-  const element =
-    props.element === 'input' ? (
-      <input
-        id={props.id}
-        type={props.type}
-        placeholder={props.placeholder}
-        onChange={changeHandler}
-        onBlur={touchHandler}
-        value={inputState.value}
-      />
-    ) : (
-      <textarea
-        id={props.id}
-        rows={props.rows || 3}
-        onChange={changeHandler}
-        placeholder={props.placeholder}
-        onBlur={touchHandler}
-        value={inputState.value}
-      />
-    );
+  let element;
+  switch (props.element) {
+    case 'input':
+      element = (
+        <input
+          id={props.id}
+          type={props.type}
+          placeholder={props.placeholder}
+          onChange={changeHandler}
+          onBlur={touchHandler}
+          value={inputState.value}
+        />
+      );
+      break;
+    case 'textarea':
+      if (props.generatedTextIsValid) {
+        const generatedText = props.generatedText || '';
+        inputState.value = inputState.value + generatedText;
+        inputState.isTouched = true;
+        inputState.isValid = true;
+      }
+      element = (
+        <textarea
+          id={props.id}
+          rows={props.rows || 3}
+          onChange={changeHandler}
+          placeholder={props.placeholder}
+          onBlur={touchHandler}
+          value={inputState.value}
+        />
+      );
+      break;
+    case 'checkbox':
+      element = (
+        <div>
+          <label className="center checkbox__label">
+            <input
+              type="checkbox"
+              name="trainer"
+              value="trainer"
+              checked={inputState.value.includes('trainer')}
+              onChange={changeHandler}
+              className="checkbox"
+            />
+            Trainer
+          </label>
+          <label className='center checkbox__label'>
+            <input
+              type="checkbox"
+              name="visitor"
+              value="visitor"
+              checked={inputState.value.includes('visitor')}
+              onChange={changeHandler}
+              className="checkbox"
+            />
+            Visitor
+          </label>
+        </div>
+      );
+      break;
+    default:
+      element = null;
+  }
 
   return (
     <div

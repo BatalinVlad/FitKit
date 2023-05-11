@@ -26,25 +26,35 @@ input {
 .form-control input,
 .form-control textarea {
   border-radius: 4px;
-  display: block;
 }
-
+// font-family: 'montserratRegular';
 .form-control label {
   font-size: rem(12px);
-  margin: 3px 0px
+  margin: 3px 0px;
 }
 
-.form-control input,
-.form-control textarea {
-  width: 100%;
-  font: inherit;
-  border: 1px solid #ccc;
-  background: #f8f8f8;
-  padding: rem(2px) rem(5px);
-  &:hover{
-    background-color: #9c9c9c24;
+.form-control {
+  input,
+  textarea {
+    width: 100%;
+    font: inherit;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    padding: rem(2px) rem(5px);
+    &:hover {
+      background-color: #9c9c9c24;
+    }
+  }
+  input {
+    &.checkbox {
+      width: auto;
+      margin: 0;
+      margin-right: 4px;
+    }
   }
 }
+
+// checkbox
 
 .form-control--invalid input,
 .form-control--invalid textarea {

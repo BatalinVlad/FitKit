@@ -40,7 +40,7 @@ const store = configureStore({
 });
 
 const App = () => {
-  const { token, login, logout, userId, userName, userImage } = useAuth();
+  const { token, login, logout, userId, userName, userImage, userRole } = useAuth();
 
   let routes;
 
@@ -59,6 +59,9 @@ const App = () => {
         <Route path="/products" exact>
           <Products socket={socket} />
         </Route>
+        <Route path="/addproduct" exact>
+          <AddProduct socket={socket} />
+        </Route>
         <Route path="/reviews" exact>
           <Reviews socket={socket} />
         </Route>
@@ -67,9 +70,6 @@ const App = () => {
         </Route>
         <Route path="/addreview" exact>
           <AddReview socket={socket} />
-        </Route>
-        <Route path="/addproduct" exact>
-          <AddProduct socket={socket} />
         </Route>
         <Route path="/reviews/:reviewId">
           <UpdateUserReview socket={socket} />
@@ -104,6 +104,9 @@ const App = () => {
         <Route path="/addreview" exact>
           <AddReview socket={socket} />
         </Route>
+        <Route path="/addproduct" exact>
+          <AddProduct socket={socket} />
+        </Route>
         <Route path="/:userId/reviews" exact>
           <UserReviews socket={socket} />
         </Route>
@@ -123,6 +126,7 @@ const App = () => {
         userId: userId,
         userName: userName,
         userImage: userImage,
+        userRole: userRole,
         login: login,
         logout: logout
       }}

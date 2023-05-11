@@ -5,6 +5,7 @@ import { AuthContext } from '../../shared/context/auth-context';
 import ReviewsList from '../../reviews/components/ReviewsList';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
+import Button from '../../shared/components/FormElements/Button';
 import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 
 const Reviews = ({ socket }) => {
@@ -46,6 +47,13 @@ const Reviews = ({ socket }) => {
       {!isLoading && loadedReviews && user &&
         <div className='reviews-page'>
           <MainNavigation />
+          <div className='reviews-page__actions center text-center'>
+            <Button type="to" action href={`/addreview`}>ADD REVIEW</Button>
+            <div className='ml10'>
+              {auth.isLoggedIn &&
+                < Button type="to" href={`${auth.userId}/reviews`} regularAction >MY REVIEWS</Button>}
+            </div>
+          </div>
           <ReviewsList socket={socket} reviews={loadedReviews} user={user} />
         </div>
       }

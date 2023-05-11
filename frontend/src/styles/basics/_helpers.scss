@@ -12,13 +12,22 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 4px;
   background: white;
-  overflow: hidden;
 }
 
 .card h1,
 .card h2,
 .card label {
   color: #252525;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
 }
 
 .hide {

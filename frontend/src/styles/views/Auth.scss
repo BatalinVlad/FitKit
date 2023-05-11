@@ -13,6 +13,8 @@
 }
 
 .authentication {
+  max-height: 80vh;
+  overflow-y: scroll;
   padding: 1rem;
   width: 90%;
   max-width: 25rem;

@@ -71,6 +71,12 @@ button {
 label {
   cursor: pointer;
   font-family: montserratBold, "sans-sarif";
+  font-size: 0.75rem;
+  margin: 3px 0px;
+
+  &.checkbox__label{
+    font-family: 'montserratRegular';
+  }
 }
 
 a {

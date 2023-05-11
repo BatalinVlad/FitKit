@@ -24,7 +24,7 @@ const ProductsList = props => {
             <div className='products-list'>
                 {auth.isLoggedIn &&
                     <div>
-                        <Button className="uppercase" type="to" href={`/addProduct`} regularAction={true} >add product</Button>
+                        <Button className="uppercase" type="to" href={`/addproduct`} regularAction={true} >add product</Button>
                     </div>
                 }
                 <ul className="products-list-container grid">

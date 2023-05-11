@@ -47,7 +47,7 @@ const signup = async (req, res, next) => {
     return next(new HttpError('Invalid inputs passed, please check your data.', 422))
   }
 
-  const { name, email, password } = req.body;
+  const { name, email, password , role } = req.body;
 
   let existingUser;
   try {
@@ -89,6 +89,7 @@ const signup = async (req, res, next) => {
       image_id: imagePath.public_id,
       secure_url: imagePath.secure_url
     },
+    role,
     password: hashedPassword,
     likedReviews: [],
     dislikedReviews: [],
@@ -122,6 +123,7 @@ const signup = async (req, res, next) => {
     name: createdUser.name,
     email: createdUser.email,
     userImage: createdUser.image,
+    userImage: createdUser.role,
     token: token,
     likedReviews: createdUser.likedReviews,
     dislikedReviews: createdUser.dislikedReviews
@@ -164,8 +166,6 @@ const login = async (req, res, next) => {
         userId: existingUser.id,
         email: existingUser.email,
         image: existingUser.image,
-        likedReviews: existingUser.likedReviews,
-        dislikedReviews: existingUser.dislikedReviews
       },
       'supersecret_dont_share',
       { expiresIn: '1h' });
@@ -178,6 +178,7 @@ const login = async (req, res, next) => {
     name: existingUser.name,
     userId: existingUser.id,
     email: existingUser.email,
+    role: existingUser.role,
     userImage: existingUser.image,
     token: token,
     dislikedReviews: existingUser.dislikedReviews,
