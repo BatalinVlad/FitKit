@@ -31,7 +31,6 @@ const UserReviewsList = props => {
             key={review.id}
             id={review.id}
             creatorId={review.creator}
-            image={review.image}
             userImage={review.userImage}
             name={review.name}
             stars={review.stars}

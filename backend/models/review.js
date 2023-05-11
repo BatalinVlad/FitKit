@@ -6,10 +6,6 @@ const reviewSchema = new Schema({
     name: { type: String, required: true },
     stars: { type: Number, required: true },
     description: { type: String, required: true },
-    image: {
-        image_id: { type: String, required: true },
-        secure_url: { type: String, required: true }
-    },
     userImage: { type: String, required: true },
     likes: [{ type: mongoose.Types.ObjectId, required: true, ref: 'User' }],
     dislikes: [{ type: mongoose.Types.ObjectId, required: true, ref: 'User' }],

@@ -65,9 +65,9 @@ const UserReviewItem = props => {
         <Card className="user-review-item__content fill-width flex column space-between">
           <div className='user-review-item__content-container'>
             {isLoading && <LoadingSpinner asOverlay />}
-            <div className="user-review-item__image">
+            {/* <div className="user-review-item__image">
               <img src={`${props.image.secure_url}`} alt={props.title} className="centerImage" />
-            </div>
+            </div> */}
             <div className='flex column space-between'>
               <div className="user-review-item__info">
                 <div className="flex space-between">
@@ -81,6 +81,7 @@ const UserReviewItem = props => {
                   </div>
                   <h3 className='flex align-center'>{getStars(props.stars)}</h3>
                 </div>
+                <hr className="review-item__hr" />
                 <div className='user-review-item__info-description'>
                   <p>{props.description}</p>
                 </div>
@@ -100,7 +101,7 @@ const UserReviewItem = props => {
             )}
           </div>
 
-          <div className="user-review__likes_container fill-width flex space-between">
+          <div className="user-review__likes_container flex">
             <div className="user-review__dislike_buttom flex justify-center align-center">
               <SlDislike />
               <p>
@@ -111,6 +112,7 @@ const UserReviewItem = props => {
               <SlLike />
             </div>
           </div>
+
 
         </Card>
       </li>

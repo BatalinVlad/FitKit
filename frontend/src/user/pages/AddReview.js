@@ -6,7 +6,6 @@ import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
-import ImageUpload from '../../shared/components/FormElements/ImageUpload';
 
 import {
   VALIDATOR_MINLENGTH
@@ -31,10 +30,6 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
       description: {
         value: '',
         isValid: false
-      },
-      image: {
-        value: null,
-        isValid: false
       }
     },
     false
@@ -46,7 +41,6 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
       const formData = new FormData();
       formData.append('stars', formState.inputs.stars.value);
       formData.append('description', formState.inputs.description.value);
-      formData.append('image', formState.inputs.image.value);
       formData.append('userImage', auth.userImage || 'https://res.cloudinary.com/dzeycmkct/image/upload/v1676724957/guestMode_sjwyx7.png');
 
       if (auth.userId) {
@@ -102,8 +96,8 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
         },
       );
       const generatedText = responseData.choices[0].text;
-      // id, value, isValid
       setGeneratedText(generatedText);
+      // id, value, isValid
       inputHandler('description', generatedText, true);
       setGeneratedTextIsValid(false);
     } catch (err) { };
@@ -127,12 +121,12 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
             generatedText={generatedText}
             generatedTextIsValid={generatedTextIsValid}
           />
-          <div className="text-center">
+          <div>
             <Button type="button" size={'very_small'} regularAction onClick={() => describenByAi()}>
-              LET THE AI TAKE CARE OF IT...
+              LET THE AI TAKE CARE OF IT. . .
             </Button>
           </div>
-          <div className="review-form-stars__container flex column align-start">
+          <div className="review-form-stars__container center flex column">
             <span>Your rate:</span>
             <div className="review-form-stars">
               <input type="radio" id="five" name="rate" onClick={() => starsInputHandler(5)} />
@@ -148,7 +142,6 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
               <span className="result"></span>
             </div>
           </div>
-          <ImageUpload id="image" onInput={inputHandler} errorText="please provide an image" />
           <div className='add-review-btn fill-width flex justify-center'>
             <Button type="submit" size={'big'} action={true} disabled={!formState.isValid}>
               ADD REVIEW

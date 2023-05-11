@@ -22,6 +22,7 @@
 
   &-stars__container {
     span {
+      margin-top: 20px;
       font-size: 0.8rem;
       font-weight: bold;
     }
@@ -32,6 +33,7 @@
         display: none;
       }
       label {
+        line-height: 1rem;
         cursor: pointer;
         float: right;
         font-size: 2rem;

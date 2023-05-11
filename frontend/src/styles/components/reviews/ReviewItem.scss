@@ -1,8 +1,7 @@
 .review-item {
+  width: 300px;
   border-radius: 4px;
   margin: 5px 10px;
-  width: 274px;
-  height: 280px;
   cursor: pointer;
 
   .review-item__content {
@@ -26,9 +25,7 @@
       font-size: 0.8rem;
     }
 
-    svg {
-      color: #ffffff80;
-    }
+
 
     &_container {
       width: 100%;
@@ -80,7 +77,7 @@
   }
 
   &__hr {
-    margin-top: 15px;
+    margin: 15px 0px 3px 0px;
     width: 100%;
     border-bottom: 1px;
     opacity: 0.3;
@@ -101,29 +98,28 @@
 
 
   &__likes_container {
-    background-color: $clr81;
     color: black;
     font-size: 2rem;
-    position: absolute;
-    bottom: 0px;
     display: flex;
     justify-content: space-around;
 
     p {
+      color: $light_black;
       margin: 0;
-      font-size: 1.3rem;
+      font-size: 1rem;
       font-family: bold;
       padding: 0px 5px;
     }
 
     svg {
-      font-size: rem(20px);
+      color: $light_black;
+      font-size: rem(16px);
     }
   }
 
   &__dislike_buttom {
     svg {
-      margin-bottom: 5px;
+      margin-bottom: 2px;
     }
   }
 
@@ -134,7 +130,7 @@
 
   &__like_buttom {
     svg {
-      margin-top: 5px;
+      margin-top: 2px;
     }
   }
 

@@ -68,17 +68,17 @@ const createReview = async (req, res, next) => {
     );
   }
 
-  const file = req.file;
-  const fileUri = getDataUri(file);
+  // const file = req.file;
+  // const fileUri = getDataUri(file);
 
-  let imagePath;
+  // let imagePath;
 
-  try {
-    imagePath = await cloudinary.v2.uploader.upload(fileUri.content);
-  } catch (err) {
-    const error = new HttpError('Upload Image failed, please try again', 500);
-    return next(error);
-  }
+  // try {
+  //   imagePath = await cloudinary.v2.uploader.upload(fileUri.content);
+  // } catch (err) {
+  //   const error = new HttpError('Upload Image failed, please try again', 500);
+  //   return next(error);
+  // }
 
   const { name, stars, description, userImage, isGuest } = req.body;
 
@@ -87,10 +87,6 @@ const createReview = async (req, res, next) => {
     stars,
     description,
     userImage,
-    image: {
-      image_id: imagePath.public_id,
-      secure_url: imagePath.secure_url
-    },
     likes: [],
     dislikes: [],
     isGuest,
@@ -295,16 +291,16 @@ const deleteReview = async (req, res, next) => {
   }
 
   //delete with cloadinary
-  const imagePath = review.image.image_id;
+  // const imagePath = review.image.image_id;
 
-  try {
-    await cloudinary.uploader.destroy(imagePath, options = {
-      folder: 'production'
-    });
-  } catch (err) {
-    const error = new HttpError('Something went wrong, Could not delete the image from Cloudinary', 500);
-    return next(error);
-  }
+  // try {
+  //   await cloudinary.uploader.destroy(imagePath, options = {
+  //     folder: 'production'
+  //   });
+  // } catch (err) {
+  //   const error = new HttpError('Something went wrong, Could not delete the image from Cloudinary', 500);
+  //   return next(error);
+  // }
 
   res.status(200).json({ messege: 'Deleted review' });
 };
