@@ -3,7 +3,8 @@
 .add-review-page {
   padding-bottom: 20px;
   .main-header {
-    position: inherit;
+    position: relative;
+    background-color: $main_header_dark_blue;
   }
 }
 
@@ -12,7 +13,7 @@
   padding: 1rem;
   width: 50%;
   max-width: 40rem;
-  box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.26);
+  box-shadow: $box_shadow; 
   border-radius: 6px;
   background: white;
 

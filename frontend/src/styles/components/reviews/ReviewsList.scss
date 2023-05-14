@@ -2,7 +2,8 @@
   &-page {
     height: 100vh;
     .main-header {
-      position: inherit;
+      background-color: $main_header_dark_blue;
+      position: relative;
     }
     &__actions{
       padding: 20px 0px;

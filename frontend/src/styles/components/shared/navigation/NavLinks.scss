@@ -27,10 +27,12 @@
 
 .nav-links span {
   margin-left: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .nav-links a svg {
-  font-size: 15px;
+  font-size: 1.3rem;
   transition: $transition_fast;
   transform: rotate(0deg);
 }
@@ -39,7 +41,7 @@
   svg {
     transform: rotate(30deg);
   }
-  background: #8e8e8e50;
+  color: $primary;
 }
 
 .nav-links img {
@@ -50,6 +52,7 @@
 }
 
 .nav-links button {
+  font-size: 1.3rem;
   border: none;
   cursor: pointer;
   background: transparent;
@@ -61,7 +64,7 @@
 
 .nav-links button:hover,
 .nav-links button:active {
-  background: #8e8e8e42;
+  color: $primary;
 }
 
 .logout-nav {
@@ -96,13 +99,12 @@
     height: 100%;
     color: white;
     text-decoration: none;
-    transition: $transition_slow;
+    transition: $transition_fast;
   }
 
   .nav-links button:hover,
   .nav-links button:active {
-    color: white;
-    background: #8e8e8e42;
+    color: $primary;
   }
 }
 

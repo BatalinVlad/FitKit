@@ -1,6 +1,7 @@
 .live-chat-page {
   height: 100vh;
   .main-header {
+    background-color: $main_header_dark_blue;
     position: relative;
   }
 }
@@ -14,7 +15,7 @@
   height: max-content;
   width: 100%;
   background-color: aliceblue;
-  box-shadow: 0px 0px 3px 1px #262626;
+  box-shadow: $box_shadow;
 }
 
 .chat-window p {

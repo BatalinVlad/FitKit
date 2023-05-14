@@ -5,6 +5,7 @@ import Button from '../../shared/components/FormElements/Button';
 import Card from '../../shared/components/UIElements/Card';
 
 import { AuthContext } from '../../shared/context/auth-context';
+import Footer from '../../shared/components/UIElements/footer';
 
 const ProductsList = props => {
     const auth = useContext(AuthContext);
@@ -23,7 +24,7 @@ const ProductsList = props => {
         <React.Fragment>
             <div className='products-list'>
                 {auth.isLoggedIn &&
-                    <div>
+                    <div className='ml10'>
                         <Button className="uppercase" type="to" href={`/addproduct`} regularAction={true} >add product</Button>
                     </div>
                 }
@@ -46,8 +47,8 @@ const ProductsList = props => {
                     }
                     )}
                 </ul>
-
             </div>
+            <Footer />
         </React.Fragment>
     );
 };

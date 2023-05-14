@@ -1,6 +1,6 @@
 .user-review-item {
   width: 90%;
-  box-shadow: 0px 0px 2px 0px #ffffff6b;
+  box-shadow: $box_shadow;
   height: fit-content;
 }
 .user-review-item__content {
@@ -22,7 +22,7 @@
   height: 41px;
   width: 41px;
   border-radius: 100%;
-  box-shadow: 0px 0px 1px 1px #252525;
+  box-shadow: $user_shaodw_img;
 }
 
 .user-review-item__name h2 {

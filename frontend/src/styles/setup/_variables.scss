@@ -7,6 +7,8 @@ $clr4: #ffbd63;
 $clr5: #ffbd03;
 $clr6: #4681f4;
 $clr7: #dff0ea;
+$white_light: #dff0ea;
+
 $clr8: #211e1e;
 $light_black: #211e1e;
 
@@ -15,13 +17,18 @@ $clr9: #a881af;
 $clr10: #80669d;
 $clr11: linear-gradient(45deg, #a6a6a6, #9b9b9b);
 $clr12: #0d2275;
+$primary: #0d2275;
 $clr12o5: #0d227550;
+$primary_dark: #0d227550;
 $clr121: #051867;
 
 $main_nav_262626: #262626;
-$footer_black: #202020;
+$main_header_dark_blue: #061038;
 
-$background_white: #ededed;
+$footer_black: #202020;
+$footer_primary_dark: #061038;
+
+$background_white: #fefefe;
 $background_black: #252525;
 
 // Breakpoints
@@ -30,6 +37,16 @@ $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
 
 //Transition
-$transition_fast: 0.4s;
-$transition_moderated: 0.6s;
-$transition_slow: 0.8s;
+$transition_fast: 0.2s;
+$transition_moderated: 0.4s;
+$transition_slow: 0.6s;
+
+//box-shadow
+
+$box_shadow: 0 6px 25px rgba(0, 0, 0, 0.07);
+$user_shaodw_img: 0px 0px 1px 1px #252525;
+
+$text_shadow_black: 0px 1px 25px #2626263b;
+
+//hvoer
+$hover_light_dark: #2c2c2c0e;

@@ -15,8 +15,9 @@ body {
   overflow-x: hidden;
   margin: 0;
   width: 100vw;
-  background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679820939/bg_piydqk.png");
-  background-size: contin;
+  background-color: $background_white;
+  // background-image: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679820939/bg_piydqk.png");
+  // background-size: contin;
 }
 
 img {
