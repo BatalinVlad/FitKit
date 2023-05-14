@@ -5,11 +5,6 @@
     display: block;
   }
 
-  .main-header {
-    position: absolute;
-    top: 0;
-  }
-
   &-about-container,
   &-services-container {
     h1 {
@@ -25,11 +20,11 @@
       margin: 2px 0px;
     }
 
-    span {
+    .span_kit {
       color: $clr12;
     }
 
-    button {
+    .try-now-btn {
       margin-top: 15px;
       margin-bottom: 2rem;
       font-size: rem(24px);
@@ -44,12 +39,12 @@
     background-repeat: no-repeat;
     background-position: center;
     height: 90vh;
+    min-height:500px;
     padding-bottom: 30px;
 
     .about-title {
       position: relative;
       text-shadow: $text_shadow_black;
-
     }
   }
 

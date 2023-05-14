@@ -23,13 +23,17 @@ const About = ({ socket }) => {
     return (
         <React.Fragment>
             <div className='about-page'>
-                <MainNavigation />
-                <div className='about-page-about-container flex column justify-end align-center'>
-                    <div className='about-title flex column text-center'>
-                        <h1>FIT<span>KIT</span></h1>
-                        <h2 className='bold'>THE FITNESS KIT <br /> THAT EVERY COACH NEEDS</h2>
+                <div className='about-page-about-container flex column space-between'>
+                    <MainNavigation />
+                    <div className="center flex column">
+                        <div className='about-title flex column text-center'>
+                            <h1>FIT<span className="span_kit">KIT</span></h1>
+                            <h2 className='bold'>THE FITNESS KIT <br /> THAT EVERY COACH NEEDS</h2>
+                        </div>
+                        <div className="try-now-btn">
+                        <Button type="button" getStarted onClick={getStarted}>TRY IT NOW</Button>
+                        </div>
                     </div>
-                    <Button type="button" getStarted onClick={getStarted}>TRY IT NOW</Button>
                 </div>
                 <div className='about-page-services-container flex column center'>
                     <div className='service-container workout flex row-rev justify-center'>
