@@ -335,7 +335,7 @@
 
 @media (max-width: 500px) {
   .about-page-about-container {
-    button {
+    .try-now-btn {
       width: 70%;
     }
   }
@@ -343,7 +343,7 @@
 
 @media (max-width: $mobile-breakpoint) {
   .about-page-about-container {
-    button {
+    .try-now-btn {
       width: 90%;
     }
 
