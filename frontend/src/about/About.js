@@ -24,6 +24,7 @@ const About = ({ socket }) => {
         <React.Fragment>
             <div className='about-page'>
                 <div className='about-page-about-container flex column space-between'>
+                    <div className="about-page-about-container__bg-img"></div>
                     <MainNavigation />
                     <div className="center flex column">
                         <div className='about-title flex column text-center'>

@@ -25,6 +25,7 @@
     }
 
     .try-now-btn {
+      z-index: 1;
       margin-top: 15px;
       margin-bottom: 2rem;
       font-size: rem(24px);
@@ -34,13 +35,22 @@
   }
 
   &-about-container {
-    background: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434860/shareonline_rmpch7.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    position: relative;
     height: 90vh;
-    min-height:500px;
+    min-height: 500px;
     padding-bottom: 30px;
+    &__bg-img {
+      filter: brightness(0.7);
+      z-index: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://res.cloudinary.com/dzeycmkct/image/upload/v1679434860/shareonline_rmpch7.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
     .about-title {
       position: relative;

@@ -5,7 +5,6 @@ import Button from '../../shared/components/FormElements/Button';
 import Card from '../../shared/components/UIElements/Card';
 
 import { AuthContext } from '../../shared/context/auth-context';
-import Footer from '../../shared/components/UIElements/footer';
 
 const ProductsList = props => {
     const auth = useContext(AuthContext);
@@ -48,7 +47,6 @@ const ProductsList = props => {
                     )}
                 </ul>
             </div>
-            <Footer />
         </React.Fragment>
     );
 };
