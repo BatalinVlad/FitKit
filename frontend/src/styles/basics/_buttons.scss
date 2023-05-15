@@ -56,11 +56,11 @@
 }
 
 .button--inverse--regular_action {
-  background: #4881f4cc;
+  background: $primary_light;
   &:hover,
   &:active {
     color: white;
-    background: #4681f4;
+    background: $primary_light_active;
   }
 }
 
