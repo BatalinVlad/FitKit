@@ -33,7 +33,7 @@
 
 .nav-links a svg {
   font-size: 1.3rem;
-  transition: $transition_fast;
+  transition: all $transition_fast;
   transform: rotate(0deg);
 }
 
@@ -41,7 +41,7 @@
   svg {
     transform: rotate(30deg);
   }
-  color: $primary;
+  color: $primary_light;
 }
 
 .nav-links img {
