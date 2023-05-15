@@ -30,11 +30,12 @@
   }
 
   span {
-    padding: 3px;
+    padding: 3px 6px;
     border-radius: 4px;
     margin-left: 3px;
-    background: $clr12;
+    background: $primary_light;
     color: white;
+    letter-spacing: 2px;
   }
 }
 .main-navigation__title a {

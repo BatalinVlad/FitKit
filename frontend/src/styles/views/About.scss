@@ -21,7 +21,7 @@
     }
 
     .span_kit {
-      color: $clr12;
+      color: $primary_light;
     }
 
     .try-now-btn {
@@ -354,7 +354,7 @@
 @media (max-width: $mobile-breakpoint) {
   .about-page-about-container {
     .try-now-btn {
-      width: 90%;
+      width: 100%;
     }
 
     .about-title {

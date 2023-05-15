@@ -7,7 +7,7 @@
 html {
   overflow-x: hidden;
   width: 100vw;
-  font-family: montserratRegular, sans-serif;
+  font-family: Poppins_regular, sans-serif;
   line-height: 1.6;
 }
 
@@ -34,53 +34,60 @@ h6 {
   color: white;
   margin: 0;
   font-weight: normal;
+  letter-spacing: 1px;
 }
 
 h1 {
-  font-family: montserratBold, "sans-sarif";
+  font-family: Poppins_extra_bold, "sans-sarif";
 }
 
-h2,
 h3,
 h4 {
-  font-family: montserratRegular, "sans-sarif";
+  font-family: Poppins_regular, "sans-sarif";
+  letter-spacing: 1px;
+  font-size: rem(14px);
 }
 
 h2 {
-  font-size: rem(18px);
+  font-family: Poppins_semi_bold, "sans-sarif";
+  letter-spacing: 1px;
+  font-size: rem(16px);
 }
 
 p {
   color: white;
   font-size: rem(14px);
   margin: 0;
-  font-family: montserratLight, "sans-sarif";
+  font-family: Poppins_light, "sans-sarif";
+  letter-spacing: 1.3px;
 }
 
 small {
   margin: 0;
-  font-size: rem(12px);
-  font-family: montserratExtraLight, "sans-sarif";
+  font-size: rem(10px);
+  font-family: Poppins_thin, "sans-sarif";
 }
 
 button {
   cursor: pointer;
   border: none;
-  font-family: montserratRegular, "sans-sarif";
+  font-family: Popping_bold, "sans-sarif";
+  letter-spacing: 2px;
 }
 
 label {
   cursor: pointer;
-  font-family: montserratBold, "sans-sarif";
-  font-size: 0.75rem;
+  font-family: Poppins_regular, "sans-sarif";
+  font-size: rem(14px);
   margin: 3px 0px;
 
   &.checkbox__label{
-    font-family: 'montserratRegular';
+    font-family: 'Poppins_regular';
   }
 }
 
 a {
+  letter-spacing: 2px;
   text-decoration: none;
 }
 

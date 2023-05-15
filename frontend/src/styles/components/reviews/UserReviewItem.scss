@@ -65,13 +65,13 @@
 
   p,
   svg {
-    font-size: 20px;
+    font-size: rem(20px);
     color: $light_black;
   }
 
   p {
     margin: 0;
-    font-size: 1.3rem;
+    font-size: rem(18px);
     padding: 0px 5px;
   }
 }

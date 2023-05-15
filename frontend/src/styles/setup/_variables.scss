@@ -13,20 +13,21 @@ $clr8: #211e1e;
 $light_black: #211e1e;
 
 $clr81: #211e1e80;
+
 $clr9: #a881af;
 $clr10: #80669d;
-$clr11: linear-gradient(45deg, #a6a6a6, #9b9b9b);
-$clr12: #d188ff;
-$primary: #a857db;
-$clr12o5: #0d227550;
-$primary_dark: #0d227550;
-$clr121: #051867;
 
-$main_nav_262626: #262626;
-$main_header_dark_blue: #5d3476;
+$primary_grey_blur: #8b66a39f;
+$primary_light: #d188ff;
+$primary_light_active: #c366fd;
 
-$footer_black: #202020;
-$footer_primary_dark: #412254;
+$primary_medium_light: #4f2c66;
+$primary: #432656;
+
+$main_header_dark_blue: $primary;
+
+$footer_primary_dark: $primary;
+$side-drawer: $primary;
 
 $background_white: #fefefe;
 $background_black: #252525;

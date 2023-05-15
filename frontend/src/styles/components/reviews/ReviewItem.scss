@@ -22,7 +22,6 @@
       height: 50px;
       overflow-y: auto;
       font-weight: normal;
-      font-size: 0.8rem;
     }
 
     &_container {
@@ -65,11 +64,11 @@
     width: 150px;
     margin-left: 8px;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   &__stars {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     align-items: center;
     justify-content: end;
   }
@@ -103,7 +102,7 @@
     p {
       color: $light_black;
       margin: 0;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-family: bold;
       padding: 0px 5px;
     }

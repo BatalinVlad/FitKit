@@ -2,8 +2,9 @@ textarea,
 input {
   resize: none;
   border: none;
-  font-size: rem(20px);
-  font-family: montserratLight, "sans-sarif";
+  // font-size: rem(18px);
+  font-family: Poppins_medium, "sans-sarif";
+  letter-spacing: 2px;
 }
 
 .form-control input:focus,
@@ -27,9 +28,8 @@ input {
 .form-control textarea {
   border-radius: 4px;
 }
-// font-family: 'montserratRegular';
 .form-control label {
-  font-size: rem(12px);
+  // font-size: rem(14px);
   margin: 3px 0px;
 }
 

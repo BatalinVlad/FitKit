@@ -6,6 +6,7 @@
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
+  letter-spacing: 2px;
   transition: $transition_fast;
 }
 
@@ -14,23 +15,23 @@
 }
 /* ----------- Get STARTED ------------- */
 .button--get_started {
-  border: 1px solid $clr12;
-  background: $clr12;
+  border: 1px solid $primary_light;
+  background: $primary_light;
   &:hover,
   &:active {
-    background: $clr121;
-    border-color: $clr121;
+    background: $primary_light_active;
+    border-color: $primary_light_active;
   }
 }
 
 /*  ---------- call to action ---------- */
 .button--call_to_action {
-  background: #33b249;
-  border: 1px solid #33b249;
+  background: $primary;
+  border: 1px solid $primary;
   &:hover,
   &:active {
-    background: #33b200;
-    border-color: #33b200;
+    background: $primary_medium_light;
+    border-color: $primary_medium_light;
   }
 }
 /* -------------- Edit -------------- */
@@ -45,12 +46,12 @@
 }
 /*  ---------- regular action ---------- */
 .button--regular_action {
-  background: #266df9;
-  border: 1px solid #266df9;
+  background: $primary;
+  border: 1px solid $primary;
   &:hover,
   &:active {
-    background: #4681f4;
-    border-color: #4681f4;
+    background: $primary_medium_light;
+    border-color: $primary_medium_light;
   }
 }
 
@@ -95,21 +96,21 @@
 .button:disabled,
 .button:hover:disabled,
 .button:active:disabled {
-  background: linear-gradient(45deg, #a6a6a6, #9b9b9b);
+  background: $primary_grey_blur;
   color: #252525;
-  border-color: #cccccc47;
+  border-color: $primary_grey_blur;
   cursor: not-allowed;
 }
 
 /* --------- size ---------- */
 .button--very_small {
-  font-size: 0.6rem;
+  font-size: rem(14px);
 }
 
 .button--small {
-  font-size: 0.8rem;
+  font-size: rem(16px);
 }
 
 .button--big {
-  font-size: 1rem;
+  font-size: rem(18px);
 }

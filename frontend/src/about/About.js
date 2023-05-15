@@ -26,7 +26,7 @@ const About = ({ socket }) => {
                 <div className='about-page-about-container flex column space-between'>
                     <div className="about-page-about-container__bg-img"></div>
                     <MainNavigation />
-                    <div className="center flex column">
+                    <div className="center flex column fill-width">
                         <div className='about-title flex column text-center'>
                             <h1>FIT<span className="span_kit">KIT</span></h1>
                             <h2 className='bold'>THE FITNESS KIT <br /> THAT EVERY COACH NEEDS</h2>
