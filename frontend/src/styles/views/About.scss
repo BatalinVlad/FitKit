@@ -145,6 +145,10 @@
           }
         }
       }
+
+      .main-header {
+        display: none;
+      }
     }
 
     button,
@@ -168,6 +172,10 @@
       background: none;
       height: auto;
       width: 100%;
+
+      .main-header {
+        display: none;
+      }
 
       .review-form {
         max-width: 420px;
