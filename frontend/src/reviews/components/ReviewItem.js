@@ -117,7 +117,7 @@ const ReviewItem = props => {
                 </div>
                 <h2 className="review-item__stars flex">{getStars(props.stars)}</h2>
               </div>
-              <hr className="review-item__hr" />
+              <hr/>
               <h3>
                 {props.description}
               </h3>

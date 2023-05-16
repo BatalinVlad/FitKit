@@ -68,6 +68,13 @@ small {
   font-family: Poppins_thin, "sans-sarif";
 }
 
+hr {
+  margin: 15px 0px 3px 0px;
+  width: 100%;
+  border-bottom: 1px;
+  opacity: 0.3;
+}
+
 button {
   cursor: pointer;
   border: none;
@@ -81,8 +88,8 @@ label {
   font-size: rem(14px);
   margin: 3px 0px;
 
-  &.checkbox__label{
-    font-family: 'Poppins_regular';
+  &.checkbox__label {
+    font-family: "Poppins_regular";
   }
 }
 
@@ -112,4 +119,19 @@ a {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(235, 235, 235, 0.477);
+}
+
+.observed-element {
+  opacity: 0;
+  transition: $transition_slow;
+  z-index: 5;
+  background: $primary;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.scroll-nav {
+  background: $primary;
 }

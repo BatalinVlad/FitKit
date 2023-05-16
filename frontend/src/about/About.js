@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
+
 import Reviews from '../reviews/pages/Reviews';
 import AddReview from '../user/pages/AddReview'
 import Button from '../shared/components/FormElements/Button';
@@ -14,25 +15,51 @@ const About = ({ socket }) => {
     const auth = useContext(AuthContext);
     const [openAddReviewModal, setOpenAddReviewModal] = useState(false);
 
+    const targetRef = useRef(null);
+    const [scrollPosition, setScrollPosition] = useState(0);
+
+    const handleScroll = () => {
+        const currentPosition = window.pageYOffset;
+        console.log(currentPosition)
+        setScrollPosition(currentPosition);
+    };
+
+
     const getStarted = () => {
         history.push('/mydietplan')
     }
     const addReviewModalHandler = () => {
         setOpenAddReviewModal(!openAddReviewModal);
     }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        // Cleanup the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     return (
         <React.Fragment>
+            <div ref={targetRef} className={`observed-element fill-width fixed ${scrollPosition > 65 ? 'visible' : ''}`}>
+                {/* <div className='scroll-nav'> */}
+                <MainNavigation />
+                {/* </div> */}
+            </div>
             <div className='about-page'>
                 <div className='about-page-about-container flex column space-between'>
                     <div className="about-page-about-container__bg-img"></div>
                     <MainNavigation />
+
+
                     <div className="center flex column fill-width">
                         <div className='about-title flex column text-center'>
                             <h1>FIT<span className="span_kit">KIT</span></h1>
                             <h2 className='bold'>THE FITNESS KIT <br /> THAT EVERY COACH NEEDS</h2>
                         </div>
                         <div className="try-now-btn">
-                        <Button type="button" getStarted onClick={getStarted}>TRY IT NOW</Button>
+                            <Button type="button" getStarted onClick={getStarted}>TRY IT NOW</Button>
                         </div>
                     </div>
                 </div>
@@ -67,7 +94,8 @@ const About = ({ socket }) => {
                 <div className='about-page-reviews flex column justify-center'>
                     {openAddReviewModal ?
                         <AddReview onAddReviewModalHandler={addReviewModalHandler} /> : <div className='flex column'>
-                            <h2 className='uppercase text-center fs40 bold'>people rate us</h2>
+                            <h2 className='uppercase text-center fs40 bold uppercase'>our reviews</h2>
+                            <hr />
                             <Reviews socket={socket} />
                             <div className="center">
                                 <Button type="button" action onClick={addReviewModalHandler}>ADD REVIEW</Button>
