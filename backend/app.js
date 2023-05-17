@@ -10,6 +10,7 @@ const usersRoutes = require('./routes/users-routes');
 const mainChatRoutes = require('./routes/mainchat-routes');
 const productsRoutes = require('./routes/products-routes');
 const openaiRoutes = require('./routes/openai-routes');
+const dietPlanRoutes = require('./routes/dietplan-routes');
 
 const HttpError = require('./models/http-error');
 
@@ -60,6 +61,7 @@ app.use('/api/users', usersRoutes);
 app.use('/api/mainchat', mainChatRoutes);
 app.use('/api/openai', openaiRoutes);
 app.use('/api/products', productsRoutes);
+app.use('/api/dietPlan', dietPlanRoutes);
 
 app.use((req, res, next) => {
   const error = new HttpError('Could not find this route.', 404);

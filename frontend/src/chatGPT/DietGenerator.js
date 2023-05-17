@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 // import { useHistory } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
@@ -12,17 +12,23 @@ import {
 } from '../shared/util/validators';
 import { useHttpClient } from '../shared/hooks/http-hook';
 import { useForm } from '../shared/hooks/form-hook';
-// import { AuthContext } from '../../shared/context/auth-context';
+import { AuthContext } from '../shared/context/auth-context';
 
 const DietGenerator = () => {
-    //   const auth = useContext(AuthContext);
+    const auth = useContext(AuthContext);
     const { isLoading, error, clearError, sendRequest } = useHttpClient();
     const [myDietPlan, setMydietPlan] = useState();
+    const [myDietPlanToSave, setMydietPlanToSave] = useState();
+
     const [formState, inputHandler] = useForm(
         {
             name: {
                 value: '',
                 isValid: false
+            },
+            gender: {
+                value: 'male',
+                isValid: true
             },
             age: {
                 value: '',
@@ -43,17 +49,22 @@ const DietGenerator = () => {
 
     const dietSubmitHandler = async event => {
         event.preventDefault();
+        //best PROMPT:
         const prompt = `
-        i am ${formState.inputs.age.value} years old, 
-        my weight is: ${formState.inputs.weight.value},
-        my height is: ${formState.inputs.height.value}
-        write me a simple diet plan`
+        Hi! I'm a ${formState.inputs.age.value} ${formState.inputs.gender.value} who is ${formState.inputs.height.value} cm tall and weighs ${formState.inputs.weight.value} kg. 
+        my current calorie intake is 3000.
+        I lead an active lifestyle and exercise regularly. 
+        I follow a reguler diet and have no specific dietary restrictions or allergies. 
+        My goal is to lose weight while ensuring I get balanced nutrition. 
+        Could you please create a personalized diet plan for me based on these details?
+        looke like: breackfest dinner etc.. with quantities and calories amount.
+        write me only the plan`
 
         try {
             const responseData = await sendRequest('https://api.openai.com/v1/completions', 'POST',
                 JSON.stringify({ //body
                     prompt: prompt,
-                    max_tokens: 1000,
+                    max_tokens: 1500,
                     model: 'text-davinci-003'
                 }),
                 { //headers
@@ -62,17 +73,33 @@ const DietGenerator = () => {
                 },
             );
             const generatedText = responseData.choices[0].text;
+            setMydietPlanToSave(generatedText)
             const textArray = generatedText.replaceAll('\n', '  ').split("  ");
             setMydietPlan(textArray);
         } catch (err) { };
     };
-    
+
+    const saveDietPlanHandler = async () => {
+        if (!auth.isLoggedIn) return
+        try {
+            await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/dietplan/create/${auth.userId}`, 'POST',
+                JSON.stringify({ //body
+                    description: myDietPlanToSave
+                }),
+                { //headers
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + auth.token
+                },
+            );
+        } catch (err) { };
+    }
+
     return (
         <React.Fragment>
             <ErrorModal error={error} onClear={clearError} />
             <div className='diet-generator-page flex column'>
                 <MainNavigation />
-            {isLoading && <LoadingSpinner asOverlay />}
+                {isLoading && <LoadingSpinner asOverlay />}
                 <div className='fill-height center'>
                     {!myDietPlan &&
                         <div className="card diet-generator__container flex column align-center">
@@ -148,6 +175,9 @@ const DietGenerator = () => {
                                     const small_id = unique_id.slice(0, 8);
                                     return <p key={small_id}>{textRow}</p>
                                 })}
+                            </div>
+                            <div className='mt10'>
+                                <Button type='button' regularAction onClick={() => saveDietPlanHandler()}>SAVE</Button>
                             </div>
                         </div>
                     }

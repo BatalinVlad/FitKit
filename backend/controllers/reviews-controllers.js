@@ -1,10 +1,8 @@
 const { validationResult } = require('express-validator');
 const mongoose = require('mongoose');
-const cloudinary = require('../utils/cloudinary');
 const HttpError = require('../models/http-error');
 const Review = require('../models/review');
 const User = require('../models/user');
-const getDataUri = require('../utils/datauri');
 
 const getReviews = async (req, res, next) => {
   let reviews;
@@ -41,7 +39,6 @@ const getReviewsByUserId = async (req, res, next) => {
   let userReviews;
 
   try {
-    // userReviews = await Review.find({ creator: userId }); //regular method
     userReviews = await User.findById(userId).populate('reviews'); //populate method
 
   } catch (err) {
@@ -49,13 +46,11 @@ const getReviewsByUserId = async (req, res, next) => {
     return next(error);
   }
 
-  // if(!userReviews || userReviews.length === 0)
   if (!userReviews) {
     return next(
       new HttpError('Could not find reviews for the provided user id.', 404)
     );
   }
-  //userReviews.map instead of userReviews.reviews.map
   res.json({ userReviews: userReviews.reviews.map(review => review.toObject({ getters: true })) });
 };
 
@@ -67,19 +62,6 @@ const createReview = async (req, res, next) => {
       new HttpError('Invalid inputs passed, please check your data.', 422)
     );
   }
-
-  // const file = req.file;
-  // const fileUri = getDataUri(file);
-
-  // let imagePath;
-
-  // try {
-  //   imagePath = await cloudinary.v2.uploader.upload(fileUri.content);
-  // } catch (err) {
-  //   const error = new HttpError('Upload Image failed, please try again', 500);
-  //   return next(error);
-  // }
-
   const { name, stars, description, userImage, isGuest } = req.body;
 
   const createdReview = new Review({
@@ -289,19 +271,6 @@ const deleteReview = async (req, res, next) => {
     const error = new HttpError('Something went wrong, Could not delete the review', 500);
     return next(error);
   }
-
-  //delete with cloadinary
-  // const imagePath = review.image.image_id;
-
-  // try {
-  //   await cloudinary.uploader.destroy(imagePath, options = {
-  //     folder: 'production'
-  //   });
-  // } catch (err) {
-  //   const error = new HttpError('Something went wrong, Could not delete the image from Cloudinary', 500);
-  //   return next(error);
-  // }
-
   res.status(200).json({ messege: 'Deleted review' });
 };
 

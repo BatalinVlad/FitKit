@@ -43,9 +43,7 @@ const About = ({ socket }) => {
     return (
         <React.Fragment>
             <div ref={targetRef} className={`observed-element fill-width fixed ${scrollPosition > 65 ? 'visible' : ''}`}>
-                {/* <div className='scroll-nav'> */}
                 <MainNavigation />
-                {/* </div> */}
             </div>
             <div className='about-page'>
                 <div className='about-page-about-container flex column space-between'>

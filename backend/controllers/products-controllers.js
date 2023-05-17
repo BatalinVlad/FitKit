@@ -19,18 +19,18 @@ const getProducts = async (req, res, next) => {
 };
 
 const getProductById = async (req, res, next) => {
-    const reviewId = req.params.rid; // { rid: 'r1' }
-    let review;
+    const productId = req.params.rid; // { rid: 'r1' }
+    let product;
 
     try {
-        review = await Review.findById(reviewId);
+        product = await Product.findById(productId);
     } catch (err) {
-        const error = new HttpError('Something went wrong, could not find a review', 500);
+        const error = new HttpError('Something went wrong, could not find a product', 500);
         return next(error)
     }
 
-    if (!review) {
-        const error = new HttpError('Could not find a review for the provided id.', 404);
+    if (!product) {
+        const error = new HttpError('Could not find a product for the provided id.', 404);
         return next(error)
     }
 
