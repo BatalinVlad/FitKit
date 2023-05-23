@@ -11,7 +11,7 @@ const ProductsList = props => {
 
     if (props.products.length === 0) {
         return (
-            <div className="center">
+            <div className="center flex grow1">
                 <Card>
                     <h2>No products found.</h2>
                 </Card>
@@ -31,10 +31,10 @@ const ProductsList = props => {
                     {props.products.map((product) => {
                         return (
                             <ProductItem
-                                key={product.productId}
+                                key={product.id}
                                 productId={product.productId}
                                 creatorId={product.creatorId}
-                                image={product.image}
+                                image={product.image.secure_url}
                                 rate={product.rating}
                                 favorites={product.favorites}
                                 title={product.title}

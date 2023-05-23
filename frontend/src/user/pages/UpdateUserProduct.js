@@ -11,7 +11,7 @@ import Modal from '../../shared/components/UIElements/Modal';
 
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { deleteProduct, updateProduct } from '../../features/ProductsSlice';
+// import { deleteProduct, updateProduct } from '../../shared/features/ProductsSlice';
 
 import {
   VALIDATOR_MINLENGTH
@@ -58,8 +58,8 @@ const UpdateUserProduct = () => {
 
   const productUpdateSubmitHandler = async event => {
     event.preventDefault();
-    let updatedProduct = { ...loadedProduct, description: formState.inputs.description.value };
-    dispatch(updateProduct(updatedProduct));
+    // let updatedProduct = { ...loadedProduct, description: formState.inputs.description.value };
+    // dispatch(updateProduct(updatedProduct));
     history.push(`/products`);
 
     // try {
@@ -85,7 +85,7 @@ const UpdateUserProduct = () => {
     //   });
     //   props.onDelete(props.id);
     // } catch (err) { }
-    dispatch(deleteProduct({ productId }));
+    // dispatch(deleteProduct({ productId }));
     history.push(`/products`);
   };
 

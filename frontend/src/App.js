@@ -12,9 +12,8 @@ import LoadingSpinner from './shared/components/UIElements/LoadingSpinner';
 import { AuthContext } from './shared/context/auth-context';
 import { useAuth } from './shared/hooks/auth-hook';
 
-import { configureStore } from '@reduxjs/toolkit';
+import store  from './shared/store/configureStore'
 import { Provider } from 'react-redux';
-import productsReducer from './features/ProductsSlice';
 
 const DietGenerator = React.lazy(() => import('./chatGPT/DietGenerator'));
 const About = React.lazy(() => import('./about/About'));
@@ -22,22 +21,14 @@ const LiveChat = React.lazy(() => import('./chat/pages/LiveChat'));
 const Products = React.lazy(() => import('./products/pages/Products'));
 const AddProduct = React.lazy(() => import('./user/pages/AddProduct'));
 const UpdateUserProduct = React.lazy(() => import('./user/pages/UpdateUserProduct'));
-// const UserProducts = React.lazy(() => import('./user/pages/UserProducts'));
 const Reviews = React.lazy(() => import('./reviews/pages/Reviews'));
 const AddReview = React.lazy(() => import('./user/pages/AddReview'));
 const UserReviews = React.lazy(() => import('./user/pages/UserReviews'));
 const UpdateUserReview = React.lazy(() => import('./user/pages/UpdateUserReview'));
 const Auth = React.lazy(() => import('./user/pages/Auth'));
 
-
 const socket = io.connect(process.env.REACT_APP_ENDPOINT);
 socket.emit("join_room", 'reviews_room');
-
-const store = configureStore({
-  reducer: {
-    products: productsReducer
-  }
-});
 
 const App = () => {
   const { token, login, logout, userId, userName, userImage, userRole } = useAuth();

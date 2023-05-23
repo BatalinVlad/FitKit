@@ -1,5 +1,6 @@
 .button {
   font: inherit;
+  font-family: Poppins_semi_bold;
   border-radius: 5px;
   padding: 0.4rem 1.3rem;
   color: white;
@@ -97,7 +98,7 @@
 .button:hover:disabled,
 .button:active:disabled {
   background: $primary_grey_blur;
-  color: #252525;
+  color: white;
   border-color: $primary_grey_blur;
   cursor: not-allowed;
 }

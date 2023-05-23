@@ -20,7 +20,6 @@ const About = ({ socket }) => {
 
     const handleScroll = () => {
         const currentPosition = window.pageYOffset;
-        console.log(currentPosition)
         setScrollPosition(currentPosition);
     };
 

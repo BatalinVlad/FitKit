@@ -6,11 +6,11 @@ import { AuthContext } from '../../shared/context/auth-context';
 import { getStars } from '../../shared/util/utils';
 import Button from '../../shared/components/FormElements/Button';
 
-import { useDispatch } from 'react-redux';
-import { deleteProduct } from '../../features/ProductsSlice';
+// import { useDispatch } from 'react-redux';
+// import { deleteProduct } from '../../shared/features/ProductsSlice';
 
 const ProductItem = props => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const auth = useContext(AuthContext);
     const history = useHistory();
 
@@ -21,7 +21,7 @@ const ProductItem = props => {
 
     const deleteProductHandler = (event) => {
         event.stopPropagation();
-        dispatch(deleteProduct({ productId: props.productId }))
+        // dispatch(deleteProduct({ productId: props.productId }))
     }
 
     return (

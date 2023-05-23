@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 // import { useHistory } from 'react-router-dom';
 
 
@@ -9,21 +9,21 @@ import Button from '../../shared/components/FormElements/Button';
 // import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import ImageUpload from '../../shared/components/FormElements/ImageUpload';
 
-import { useDispatch } from 'react-redux';
-import { addProduct } from '../../features/ProductsSlice';
+// import { useDispatch } from 'react-redux';
+// import { addProduct } from '../../shared/features/ProductsSlice';
 
 import {
   VALIDATOR_MINLENGTH
 } from '../../shared/util/validators';
 // import { useHttpClient } from '../../shared/hooks/http-hook';
 import { useForm } from '../../shared/hooks/form-hook';
-import { AuthContext } from '../../shared/context/auth-context';
+// import { AuthContext } from '../../shared/context/auth-context';
 
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 const NewProduct = () => {
-  const dispatch = useDispatch();
-  const auth = useContext(AuthContext);
+  // const dispatch = useDispatch();
+  // const auth = useContext(AuthContext);
   // const history = useHistory();
   // const { isLoading, sendRequest, error, clearError } = useHttpClient();
 
@@ -66,16 +66,16 @@ const NewProduct = () => {
 
   const productSubmitHandler = async event => {
     event.preventDefault();
-    dispatch(addProduct({
-      productId: uuidv4(),
-      creator: auth.userName,
-      title: formState.inputs.title.value,
-      description: formState.inputs.description.value,
-      description_short: formState.inputs.description_short.value,
-      rate: 0,
-      image: formState.inputs.image.value,
-      price: formState.inputs.price.value
-    }));
+    // dispatch(addProduct({
+    //   productId: uuidv4(),
+    //   creator: auth.userName,
+    //   title: formState.inputs.title.value,
+    //   description: formState.inputs.description.value,
+    //   description_short: formState.inputs.description_short.value,
+    //   rate: 0,
+    //   image: formState.inputs.image.value,
+    //   price: formState.inputs.price.value
+    // }));
   }
 
   return (

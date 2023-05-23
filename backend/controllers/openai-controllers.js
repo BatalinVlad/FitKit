@@ -3,7 +3,6 @@ const { Configuration, OpenAIApi } = require('openai');
 const HttpError = require('../models/http-error');
 
 const createPlans = async (req, res, next) => {
-    console.log('sending openai req');
     const configuration = new Configuration({
         organization: process.env.ORGANIZATION,
         apiKey: process.env.OPENAI_API_KEY,
