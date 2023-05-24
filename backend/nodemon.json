@@ -1,6 +1,5 @@
 {
     "env": {
-        "REACT_FRONTEND_URL": "https://reviewsapp-bv.web.app/",
         "MONGO_USERNAME": "vladbatalin",
         "MONGO_PASSWORD": "9081206",
         "MONGO_NAME": "reviewapp",
