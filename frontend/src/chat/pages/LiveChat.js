@@ -20,6 +20,10 @@ const LiveChat = ({ socket }) => {
 
     const sendMessage = async () => {
         if (currentMessage !== "") {
+            let hours = new Date(Date.now()).getHours();
+            if (hours < 10) { hours = '0' + hours };
+            let minutes = new Date(Date.now()).getMinutes();
+            if (minutes < 10) { minutes = '0' + minutes };
             const messageData = {
                 msgId: small_id,
                 chat: 'main_chat',
@@ -27,9 +31,9 @@ const LiveChat = ({ socket }) => {
                 authorName: auth.userName || 'guest',
                 messageBody: currentMessage,
                 date:
-                    new Date(Date.now()).getHours() +
+                    hours +
                     ":" +
-                    new Date(Date.now()).getMinutes(),
+                    minutes
             };
 
             await socket.emit("send_message", messageData);
