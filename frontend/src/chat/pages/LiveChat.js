@@ -83,8 +83,8 @@ const LiveChat = ({ socket }) => {
             <MainNavigation />
             <div className='chat-container flex justify-center '>
                 <div className='chat-window flex column space-between'>
-                    <div className='chat-header'>
-                        <p>live chat</p>
+                    <div className='chat-header center'>
+                        <h2>live chat</h2>
                     </div>
                     <div className="chat-body">
                         <ScrollToBottom className="message-container">
