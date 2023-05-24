@@ -1,12 +1,11 @@
 .review-item {
-  width: 300px;
+  width: 400px;
   border-radius: 4px;
   margin: 5px 10px;
   cursor: pointer;
 
   .review-item__content {
     background-color: white;
-    height: 100%;
     box-shadow: $box_shadow;
     position: relative;
     overflow: hidden;
@@ -19,7 +18,8 @@
     }
 
     h3 {
-      height: 50px;
+      max-height: 50px;
+      min-height: 50px;
       overflow-y: auto;
       font-weight: normal;
     }
@@ -130,20 +130,25 @@
 
   &__dislike_buttom,
   &__like_buttom {
-    padding-bottom: 5px;
+    place-items: center;
     transition: $transition_slow;
   }
 }
 
 @media (max-width: $narrow-breakpoint) {
   .review-item {
-    &:not(:first-child) {
-      margin-top: 40px;
-      cursor: pointer;
+    width: 90%;
+    max-height: 400px;
+    .review-item__content {
+      h3 {
+        max-height: 150px;
+      }
     }
+  }
+}
 
-    &:last-child {
-      padding-bottom: 50px;
-    }
+@media (max-width: $mobile-breakpoint) {
+  .review-item {
+    width: 95%;
   }
 }

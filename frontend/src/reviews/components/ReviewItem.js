@@ -101,14 +101,14 @@ const ReviewItem = props => {
     <React.Fragment>
       <li className="review-item">
         <Card className="review-item__content flex">
-          <div className="review-item__content_link"
+          <div className="review-item__content_link flex space-between"
             onClick={() => reviewEditHandler()}
             onMouseEnter={() => reviewHoverEnterHandler()}
             onMouseLeave={() => reviewHoverLeaveHandler()}
           >
             <div className="review-item__content_container">
               {access && <div className="review-item__content_edit_button"> <AiFillEdit /> </div>}
-              <div className="flex justify-center">
+              <div className="flex space-between">
                 <div className="flex justify-start">
                   <div className="review-item__user_image flex align-center">
                     <img src={`${props.userImage}`} alt={props.title} />
@@ -123,7 +123,7 @@ const ReviewItem = props => {
               </h3>
             </div>
             <div className="review-item__likes_container fill-width">
-              <div className="review-item__dislike_buttom half-fill-width flex justify-center align-end"
+              <div className="review-item__dislike_buttom half-fill-width center"
                 onClick={(event) => reviewLikesHandler(event, 'dislike')}>
                 {isDisliked ?
                   <AiFillDislike style={{ color: "#F32013" }} /> :
@@ -131,7 +131,7 @@ const ReviewItem = props => {
                 }
                 <p>{reviewDislikes && reviewDislikes.length}</p>
               </div>
-              <div className="review-item__like_buttom half-fill-width flex justify-center align-baseline"
+              <div className="review-item__like_buttom half-fill-width center"
                 onClick={(event) => reviewLikesHandler(event, 'like')}>
                 <p>{reviewLikes && reviewLikes.length}</p>
                 {isLiked ?

@@ -62,29 +62,35 @@ const About = ({ socket }) => {
                 </div>
                 <div className='about-page-services-container flex column center'>
                     <div className='service-container workout flex row-rev justify-center'>
-                        <div className='flex grow1 column align-center'>
-                            <h2 className='uppercase'>create<br />workout plans</h2>
-                            <p>description about creating workout plans</p>
+                        <div className='service-container__description flex grow1 column text-center'>
+                            <h2 className='uppercase'>create<br />diet plans</h2>
+                            <p className='text-center fill-width scroll-y'>
+                                Revolutionize diet planning with our AI app! Create personalized diet plans with a few clicks. Match clients' goals and needs effortlessly. Say goodbye to manual calculations! Our app delivers optimized nutrition guidance, tailored to individual preferences. Start now and transform your approach to diet planning!
+                            </p>
                         </div>
-                        <div className='service-img grow1 workout-plan'>
+                        <div className='service-img flex grow1 workout-plan'>
                         </div>
                     </div>
 
                     <div className='service-container diet flex justify-center'>
-                        <div className='flex grow1 column align-center'>
-                            <h2 className='uppercase'>create<br />diet plans</h2>
-                            <p>description about creating diet plans</p>
+                        <div className='service-container__description flex grow1 column text-center'>
+                            <h2 className='uppercase'>edit<br />your plan</h2>
+                            <p className='text-center fill-width scroll-y'>
+                                Revamp your diet plan effortlessly with our flexible app. Modify and customize the AI-generated plan with ease. Achieve your goals and meet your needs by making simple edits. Embrace a personalized approach to nutrition without the hassle of rigid templates. Experience the power of AI combined with your input to create a tailored and optimized diet plan. Start optimizing your nutrition journey today with our user-friendly editing features.
+                            </p>
                         </div>
-                        <div className='service-img grow1 diet-plan'>
+                        <div className='service-img flex grow1 diet-plan'>
                         </div>
                     </div>
 
                     <div className='service-container share flex row-rev justify-center'>
-                        <div className='flex grow1 column align-center'>
-                            <h2 className='uppercase'>share<br />with your clients</h2>
-                            <p>description about shering with your clients</p>
+                        <div className='service-container__description flex grow1 column align-center'>
+                            <h2 className='uppercase'>sell it<br />in one platform</h2>
+                            <p className='text-center fill-width scroll-y'>
+                                Monetize your diet plans effortlessly with our all-in-one platform. Create, customize, and sell your personalized nutrition programs with ease. Reach a wider audience, set your pricing, and manage transactions seamlessly. Turn your passion for nutrition into a profitable business by joining our platform today.
+                            </p>
                         </div>
-                        <div className='service-img grow1 share-plan'>
+                        <div className='service-img flex grow1 share-plan'>
                         </div>
                     </div>
                 </div>
