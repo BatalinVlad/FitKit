@@ -7,7 +7,7 @@ import { getStars } from '../../shared/util/utils';
 import Button from '../../shared/components/FormElements/Button';
 
 // import { useDispatch } from 'react-redux';
-// import { deleteProduct } from '../../shared/features/ProductsSlice';
+// import { deleteProduct } from '../../shared/features/product/ProductSlice';
 
 const ProductItem = props => {
     // const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const ProductItem = props => {
 
     const deleteProductHandler = (event) => {
         event.stopPropagation();
-        // dispatch(deleteProduct({ productId: props.productId }))
+        props.deleteProduct({ productId: props.productId, token: auth.userId })
     }
 
     return (
@@ -30,7 +30,7 @@ const ProductItem = props => {
                 <li className="product-item">
                     <div className="product-item__link flex column fill-height">
                         {
-                            auth.userId === props.creatorId &&
+                            auth.userId === props.creator &&
                             <div className="product-item__actions flex space-between fill-width">
                                 <Button type="button" className="delete uppercase" size="very_small" danger
                                     onClick={(event) => deleteProductHandler(event)}

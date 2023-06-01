@@ -61,7 +61,7 @@ const UserReviewItem = props => {
           can't be undone thereafter.
         </p>
       </Modal>
-      <li className="user-review-item flex">
+      <li className="user-review-item flex mt10">
         <Card className="user-review-item__content fill-width flex column space-between">
           <div className='user-review-item__content-container'>
             {isLoading && <LoadingSpinner asOverlay />}

@@ -47,24 +47,6 @@ const NavLinks = () => {
           </span>
         </NavLink>
       </li>
-      {/* {auth.isLoggedIn && (
-        <li>
-          <NavLink to={`/${auth.userId}/reviews`}>
-            <FiClipboard />
-            <span>
-              MY REVIEWS
-            </span>
-          </NavLink>
-        </li>
-      )} */}
-      {/* <li>
-        <NavLink to="/addreview">
-          <FiPlusSquare />
-          <span>
-            ADD REVIEW
-          </span>
-        </NavLink>
-      </li> */}
       <li>
         <NavLink to="/mydietplan">
           <HiOutlineNewspaper />
@@ -85,9 +67,6 @@ const NavLinks = () => {
       {!auth.isLoggedIn && (
         <li className='nav_login'>
           <NavLink to="/auth">
-            <div className="review-item__user_image flex align-center">
-              <img src='https://res.cloudinary.com/dzeycmkct/image/upload/v1676724957/guestMode_sjwyx7.png' alt='guest' />
-            </div>
             <FiLogIn />
             <span>
               LOG IN

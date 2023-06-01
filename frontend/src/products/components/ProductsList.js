@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import ProductItem from './ProductItem';
 import Button from '../../shared/components/FormElements/Button';
@@ -6,15 +6,27 @@ import Card from '../../shared/components/UIElements/Card';
 
 import { AuthContext } from '../../shared/context/auth-context';
 
+
 const ProductsList = props => {
     const auth = useContext(AuthContext);
+    const [productsList, setProductsList] = useState([]);
 
-    if (props.products.length === 0) {
+    useEffect(() => {
+        setProductsList(props.products);
+    }, [props.products]);
+
+
+    if (productsList.length === 0) {
         return (
-            <div className="center flex grow1">
+            <div className="center flex column center grow1">
                 <Card>
                     <h2>No products found.</h2>
                 </Card>
+                {auth.isLoggedIn &&
+                    <div className='mt10'>
+                        <Button className="uppercase" type="to" href={`/addproduct`} regularAction={true} >add product</Button>
+                    </div>
+                }
             </div>
         );
     }
@@ -28,12 +40,12 @@ const ProductsList = props => {
                     </div>
                 }
                 <ul className="products-list-container grid">
-                    {props.products.map((product) => {
+                    {productsList.map((product) => {
                         return (
                             <ProductItem
                                 key={product.id}
-                                productId={product.productId}
-                                creatorId={product.creatorId}
+                                productId={product.id}
+                                creator={product.creator}
                                 image={product.image.secure_url}
                                 rate={product.rating}
                                 favorites={product.favorites}
@@ -41,6 +53,7 @@ const ProductsList = props => {
                                 description_short={product.description_short}
                                 description={product.description}
                                 price={product.price}
+                                deleteProduct={props.deleteProduct}
                             />
                         )
                     }

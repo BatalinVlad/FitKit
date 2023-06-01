@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-    creatorId: { type: mongoose.Types.ObjectId, ref: 'User' },
+    creator: { type: mongoose.Types.ObjectId, ref: 'User' },
+    productId: { type: String, required: true },
     image: {
         image_id: { type: String, required: true },
         secure_url: { type: String, required: true }

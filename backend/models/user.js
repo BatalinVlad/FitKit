@@ -14,7 +14,8 @@ const userSchema = new Schema({
     likedReviews: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Review' }],
     dislikedReviews: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Review' }],
     reviews: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Review' }],
-    dietPlans: [{ type: String }]
+    products: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Product' }],
+    dietPlans: [{ type: String, required: true }],
 });
 
 userSchema.plugin(uniqueValidator);
