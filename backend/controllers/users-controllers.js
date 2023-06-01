@@ -47,7 +47,7 @@ const signup = async (req, res, next) => {
     return next(new HttpError('Invalid inputs passed, please check your data.', 422))
   }
 
-  const { name, email, password , role } = req.body;
+  const { name, email, password, role } = req.body;
 
   let existingUser;
   try {
@@ -123,7 +123,7 @@ const signup = async (req, res, next) => {
     name: createdUser.name,
     email: createdUser.email,
     userImage: createdUser.image,
-    userImage: createdUser.role,
+    role: createdUser.role,
     token: token,
     likedReviews: createdUser.likedReviews,
     dislikedReviews: createdUser.dislikedReviews
