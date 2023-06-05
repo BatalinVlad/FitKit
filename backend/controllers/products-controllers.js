@@ -7,6 +7,7 @@ const User = require('../models/user');
 
 const cloudinary = require('../utils/cloudinary');
 const getDataUri = require('../utils/datauri');
+const product = require('../models/product');
 
 
 const getProducts = async (req, res, next) => {
@@ -46,7 +47,15 @@ const createProduct = async (req, res, next) => {
             new HttpError('Invalid inputs passed, please check your data.', 422)
         );
     }
-    const { creator, productId, title, description, description_short, price } = req.body;
+    const { creator, productId, title, description, description_short, price, date } = req.body;
+
+    if (creator !== req.userData.userId) {
+        const error = new HttpError(
+            'you are not allowed to edit this product.', 401
+        )
+        return next(error);
+    }
+
 
     const file = req.file;
     const fileUri = getDataUri(file);
@@ -73,8 +82,8 @@ const createProduct = async (req, res, next) => {
         },
         rating: 0,
         price,
+        date
     });
-
 
     let user;
     try {
@@ -101,6 +110,67 @@ const createProduct = async (req, res, next) => {
     res.status(200).json({ product: createdProduct.toObject({ getters: true }) });
 };
 
+
+const updateProduct = async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return next(new HttpError('Invalid inputs passed, please check your data.', 422));
+    }
+
+    const { title, description, description_short, image, price, date, creator } = req.body;
+    const productId = req.params.pid;
+
+    if (creator !== req.userData.userId) {
+        const error = new HttpError(
+            'you are not allowed to edit this product.', 401
+        )
+        return next(error);
+    }
+
+    let product;
+    try {
+        product = await Product.findById(productId);
+    } catch (err) {
+        const error = new HttpError('Something went wrong, could not update product', 500);
+        return next(error);
+    }
+
+    product.title = title;
+    product.description = description;
+    product.description_short = description_short;
+    product.price = price;
+    product.date = date;
+    product.price = price;
+
+    //updating image
+    if (req.file) {
+        const file = req.file;
+        const fileUri = getDataUri(file);
+
+        let imagePath;
+
+        try {
+            imagePath = await cloudinary.v2.uploader.upload(fileUri.content);
+        } catch (err) {
+            const error = new HttpError('Upload Image failed, please try again', 500);
+            return next(error);
+        }
+        product.image = {
+            image_id: imagePath.public_id,
+            secure_url: imagePath.secure_url
+        }
+    } 
+
+    try {
+        await product.save();
+    } catch (err) {
+        const error = new HttpError('Something went wrong, could not update review', 500);
+        return next(error);
+    }
+
+    res.status(200).json({ product: product.toObject({ getters: true }) });
+};
+
 const deleteProduct = async (req, res, next) => {
     const productId = req.params.pid;
 
@@ -117,16 +187,8 @@ const deleteProduct = async (req, res, next) => {
         return next(error);
     }
 
-    // if (product.creator.id !== req.body.creator) {
-    //     const error = new HttpError(
-    //         'you are not allowed to delete this product.', 401
-    //     )
-    //     return next(error);
-    // }
-
     try {
         const result = await cloudinary.uploader.destroy(product.image.image_id);
-        console.log('Image deleted:', result);
     } catch (error) {
         console.error('Error deleting image:', error);
     }
@@ -147,7 +209,9 @@ const deleteProduct = async (req, res, next) => {
     res.status(200).json({ messege: 'Deleted product' });
 };
 
-exports.deleteProduct = deleteProduct;
+
 exports.getProducts = getProducts;
 exports.getProductById = getProductById;
 exports.createProduct = createProduct;
+exports.updateProduct = updateProduct;
+exports.deleteProduct = deleteProduct;

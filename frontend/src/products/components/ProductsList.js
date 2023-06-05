@@ -53,6 +53,7 @@ const ProductsList = props => {
                                 description_short={product.description_short}
                                 description={product.description}
                                 price={product.price}
+                                date={product.date}
                                 deleteProduct={props.deleteProduct}
                             />
                         )

@@ -6,11 +6,7 @@ import { AuthContext } from '../../shared/context/auth-context';
 import { getStars } from '../../shared/util/utils';
 import Button from '../../shared/components/FormElements/Button';
 
-// import { useDispatch } from 'react-redux';
-// import { deleteProduct } from '../../shared/features/product/ProductSlice';
-
 const ProductItem = props => {
-    // const dispatch = useDispatch();
     const auth = useContext(AuthContext);
     const history = useHistory();
 
@@ -21,12 +17,13 @@ const ProductItem = props => {
 
     const deleteProductHandler = (event) => {
         event.stopPropagation();
-        props.deleteProduct({ productId: props.productId, token: auth.userId })
+        props.deleteProduct({ productId: props.productId, token: auth.token })
     }
 
     return (
         <React.Fragment>
-            <div>
+            <div className='product-item__wraper'>
+                <p className='mr10'>{props.date}</p>
                 <li className="product-item">
                     <div className="product-item__link flex column fill-height">
                         {
@@ -42,6 +39,7 @@ const ProductItem = props => {
                                 </div>
                             </div>
                         }
+
                         <div className="product-item__content_container">
                             <div className='flex column'>
                                 <h2 className='text-center bold uppercase'>{props.title}</h2>
@@ -61,8 +59,8 @@ const ProductItem = props => {
                     </div>
                 </li>
                 <div className="product-item__footer flex space-between align-baseline ">
-                    <p> {props.price} $ </p>
-                    <p className="product-item__stars flex">{getStars(props.rate)}</p>
+                    <p className='fs14'> {props.price} $ </p>
+                    <p className="product-item__stars flex fs14">{getStars(props.rate)}</p>
                 </div>
             </div>
         </React.Fragment >

@@ -15,6 +15,7 @@ const productSchema = new Schema({
     favorites: [{ type: mongoose.Types.ObjectId, ref: 'User', required: true }],
     rating: { type: Number, required: true },
     price: { type: Number, required: true },
+    date: { type: String, required: true }
 });
 
 module.exports = mongoose.model('Product', productSchema);

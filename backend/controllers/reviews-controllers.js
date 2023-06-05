@@ -101,7 +101,6 @@ const createReview = async (req, res, next) => {
     const error = new HttpError('Creating Review failed, Please try again.', 500);
     return next(error);
   }
-  // res.status(200).json({ review: review.toObject({ getters: true }) });
 
   res.status(201).json({ review: createdReview.toObject({ getters: true }) });
 };

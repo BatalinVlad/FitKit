@@ -55,6 +55,10 @@ const NewProduct = () => {
   const productSubmitHandler = async event => {
     event.preventDefault();
     const productId = uuidv4();
+
+    const currentDate = new Date();
+    const date = currentDate.toDateString();
+
     dispatch(createProduct({
       productId,
       creatorName: auth.userName,
@@ -64,18 +68,21 @@ const NewProduct = () => {
       description_short: formState.inputs.description_short.value,
       image: formState.inputs.image.value,
       price: formState.inputs.price.value,
+      date,
+      token: auth.token
     }
-    ));
-    if (!isLoading) {
+    )).then(() => {
       history.push('/products')
-    }
+    }).catch((error) => {
+      console.error('Adding Product failed:', error);
+    });
   }
 
   return (
     <React.Fragment>
       <div className='add-review-page flex column'>
         <MainNavigation />
-        <form className="review-form flex column" onSubmit={productSubmitHandler}>
+        <form className="review-form relative flex column" onSubmit={productSubmitHandler}>
           {isLoading && <LoadingSpinner asOverlay />}
           <Input
             id="title"

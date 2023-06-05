@@ -9,7 +9,10 @@ const ImageUpload = props => {
     const filePickerRef = useRef();
 
     useEffect(() => {
-        if (!file) {
+        if (!file && !props.previewUrl) {
+            return;
+        } else if (!file && props.previewUrl) {
+            setPreviewUrl(props.previewUrl);
             return;
         }
         const fileReader = new FileReader();
@@ -17,7 +20,7 @@ const ImageUpload = props => {
             setPreviewUrl(fileReader.result);
         };
         fileReader.readAsDataURL(file);
-    }, [file]);
+    }, [file, props.previewUrl]);
 
     const pickedHandler = event => {
         let pickedFile;

@@ -1,6 +1,13 @@
 .product-item {
+  &__wraper {
+    p {
+      text-align: end;
+      font-size: rem(12px);
+      color: black;
+    }
+  }
   border-radius: 10px;
-  margin: 10px;
+  margin: 5px 0px;
   cursor: pointer;
   background-color: $primary_light_posts;
   height: 450px;
@@ -26,10 +33,11 @@
     h3 {
       color: black;
     }
+    p {
+      text-align: inherit;
+      font-size: rem(14px);
+    }
 
-    // h2 {
-      // font-size: 1.75rem;
-    // }
     h3 {
       width: 60%;
       margin: 0 auto;
@@ -44,8 +52,9 @@
   }
 
   &__footer {
-    padding: 0 20px;
+    padding: 0 10px;
     p {
+      font-size: rem(14px);
       color: black;
     }
   }
@@ -82,4 +91,3 @@
     right: 10px;
   }
 }
-

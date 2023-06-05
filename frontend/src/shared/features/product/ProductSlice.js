@@ -10,7 +10,7 @@ export const getProducts = createAsyncThunk('products/getProducts', async () => 
     }
 });
 
-export const createProduct = createAsyncThunk('products/createProduct', async (productData, { dispatch }) => {
+export const createProduct = createAsyncThunk('products/createProduct', async (productData) => {
     const formData = new FormData();
     formData.append('productId', productData.productId);
     formData.append('creator', productData.creatorId);
@@ -20,12 +20,14 @@ export const createProduct = createAsyncThunk('products/createProduct', async (p
     formData.append('description_short', productData.description_short);
     formData.append('image', productData.image);
     formData.append('price', productData.price);
+    formData.append('date', productData.date);
 
     try {
-        dispatch(createProduct.pending());
         const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/products`, {
             method: 'POST',
-            headers: {},
+            headers: {
+                'Authorization': 'Bearer ' + productData.token
+            },
             body: formData
         });
 
@@ -40,10 +42,40 @@ export const createProduct = createAsyncThunk('products/createProduct', async (p
     }
 });
 
+
+export const updateProduct = createAsyncThunk('products/updateProduct', async (productData) => {
+    const formData = new FormData();
+    formData.append('creator', productData.creatorId);
+    formData.append('title', productData.title);
+    formData.append('description', productData.description);
+    formData.append('description_short', productData.description_short);
+    formData.append('price', productData.price);
+    formData.append('date', productData.date);
+    formData.append('image', productData.image);
+    try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/products/${productData.productId}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': 'Bearer ' + productData.token
+            },
+            body: formData
+        });
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+            throw new Error(responseData.message);
+        }
+
+        return responseData.product;
+    } catch (err) {
+        throw new Error('Error updating product: ' + err.message);
+    }
+});
+
 export const deleteProduct = createAsyncThunk(
     'products/deleteProduct',
-    async (data, { dispatch, rejectWithValue }) => {
-
+    async (data, { rejectWithValue }) => {
         try {
             const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/products/${data.productId}`, {
                 method: 'DELETE',
@@ -102,6 +134,26 @@ const productSlice = createSlice({
                 state.error = null;
             })
             .addCase(createProduct.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.error.message;
+            })
+
+            //UPDATE PRODUCT
+            .addCase(updateProduct.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(updateProduct.fulfilled, (state, action) => {
+                const updatedProduct = action.payload;
+                const index = state.productsData.findIndex((product) => product.productId === updatedProduct.productId);
+
+                if (index !== -1) {
+                    state.productsData[index] = updatedProduct;
+                }
+
+                state.isLoading = false;
+                state.error = null;
+            })
+            .addCase(updateProduct.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.error.message;
             })

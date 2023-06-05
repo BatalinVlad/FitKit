@@ -10,7 +10,7 @@ import { deleteProduct, getProducts } from '../../shared/features/product/Produc
 
 const Products = ({ socket }) => {
     const dispatch = useDispatch();
-    const productList = useSelector((state) => state.products.productsData); // Assuming 'products' is the key in your product slice
+    const productList = useSelector((state) => state.products.productsData); 
     const isLoading = useSelector(state => state.products.isLoading);
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const Products = ({ socket }) => {
     }, [dispatch]);
 
     const onDeleteProduct = (data) => {
-        dispatch(deleteProduct({ productId: data.productId, token: data.userId }))
+        dispatch(deleteProduct({ productId: data.productId, token: data.token }))
     }
 
     return (

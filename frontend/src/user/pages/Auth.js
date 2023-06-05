@@ -87,7 +87,6 @@ const Auth = () => {
             'Content-Type': 'application/json'
           }
         );
-        console.log(responseData);
         auth.login(responseData.userId,
           responseData.name,
           responseData.token,
@@ -107,7 +106,6 @@ const Auth = () => {
         const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/signup`, 'POST',
           formData
         );
-        console.log(responseData);
         auth.login(responseData.userId,
           responseData.name,
           responseData.token,
