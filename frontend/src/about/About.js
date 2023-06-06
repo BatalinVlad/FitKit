@@ -76,7 +76,7 @@ const About = ({ socket }) => {
                         <div className='service-container__description flex grow1 column text-center'>
                             <h2 className='uppercase'>edit<br />your plan</h2>
                             <p className='text-center fill-width scroll-y'>
-                                Revamp your diet plan effortlessly with our flexible app. Modify and customize the AI-generated plan with ease. Achieve your goals and meet your needs by making simple edits. Embrace a personalized approach to nutrition without the hassle of rigid templates. Experience the power of AI combined with your input to create a tailored and optimized diet plan. Start optimizing your nutrition journey today with our user-friendly editing features.
+                                Revamp your diet plan effortlessly with our flexible app. Modify and customize the AI-generated plan with ease. Achieve your goals and meet your needs by making simple edits. Embrace a personalized approach to nutrition without the hassle of rigid templates. Experience the power of AI combined with your input to create a tailored and optimized diet plan.
                             </p>
                         </div>
                         <div className='service-img flex grow1 diet-plan'>
