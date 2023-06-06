@@ -63,9 +63,9 @@ const Input = props => {
       );
       break;
     case 'textarea':
-      if (props.generatedTextIsValid) {
-        const generatedText = props.generatedText || '';
-        inputState.value = inputState.value + generatedText;
+      if (props.initialValueIsValid) {
+        const initialValue = props.initialValue || '';
+        inputState.value = inputState.value + initialValue;
         inputState.isTouched = true;
         inputState.isValid = true;
       }

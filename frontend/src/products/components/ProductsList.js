@@ -52,6 +52,7 @@ const ProductsList = props => {
                                 title={product.title}
                                 description_short={product.description_short}
                                 description={product.description}
+                                dietContent={product.dietContent}
                                 price={product.price}
                                 date={product.date}
                                 deleteProduct={props.deleteProduct}

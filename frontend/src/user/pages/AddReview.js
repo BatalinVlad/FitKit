@@ -18,8 +18,8 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
   const auth = useContext(AuthContext);
   const history = useHistory();
   const { isLoading, sendRequest, error, clearError } = useHttpClient();
-  const [generatedText, setGeneratedText] = useState('');
-  const [generatedTextIsValid, setGeneratedTextIsValid] = useState(true);
+  const [initialValue, setinitialValue] = useState('');
+  const [initialValueIsValid, setinitialValueIsValid] = useState(true);
 
   const [formState, inputHandler] = useForm(
     {
@@ -78,9 +78,9 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
   }
 
   const describenByAi = async () => {
-    setGeneratedTextIsValid(true);
+    setinitialValueIsValid(true);
     const prompt = `
-    hey i am training with Vlad, he is a great coach can you write a short good review on him for me please?
+    hey i am training with Vlad, he is a great coach can you write a short good review on him for me please 2 sentence?
     `
 
     try {
@@ -95,11 +95,11 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
           'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
         },
       );
-      const generatedText = responseData.choices[0].text;
-      setGeneratedText(generatedText);
+      const initialValue = responseData.choices[0].text;
+      setinitialValue(initialValue);
       // id, value, isValid
-      inputHandler('description', generatedText, true);
-      setGeneratedTextIsValid(false);
+      inputHandler('description', initialValue, true);
+      setinitialValueIsValid(false);
     } catch (err) { };
   }
 
@@ -118,8 +118,8 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
             validators={[VALIDATOR_MINLENGTH(5)]}
             errorText="Please enter a valid description (at least 5 characters)."
             onInput={inputHandler}
-            generatedText={generatedText}
-            generatedTextIsValid={generatedTextIsValid}
+            initialValue={initialValue}
+            initialValueIsValid={initialValueIsValid}
           />
           <div>
             <Button type="button" size={'very_small'} regularAction onClick={() => describenByAi()}>

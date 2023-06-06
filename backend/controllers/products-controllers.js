@@ -47,7 +47,7 @@ const createProduct = async (req, res, next) => {
             new HttpError('Invalid inputs passed, please check your data.', 422)
         );
     }
-    const { creator, productId, title, description, description_short, price, date } = req.body;
+    const { creator, productId, title, description, description_short, dietContent, price, date } = req.body;
 
     if (creator !== req.userData.userId) {
         const error = new HttpError(
@@ -75,6 +75,7 @@ const createProduct = async (req, res, next) => {
         title,
         description,
         description_short,
+        dietContent,
         favorites: [],
         image: {
             image_id: imagePath.public_id,
@@ -117,7 +118,7 @@ const updateProduct = async (req, res, next) => {
         return next(new HttpError('Invalid inputs passed, please check your data.', 422));
     }
 
-    const { title, description, description_short, image, price, date, creator } = req.body;
+    const { title, description, description_short, price, date, creator } = req.body;
     const productId = req.params.pid;
 
     if (creator !== req.userData.userId) {
@@ -159,7 +160,7 @@ const updateProduct = async (req, res, next) => {
             image_id: imagePath.public_id,
             secure_url: imagePath.secure_url
         }
-    } 
+    }
 
     try {
         await product.save();
@@ -188,7 +189,7 @@ const deleteProduct = async (req, res, next) => {
     }
 
     try {
-        const result = await cloudinary.uploader.destroy(product.image.image_id);
+        await cloudinary.uploader.destroy(product.image.image_id);
     } catch (error) {
         console.error('Error deleting image:', error);
     }

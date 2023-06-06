@@ -49,7 +49,7 @@ const DietGenerator = () => {
 
     const dietSubmitHandler = async event => {
         event.preventDefault();
-        //best PROMPT:
+        //best PROMPT yet....:
         const prompt = `
         Hi! I'm a ${formState.inputs.age.value} ${formState.inputs.gender.value} who is ${formState.inputs.height.value} cm tall and weighs ${formState.inputs.weight.value} kg. 
         my current calorie intake is 3000.
@@ -58,7 +58,9 @@ const DietGenerator = () => {
         My goal is to lose weight while ensuring I get balanced nutrition. 
         Could you please create a personalized diet plan for me based on these details?
         looke like: breackfest dinner etc.. with quantities and calories amount.
-        write me only the plan`
+        write me only the plan 
+        calorie goal is about 2500 calories
+        `
 
         try {
             const responseData = await sendRequest('https://api.openai.com/v1/completions', 'POST',

@@ -12,6 +12,7 @@ const productSchema = new Schema({
     title: { type: String, required: true },
     description_short: { type: String, required: true },
     description: { type: String, required: true },
+    dietContent: { type: String, required: true },
     favorites: [{ type: mongoose.Types.ObjectId, ref: 'User', required: true }],
     rating: { type: Number, required: true },
     price: { type: Number, required: true },

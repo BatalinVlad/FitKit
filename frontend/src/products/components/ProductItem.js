@@ -52,6 +52,12 @@ const ProductItem = props => {
                                 {props.description}
                             </p>
                             <hr className="product-item__hr" />
+
+                            <div className='product-item__diet'>
+                                <p>
+                                    {props.dietContent}
+                                </p>
+                            </div>
                         </div>
                         <div className="product-item__image flex grow1">
                             <img src={`${props.image}`} alt={props.title} className="img-cover fill" />

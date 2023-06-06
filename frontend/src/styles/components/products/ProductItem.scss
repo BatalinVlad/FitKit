@@ -35,7 +35,7 @@
     }
     p {
       text-align: inherit;
-      font-size: rem(14px);
+      font-size: rem(12px);
     }
 
     h3 {
@@ -43,11 +43,15 @@
       margin: 0 auto;
       overflow-y: auto;
       font-weight: normal;
-      // font-size: 1rem;
     }
 
     svg {
       color: #ffffff80;
+    }
+  }
+  &__diet {
+    p {
+      font-size: 10px;
     }
   }
 
