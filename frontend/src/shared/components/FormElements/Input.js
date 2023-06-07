@@ -81,6 +81,7 @@ const Input = props => {
       );
       break;
     case 'checkbox':
+      // YOU MUST MAKE IT MORE DYNAMIC !!
       element = (
         <div>
           <label className="center checkbox__label">

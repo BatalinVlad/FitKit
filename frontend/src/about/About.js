@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
 
+import Products from '../products/pages/Products';
 import Reviews from '../reviews/pages/Reviews';
 import AddReview from '../user/pages/AddReview'
 import Button from '../shared/components/FormElements/Button';
@@ -33,7 +34,6 @@ const About = ({ socket }) => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
-
         // Cleanup the event listener when the component unmounts
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -94,10 +94,14 @@ const About = ({ socket }) => {
                         </div>
                     </div>
                 </div>
+                <div className='about-page-products'>
+                    <h2 className='uppercase text-center fs40 bold'> our diet plans </h2>
+                    <Products/>
+                </div>
                 <div className='about-page-reviews flex column justify-center'>
                     {openAddReviewModal ?
                         <AddReview onAddReviewModalHandler={addReviewModalHandler} /> : <div className='flex column'>
-                            <h2 className='uppercase text-center fs40 bold uppercase'>our reviews</h2>
+                            <h2 className='uppercase text-center fs40 bold'>our reviews</h2>
                             <hr />
                             <Reviews socket={socket} />
                             <div className="center">

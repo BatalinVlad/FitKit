@@ -103,6 +103,7 @@ const NewProduct = () => {
       try {
         const currentUser = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/${auth.userId}`);
         setUser(currentUser);
+        console.log(currentUser.dietPlans)
       } catch (err) { };
     };
     getCurrentUser();
@@ -147,23 +148,32 @@ const NewProduct = () => {
             errorText="Please enter a valid description (at least 25 characters)."
             onInput={inputHandler}
           />
-          {user && user.dietPlans &&
+          {user && user.dietPlans.legth > 0  &&
             <div className='add-your-diet pointer' onClick={addYourDiet}>
               <p>looks like you got diet plans...</p>
             </div>
           }
           {
-            userDiet &&
-            <Input
-              id="dietContent"
-              rows='6'
-              element="textarea"
-              label="your diet plan"
-              validators={[VALIDATOR_MINLENGTH(25)]}
-              errorText="Please enter a valid description (at least 25 characters)."
-              onInput={inputHandler}
-              initialValue={userDiet}
-            />
+            userDiet ?
+              <Input
+                id="dietContent"
+                rows='8'
+                element="textarea"
+                label="your diet plan"
+                validators={[VALIDATOR_MINLENGTH(100)]}
+                errorText="Please enter a valid plan (at least 100 characters)."
+                onInput={inputHandler}
+                initialValue={userDiet}
+              /> :
+              <Input
+                id="dietContent"
+                rows='8'
+                element="textarea"
+                label="your diet plan"
+                validators={[VALIDATOR_MINLENGTH(100)]}
+                errorText="Please enter a valid plan (at least 100 characters)."
+                onInput={inputHandler}
+              />
           }
           <Input
             id="price"

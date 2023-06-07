@@ -120,6 +120,15 @@ const DietGenerator = () => {
                                     onInput={inputHandler}
                                 />
                                 <div className='flex'>
+                                    {/* <Input
+                                        element="input"
+                                        id="gender"
+                                        type="select"
+                                        label="gender"
+                                        validators={[VALIDATOR_REQUIRE]}
+                                        errorText="Please select your gender"
+                                        onInput={inputHandler}
+                                    /> */}
                                     <Input
                                         element="input"
                                         id="age"
@@ -160,7 +169,6 @@ const DietGenerator = () => {
 
                                 <div className='get-your-diet-btn fill-width flex justify-center'>
                                     <Button type="submit" size={'small'} action={true} disabled={!formState.isValid}>
-
                                         GET YOUR DIET PLAN NOW
                                     </Button>
                                 </div>

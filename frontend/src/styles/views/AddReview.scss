@@ -116,8 +116,9 @@
   display: none;
 }
 
-@media (max-width: 500px) {
-  .review-form {
+@media (max-width: 900px) {
+  .review-form,
+  .product-form {
     width: 90%;
   }
 }
