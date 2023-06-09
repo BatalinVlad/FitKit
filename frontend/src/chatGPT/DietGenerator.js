@@ -27,7 +27,7 @@ const DietGenerator = () => {
                 isValid: false
             },
             gender: {
-                value: 'male',
+                value: '',
                 isValid: true
             },
             age: {
@@ -51,15 +51,20 @@ const DietGenerator = () => {
         event.preventDefault();
         //best PROMPT yet....:
         const prompt = `
-        Hi! I'm a ${formState.inputs.age.value} ${formState.inputs.gender.value} who is ${formState.inputs.height.value} cm tall and weighs ${formState.inputs.weight.value} kg. 
-        my current calorie intake is 3000.
+        hey, my name is ${formState.inputs.name.value}, 
+        I'm a ${formState.inputs.age.value} years old ${formState.inputs.gender.value} 
+        height: ${formState.inputs.height.value} cm,
+        weight: ${formState.inputs.weight.value} kg. 
         I lead an active lifestyle and exercise regularly. 
         I follow a reguler diet and have no specific dietary restrictions or allergies. 
         My goal is to lose weight while ensuring I get balanced nutrition. 
-        Could you please create a personalized diet plan for me based on these details?
-        looke like: breackfest dinner etc.. with quantities and calories amount.
-        write me only the plan 
-        calorie goal is about 2500 calories
+        Could you create a personalized diet plan for me based on these details?
+        with quantities and calories amount must.
+        pretend that you are a expert at field and try to explaine everything,
+        in the end write the diet that will look like this:
+        breackfest 
+        lunch 
+        dinner
         `
 
         try {
@@ -72,7 +77,7 @@ const DietGenerator = () => {
                 { //headers
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
-                },
+                }
             );
             const generatedText = responseData.choices[0].text;
             setMydietPlanToSave(generatedText)
@@ -105,7 +110,7 @@ const DietGenerator = () => {
                 <div className='fill-height center'>
                     {!myDietPlan &&
                         <div className="card diet-generator__container relative flex column align-center">
-                            <h1 className='bold uppercase'>step 1</h1>
+                            <h1 className='bold uppercase'>get your diet</h1>
                             <form className="flex column" onSubmit={dietSubmitHandler}>
                                 <Input
                                     element="input"
@@ -119,16 +124,17 @@ const DietGenerator = () => {
                                     variant='outlined'
                                     onInput={inputHandler}
                                 />
+                                <Input
+                                    element="checkbox"
+                                    id="gender"
+                                    type="select"
+                                    validators={[VALIDATOR_REQUIRE]}
+                                    errorText="Please select your gender"
+                                    onInput={inputHandler}
+                                    choices={['male', 'female']}
+                                    styles={'flex'}
+                                />
                                 <div className='flex'>
-                                    {/* <Input
-                                        element="input"
-                                        id="gender"
-                                        type="select"
-                                        label="gender"
-                                        validators={[VALIDATOR_REQUIRE]}
-                                        errorText="Please select your gender"
-                                        onInput={inputHandler}
-                                    /> */}
                                     <Input
                                         element="input"
                                         id="age"

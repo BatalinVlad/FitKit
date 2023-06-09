@@ -50,6 +50,7 @@ export const updateProduct = createAsyncThunk('products/updateProduct', async (p
     formData.append('title', productData.title);
     formData.append('description', productData.description);
     formData.append('description_short', productData.description_short);
+    formData.append('dietContent', productData.dietContent);
     formData.append('price', productData.price);
     formData.append('date', productData.date);
     formData.append('image', productData.image);

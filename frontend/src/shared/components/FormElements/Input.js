@@ -82,31 +82,23 @@ const Input = props => {
       break;
     case 'checkbox':
       // YOU MUST MAKE IT MORE DYNAMIC !!
+      const choices = props.choices
       element = (
-        <div>
-          <label className="center checkbox__label">
-            <input
-              type="checkbox"
-              name="trainer"
-              value="trainer"
-              checked={inputState.value.includes('trainer')}
-              onChange={changeHandler}
-              className="checkbox"
-            />
-            Trainer
-          </label>
-          <label className='center checkbox__label'>
-            <input
-              type="checkbox"
-              name="visitor"
-              value="visitor"
-              checked={inputState.value.includes('visitor')}
-              onChange={changeHandler}
-              className="checkbox"
-            />
-            Visitor
-          </label>
-        </div>
+        <>
+          {choices.map((choice) => {
+            return <label key={choice} className="center checkbox__label">
+              <input
+                type="checkbox"
+                name={choice}
+                value={choice}
+                checked={inputState.value.includes(choice)}
+                onChange={changeHandler}
+                className="checkbox"
+              />
+              {choice}
+            </label>
+          })}
+        </>
       );
       break;
     default:
@@ -115,10 +107,15 @@ const Input = props => {
 
   return (
     <div
-      className={`form-control ${!inputState.isValid && inputState.isTouched &&
+      className={`form-control 
+      ${props.styles && props.styles}
+      ${!inputState.isValid && inputState.isTouched &&
         'form-control--invalid'}`}
     >
-      <label htmlFor={props.id}>{props.label}</label>
+      {
+        props.label &&
+        <label htmlFor={props.id}>{props.label}</label>
+      }
       {element}
       {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}
     </div>

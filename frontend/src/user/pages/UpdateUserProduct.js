@@ -49,6 +49,10 @@ const UpdateUserProduct = () => {
         value: '',
         isValid: false
       },
+      dietContent: {
+        value: '',
+        isValid: false
+      },
       image: {
         value: null,
         isValid: true
@@ -92,6 +96,7 @@ const UpdateUserProduct = () => {
       title: formState.inputs.title.value,
       description: formState.inputs.description.value,
       description_short: formState.inputs.description_short.value,
+      dietContent: formState.inputs.dietContent.value,
       image: updatedImage,
       price: formState.inputs.price.value,
       token: auth.token,
@@ -194,6 +199,18 @@ const UpdateUserProduct = () => {
             errorText="Please enter a valid description (at least 25 characters)."
             onInput={inputHandler}
             initialValue={loadedProduct.description}
+            initialValid={true}
+          />
+          <Input
+            id="dietContent"
+            rows='8'
+            element="textarea"
+            label="your diet plan"
+            placeholder='tell us more about the diet...'
+            validators={[VALIDATOR_MINLENGTH(100)]}
+            errorText="Please enter a valid plan (at least 100 characters)."
+            onInput={inputHandler}
+            initialValue={loadedProduct.dietContent}
             initialValid={true}
           />
           <Input

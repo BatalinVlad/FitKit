@@ -118,7 +118,7 @@ const updateProduct = async (req, res, next) => {
         return next(new HttpError('Invalid inputs passed, please check your data.', 422));
     }
 
-    const { title, description, description_short, price, date, creator } = req.body;
+    const { title, description, description_short, dietContent, price, date, creator } = req.body;
     const productId = req.params.pid;
 
     if (creator !== req.userData.userId) {
@@ -139,6 +139,7 @@ const updateProduct = async (req, res, next) => {
     product.title = title;
     product.description = description;
     product.description_short = description_short;
+    product.dietContent = dietContent;
     product.price = price;
     product.date = date;
     product.price = price;

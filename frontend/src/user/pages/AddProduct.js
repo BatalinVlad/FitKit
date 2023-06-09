@@ -28,6 +28,7 @@ const NewProduct = () => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [user, setUser] = useState();
+  const [dietFound, setDietFound] = useState(false);
   const [userDiet, setUserDiet] = useState();
 
 
@@ -92,7 +93,6 @@ const NewProduct = () => {
 
   const addYourDiet = () => {
     setUserDiet(user.dietPlans[0]);
-
     const initialValue = user.dietPlans[0];
     // id, value, isValid
     inputHandler('dietContent', initialValue, true);
@@ -103,7 +103,7 @@ const NewProduct = () => {
       try {
         const currentUser = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/users/${auth.userId}`);
         setUser(currentUser);
-        console.log(currentUser.dietPlans)
+        if (currentUser.dietPlans.length > 0) setDietFound(true);
       } catch (err) { };
     };
     getCurrentUser();
@@ -148,32 +148,36 @@ const NewProduct = () => {
             errorText="Please enter a valid description (at least 25 characters)."
             onInput={inputHandler}
           />
-          {user && user.dietPlans.legth > 0  &&
+          {dietFound &&
             <div className='add-your-diet pointer' onClick={addYourDiet}>
               <p>looks like you got diet plans...</p>
             </div>
           }
           {
-            userDiet ?
-              <Input
-                id="dietContent"
-                rows='8'
-                element="textarea"
-                label="your diet plan"
-                validators={[VALIDATOR_MINLENGTH(100)]}
-                errorText="Please enter a valid plan (at least 100 characters)."
-                onInput={inputHandler}
-                initialValue={userDiet}
-              /> :
-              <Input
-                id="dietContent"
-                rows='8'
-                element="textarea"
-                label="your diet plan"
-                validators={[VALIDATOR_MINLENGTH(100)]}
-                errorText="Please enter a valid plan (at least 100 characters)."
-                onInput={inputHandler}
-              />
+            userDiet &&
+            <Input
+              id="dietContent"
+              rows='8'
+              element="textarea"
+              label="your diet plan"
+              validators={[VALIDATOR_MINLENGTH(100)]}
+              errorText="Please enter a valid plan (at least 100 characters)."
+              onInput={inputHandler}
+              initialValue={userDiet}
+            />
+          }
+          {
+            !userDiet &&
+            <Input
+              id="dietContent"
+              rows='8'
+              element="textarea"
+              label="your diet plan"
+              validators={[VALIDATOR_MINLENGTH(100)]}
+              errorText="Please enter a valid plan (at least 100 characters)."
+              onInput={inputHandler}
+              initialValue={''}
+            />
           }
           <Input
             id="price"

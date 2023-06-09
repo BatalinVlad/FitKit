@@ -150,6 +150,7 @@ const Auth = () => {
                     validators={[VALIDATOR_REQUIRE()]}
                     errorText="telll us your role..."
                     onInput={inputHandler}
+                    choices={['trainer', 'visitor']}
                   />
                 </div>
               }
