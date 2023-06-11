@@ -9,8 +9,9 @@ const createPlans = async (req, res, next) => {
     });
 
     const openai = new OpenAIApi(configuration);
+    const { message } = req.body;
+
     try {
-        const { message } = req.body;
         const completion = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: message,

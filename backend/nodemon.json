@@ -7,6 +7,7 @@
         "CLOUD_API_KEY": "341623861283216",
         "CLOUD_API_SECRET": "ngTgjeiWwqMxUuEg-O0zou9zFTI",
         "JWT_SECRET": "supersecret_dont_share",
-        "ORGANIZATION": "org-5CmzXvC0ycf9nzumxecn9JL6"
+        "ORGANIZATION": "org-5CmzXvC0ycf9nzumxecn9JL6",
+        "OPENAI_API_KEY": "secret"
     }
 }

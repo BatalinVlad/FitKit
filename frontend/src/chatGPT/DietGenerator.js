@@ -68,18 +68,15 @@ const DietGenerator = () => {
         `
 
         try {
-            const responseData = await sendRequest('https://api.openai.com/v1/completions', 'POST',
+            const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/openai`, 'POST',
                 JSON.stringify({ //body
-                    prompt: prompt,
-                    max_tokens: 1500,
-                    model: 'text-davinci-003'
+                    message: prompt
                 }),
                 { //headers
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
                 }
             );
-            const generatedText = responseData.choices[0].text;
+            const generatedText = responseData.completion;
             setMydietPlanToSave(generatedText)
             const textArray = generatedText.replaceAll('\n', '  ').split("  ");
             setMydietPlan(textArray);
