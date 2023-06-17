@@ -28,7 +28,7 @@ const DietGenerator = () => {
             },
             gender: {
                 value: '',
-                isValid: true
+                isValid: false
             },
             age: {
                 value: '',

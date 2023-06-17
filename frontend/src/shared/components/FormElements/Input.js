@@ -91,7 +91,7 @@ const Input = props => {
                 type="checkbox"
                 name={choice}
                 value={choice}
-                checked={inputState.value.includes(choice)}
+                checked={inputState.value === choice}
                 onChange={changeHandler}
                 className="checkbox"
               />

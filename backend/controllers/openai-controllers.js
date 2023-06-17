@@ -9,8 +9,6 @@ const createPlans = async (req, res, next) => {
         organization: process.env.ORGANIZATION,
         apiKey: process.env.OPENAI_API_KEY,
     });
-    console.log(process.env.OPENAI_API_KEY);
-    console.log(process.env.ORGANIZATION);
 
     const openai = new OpenAIApi(configuration);
     const { message } = req.body;
