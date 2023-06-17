@@ -124,8 +124,8 @@ const DietGenerator = () => {
                                 <Input
                                     element="checkbox"
                                     id="gender"
-                                    type="select"
-                                    validators={[VALIDATOR_REQUIRE]}
+                                    type="checkbox"
+                                    validators={[VALIDATOR_REQUIRE()]}
                                     errorText="Please select your gender"
                                     onInput={inputHandler}
                                     choices={['male', 'female']}
