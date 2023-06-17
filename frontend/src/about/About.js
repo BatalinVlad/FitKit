@@ -101,10 +101,8 @@ const About = ({ socket }) => {
                 <div className='about-page-reviews flex column justify-center'>
                     {openAddReviewModal ?
                         <AddReview onAddReviewModalHandler={addReviewModalHandler} /> : <div className='flex column'>
-                            <h2 className='uppercase text-center fs40 bold'>our reviews</h2>
-                            <hr />
                             <Reviews socket={socket} />
-                            <div className="center">
+                            <div className="center mt10">
                                 <Button type="button" action onClick={addReviewModalHandler}>ADD REVIEW</Button>
                                 <div className="ml10">
                                     <Button type="to" href="/reviews" regularAction >ALL REVIEWS</Button>

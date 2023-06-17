@@ -118,11 +118,11 @@
 
   &-products {
     margin-top: 30px;
-    
+
     h2 {
       color: $primary;
     }
-    
+
     .main-header {
       display: none;
     }
@@ -132,11 +132,11 @@
   }
 
   &-reviews {
+    
     h2 {
       color: $primary;
     }
     margin: 80px 0px;
-    box-shadow: $box_shadow;
     padding: 5px 0px;
 
     .reviews-page {
@@ -166,6 +166,9 @@
       }
 
       .main-header {
+        display: none;
+      }
+      .reviews-page__actions {
         display: none;
       }
     }
