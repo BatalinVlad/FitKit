@@ -102,15 +102,15 @@ const About = ({ socket }) => {
                     {openAddReviewModal ?
                         <AddReview onAddReviewModalHandler={addReviewModalHandler} /> : <div className='flex column'>
                             <Reviews socket={socket} />
-                            <div className="center mt10">
+                            <div className="flex center wrap mt10">
                                 <Button type="button" action onClick={addReviewModalHandler}>ADD REVIEW</Button>
-                                <div className="ml10">
+                                {/* <div className="ml10"> */}
                                     <Button type="to" href="/reviews" regularAction >ALL REVIEWS</Button>
-                                </div>
-                                <div className="ml10">
+                                {/* </div> */}
+                                {/* <div className="ml10"> */}
                                     {auth.isLoggedIn &&
                                         < Button type="to" href={`${auth.userId}/reviews`} regularAction >MY REVIEWS</Button>}
-                                </div>
+                                {/* </div> */}
                             </div>
                         </div>
                     }

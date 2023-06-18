@@ -69,10 +69,10 @@ small {
 }
 
 hr {
-  margin: 15px 0px 3px 0px;
+  margin: 5px;
   width: 100%;
   border-bottom: 1px;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 button {
@@ -125,7 +125,7 @@ a {
   opacity: 0;
   transition: $transition_slow;
   z-index: 5;
-  background: $primary;
+  background: $primary_little_opacity;
 }
 
 .visible {

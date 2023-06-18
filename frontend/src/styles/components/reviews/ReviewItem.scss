@@ -2,7 +2,6 @@
   width: 400px;
   border-radius: 4px;
   margin: 5px 10px;
-  cursor: pointer;
 
   .review-item__content {
     background-color: white;
@@ -18,7 +17,7 @@
     }
 
     h3 {
-      max-height: 50px;
+      max-height: 150px;
       min-height: 50px;
       overflow-y: auto;
       font-weight: normal;
@@ -38,6 +37,7 @@
   }
 
   &__content_link {
+    cursor: pointer;
     position: relative;
     display: flex;
     flex-direction: column;

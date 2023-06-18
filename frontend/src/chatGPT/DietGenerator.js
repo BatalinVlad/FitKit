@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
-// import { useHistory } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+import { useHistory } from 'react-router-dom';
 import MainNavigation from '../shared/components/Navigation/MainNavigation';
 import Input from '../shared/components/FormElements/Input';
 import Button from '../shared/components/FormElements/Button';
@@ -16,9 +18,9 @@ import { AuthContext } from '../shared/context/auth-context';
 
 const DietGenerator = () => {
     const auth = useContext(AuthContext);
+    const history = useHistory();
     const { isLoading, error, clearError, sendRequest } = useHttpClient();
     const [myDietPlan, setMydietPlan] = useState();
-    const [myDietPlanToSave, setMydietPlanToSave] = useState();
 
     const [formState, inputHandler] = useForm(
         {
@@ -77,18 +79,20 @@ const DietGenerator = () => {
                 }
             );
             const generatedText = responseData.completion;
-            setMydietPlanToSave(generatedText)
-            const textArray = generatedText.replaceAll('\n', '  ').split("  ");
-            setMydietPlan(textArray);
+            setMydietPlan(generatedText);
         } catch (err) { };
     };
+
+    const handleContentChange = (content) => {
+        setMydietPlan(content);
+    }
 
     const saveDietPlanHandler = async () => {
         if (!auth.isLoggedIn) return
         try {
             await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/dietplan/create/${auth.userId}`, 'POST',
                 JSON.stringify({ //body
-                    description: myDietPlanToSave
+                    description: myDietPlan
                 }),
                 { //headers
                     'Content-Type': 'application/json',
@@ -96,6 +100,7 @@ const DietGenerator = () => {
                 },
             );
         } catch (err) { };
+        history.push('/products')
     }
 
     return (
@@ -182,13 +187,12 @@ const DietGenerator = () => {
                         myDietPlan &&
                         <div className="card diet-generator__result flex column">
                             <h1 className='text-center'>YOUR DIET PLAN</h1>
-                            <hr></hr>
                             <div className='diet-generator__result_container'>
-                                {myDietPlan.map((textRow) => {
-                                    const unique_id = uuid();
-                                    const small_id = unique_id.slice(0, 8);
-                                    return <p key={small_id}>{textRow}</p>
-                                })}
+                                <ReactQuill
+                                    value={myDietPlan}
+                                    onChange={handleContentChange}
+                                    placeholder="Enter your diet plan..."
+                                />
                             </div>
                             <div className='mt10'>
                                 <Button type='button' regularAction onClick={() => saveDietPlanHandler()}>SAVE</Button>

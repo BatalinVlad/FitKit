@@ -59,6 +59,7 @@
 }
 .diet-generator__result {
   &_container {
+    padding: 0px 5px 5px 10px;
     max-height: 90%;
     overflow-y: auto;
   }
