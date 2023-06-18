@@ -1,2 +1,9 @@
-# ReviewsApp
-reviews app with socket.io and nodejs for the backend, and React Hooks Redux Context.. for the front
+# FIT KIT APP
+Diet plans app that allows you to create a diet plan using chatGPT-3.5 API.
+
+technologies :
+frontend:
+React, Hooks, RTK, Sass,
+
+backend:
+NodeJs, MongoDB, Mongoose, socket.io
