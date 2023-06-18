@@ -12,7 +12,7 @@ const createPlans = async (req, res, next) => {
 
     // const openai = new OpenAIApi(configuration);
     const { message } = req.body;
-    let newMessage = message + '    ' + process.env.OPENAI_API_KEY + '   ' + process.env.ORGANIZATION
+    let newMessage = message + '    ' + process.env.COUNTER1 + '   ' + process.env.COUNTER2
     res.json({ completion: newMessage });
 
 
