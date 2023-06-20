@@ -313,6 +313,16 @@
 
 //scrolls
 
-.scroll-y{
+.scroll-y {
   overflow-y: scroll;
+}
+
+.page-wrapper-blur-black {
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #252525d1;
 }

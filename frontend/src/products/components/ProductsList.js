@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import ProductItem from './ProductItem';
 import Button from '../../shared/components/FormElements/Button';
@@ -34,10 +35,16 @@ const ProductsList = props => {
     return (
         <React.Fragment>
             <div className='products-list'>
-                {auth.isLoggedIn &&
+
+                {auth.isLoggedIn ?
                     <div className='ml10'>
                         <Button className="uppercase" type="to" href={`/addproduct`} regularAction={true} >add product</Button>
-                    </div>
+                    </div> :
+                    <p className='add-product-login ml10'>
+                        <Link to="/auth">
+                            want to add your diet-plan? <br></br> you should log in first...
+                        </Link>
+                    </p>
                 }
                 <ul className="products-list-container grid">
                     {productsList.map((product) => {

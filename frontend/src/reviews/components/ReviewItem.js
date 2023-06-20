@@ -8,8 +8,8 @@ import { getStars } from '../../shared/util/utils';
 import Card from '../../shared/components/UIElements/Card';
 
 import { AiFillEdit } from "react-icons/ai";
-import { AiFillLike } from 'react-icons/ai';
-import { AiFillDislike } from 'react-icons/ai';
+// import { AiFillLike } from 'react-icons/ai';
+// import { AiFillDislike } from 'react-icons/ai';
 
 const ReviewItem = props => {
   const auth = useContext(AuthContext);
@@ -122,7 +122,7 @@ const ReviewItem = props => {
                 {props.description}
               </h3>
             </div>
-            <div className="review-item__likes_container fill-width">
+            {/* <div className="review-item__likes_container fill-width">
               <div className="review-item__dislike_buttom half-fill-width center"
                 onClick={(event) => reviewLikesHandler(event, 'dislike')}>
                 {isDisliked ?
@@ -138,7 +138,7 @@ const ReviewItem = props => {
                   <AiFillLike style={{ color: "#33b249" }} /> :
                   <AiFillLike />}
               </div>
-            </div>
+            </div> */}
           </div>
         </Card>
       </li>

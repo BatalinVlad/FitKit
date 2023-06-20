@@ -101,6 +101,7 @@ const UpdateUserReview = props => {
         Authorization: 'Bearer ' + auth.token
       });
       props.onDelete(props.id);
+      history.push(`/reviews`);
     } catch (err) { }
   };
 

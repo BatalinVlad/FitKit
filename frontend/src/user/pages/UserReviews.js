@@ -36,7 +36,9 @@ const UserReviews = () => {
         <MainNavigation />
         <Card>
           <h2>No reviews found. Maybe create one?</h2>
-          <Button to="/addreview">Create Review</Button>
+          <div className='mt10'>
+            <Button to="/addreview">Create Review</Button>
+          </div>
         </Card>
       </div>
     );

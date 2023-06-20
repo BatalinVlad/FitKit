@@ -1,15 +1,60 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
-.add-review-page {
+.add-review-page,
+.add-product-page {
   padding-bottom: 20px;
   .main-header {
     position: relative;
     background-color: $main_header_dark_blue;
   }
+
+  .choose-diet {
+    &-container {
+      margin-bottom: 10px;
+    }
+    &-modal {
+      border-radius: 5px;
+      padding: 10px;
+      background: #2a252e;
+      position: relative;
+      max-height: 70vh;
+      overflow-y: scroll;
+      &__back-btn {
+        button {
+          width: 80%;
+        }
+      }
+    }
+  }
+  .diet-option-container {
+    &__wraper {
+      span {
+        color: white;
+        font-size: rem(12px);
+      }
+      text-align: initial;
+      padding: 3px;
+      width: 400px;
+    }
+    &__description {
+      padding: 5px;
+      background-color: rgba(255, 255, 255, 0.077);
+      height: 70px;
+      overflow-y: scroll;
+      border-radius: 10px;
+      transition: 0.3s;
+      &:hover {
+        background-color: $primary;
+      }
+    }
+  }
 }
 
 .review-form,
 .product-form {
+  p{
+    color: black;
+  }
   margin: 25px auto 0 auto;
   padding: 1rem;
   width: 50%;
@@ -17,7 +62,9 @@
   box-shadow: $box_shadow;
   border-radius: 6px;
   background: white;
-
+  .editor-container {
+    height: 300px;
+  }
   .form-control {
     margin: 0;
   }

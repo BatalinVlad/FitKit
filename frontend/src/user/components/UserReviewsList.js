@@ -14,7 +14,9 @@ const UserReviewsList = props => {
           <Card>
             <div className='no-reviews-found'>
               <h2>No reviews found. Maybe create one?</h2>
-              <Button action={true} to="/addreview">Create Review</Button>
+              <div className='mt10'>
+              <Button action to="/addreview">Create Review</Button>
+              </div>
             </div>
           </Card>
         </div>

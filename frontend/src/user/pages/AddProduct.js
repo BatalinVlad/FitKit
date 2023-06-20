@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 import Input from '../../shared/components/FormElements/Input';
@@ -29,7 +30,9 @@ const NewProduct = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [user, setUser] = useState();
   const [dietFound, setDietFound] = useState(false);
-  const [userDiet, setUserDiet] = useState();
+  const [userDiets, setUserDiet] = useState();
+  const [openDietsModal, setOpenDietsModla] = useState(false);
+
 
 
   const history = useHistory();
@@ -91,11 +94,16 @@ const NewProduct = () => {
     });
   }
 
-  const addYourDiet = () => {
-    setUserDiet(user.dietPlans[0]);
-    const initialValue = user.dietPlans[0];
+  const tuggleDietModal = () => {
+    setOpenDietsModla(prevState => !prevState);
+  }
+
+  const setDietPlan = (diet) => {
+    setUserDiet(diet);
+    const initialValue = diet;
     // id, value, isValid
     inputHandler('dietContent', initialValue, true);
+    tuggleDietModal();
   }
 
   useEffect(() => {
@@ -114,8 +122,38 @@ const NewProduct = () => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-
-      <div className='add-review-page flex column'>
+      <div className='add-product-page flex column relative'>
+        {openDietsModal && dietFound &&
+          <div className='page-wrapper-blur-black'>
+            <div className='choose-diet-modal-wrapper center felx column vh100'>
+              <div className='choose-diet-modal'>
+                <h2>choose one...</h2>
+                <div className='choose-diet-container scroll-y'>
+                  {user.dietPlans.map((diet, index) => {
+                    return <div key={index}>
+                      <div className='diet-option-container__wraper'>
+                        <span>option {index + 1}</span>
+                        <div className='diet-option-container__description pointer' onClick={() => setDietPlan(diet)}>
+                          <p>
+                            {diet}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  })
+                  }
+                </div>
+                <div className='choose-diet-modal__back-btn '>
+                  <Button action onClick={tuggleDietModal}>
+                    <h2 className='pointer'>
+                      back
+                    </h2>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
         <MainNavigation />
         <form className="product-form relative flex column" onSubmit={productSubmitHandler}>
           {isLoading && isLoadingFromDispatch && <LoadingSpinner asOverlay />}
@@ -148,36 +186,50 @@ const NewProduct = () => {
             errorText="Please enter a valid description (at least 25 characters)."
             onInput={inputHandler}
           />
-          {dietFound &&
-            <div className='add-your-diet pointer' onClick={addYourDiet}>
-              <p>looks like you got diet plans...</p>
+          <div className='flex space-between'>
+            <label>diet plan</label>
+            {dietFound &&
+              <div className='add-your-diet pointer' onClick={tuggleDietModal}>
+                <p>looks like you got diet plans...</p>
+              </div>
+            }
+          </div>
+          {
+            userDiets &&
+            // <Input
+            //   id="dietContent"
+            //   rows='8'
+            //   element="textarea"
+            //   label="your diet plan"
+            //   validators={[VALIDATOR_MINLENGTH(100)]}
+            //   errorText="Please enter a valid plan (at least 100 characters)."
+            //   onInput={inputHandler}
+            //   initialValue={userDiets}
+            // />
+            <ReactQuill
+              value={userDiets}
+              placeholder="Enter your diet plan..."
+            />
+          }
+          {
+            !userDiets &&
+            // <Input
+            //   id="dietContent"
+            //   rows='8'
+            //   element="textarea"
+            //   label="your diet plan"
+            //   validators={[VALIDATOR_MINLENGTH(100)]}
+            //   errorText="Please enter a valid plan (at least 100 characters)."
+            //   onInput={inputHandler}
+            //   initialValue={''}
+            // />
+            <div className='editor-container'>
+              <ReactQuill
+                value={''}
+                placeholder="Enter your diet plan..."
+                style={{ height: '85%' }}
+              />
             </div>
-          }
-          {
-            userDiet &&
-            <Input
-              id="dietContent"
-              rows='8'
-              element="textarea"
-              label="your diet plan"
-              validators={[VALIDATOR_MINLENGTH(100)]}
-              errorText="Please enter a valid plan (at least 100 characters)."
-              onInput={inputHandler}
-              initialValue={userDiet}
-            />
-          }
-          {
-            !userDiet &&
-            <Input
-              id="dietContent"
-              rows='8'
-              element="textarea"
-              label="your diet plan"
-              validators={[VALIDATOR_MINLENGTH(100)]}
-              errorText="Please enter a valid plan (at least 100 characters)."
-              onInput={inputHandler}
-              initialValue={''}
-            />
           }
           <Input
             id="price"
