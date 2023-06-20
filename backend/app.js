@@ -23,14 +23,14 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin: ['https://fitkit-app.netlify.app', 'http://localhost:3000']
+  origin: ['https://fitkit-production.up.railway.app', 'http://localhost:3000']
 }));
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ['https://fitkit-app.netlify.app', 'http://localhost:3000'],
+    origin: ['https://fitkit-production.up.railway.app', 'http://localhost:3000'],
     methods: ['GET', 'POST'],
   }
 });
