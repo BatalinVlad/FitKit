@@ -2,7 +2,6 @@ textarea,
 input {
   resize: none;
   border: none;
-  // font-size: rem(18px);
   font-family: Poppins_medium, "sans-sarif";
   letter-spacing: 2px;
 }
@@ -20,7 +19,8 @@ input {
 }
 
 .form-control {
-  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-control label,

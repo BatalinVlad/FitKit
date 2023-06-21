@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { useHistory } from 'react-router-dom';
-import { useHttpClient } from '../../shared/hooks/http-hook';
+// import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 
 import { getStars } from '../../shared/util/utils';
@@ -13,15 +13,15 @@ import { AiFillEdit } from "react-icons/ai";
 
 const ReviewItem = props => {
   const auth = useContext(AuthContext);
-  const { sendRequest } = useHttpClient();
+  // const { sendRequest } = useHttpClient();
 
   const history = useHistory();
   const [access, setAccess] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-  const [isDisliked, setIsDisliked] = useState(false);
+  // const [isLiked, setIsLiked] = useState(false);
+  // const [isDisliked, setIsDisliked] = useState(false);
 
-  const [reviewLikes, setReviewLikes] = useState();
-  const [reviewDislikes, setReviewDislikes] = useState();
+  // const [reviewLikes, setReviewLikes] = useState();
+  // const [reviewDislikes, setReviewDislikes] = useState();
 
   const reviewEditHandler = () => {
     if (auth.userId === props.creatorId) {
@@ -40,62 +40,62 @@ const ReviewItem = props => {
     setAccess(false);
   };
 
-  const reviewLikesHandler = async (event, action) => {
-    event.stopPropagation();
-    if (!auth.isLoggedIn) return;
+  // const reviewLikesHandler = async (event, action) => {
+  //   event.stopPropagation();
+  //   if (!auth.isLoggedIn) return;
 
-    if (action === 'like') {
-      setIsLiked(!isLiked)
-      setIsDisliked(false);
-    } else {
-      setIsDisliked(!isDisliked);
-      setIsLiked(false);
-    }
-    // update review ==> send userId and the action LIKE or Dislike
-    try {
-      const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews/${auth.userId}/${props.reviewId}/${action}`, 'PUT',
-        null,
-        {
-          Authorization: 'Bearer ' + auth.token
-        }
-      )
-      setReviewLikes([...responseData.reviewLikes]);
-      setReviewDislikes([...responseData.reviewDislikes]);
-    } catch (err) { };
-  }
+  //   if (action === 'like') {
+  //     setIsLiked(!isLiked)
+  //     setIsDisliked(false);
+  //   } else {
+  //     setIsDisliked(!isDisliked);
+  //     setIsLiked(false);
+  //   }
+  //   // update review ==> send userId and the action LIKE or Dislike
+  //   try {
+  //     const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/reviews/${auth.userId}/${props.reviewId}/${action}`, 'PUT',
+  //       null,
+  //       {
+  //         Authorization: 'Bearer ' + auth.token
+  //       }
+  //     )
+  //     setReviewLikes([...responseData.reviewLikes]);
+  //     setReviewDislikes([...responseData.reviewDislikes]);
+  //   } catch (err) { };
+  // }
 
-  const setLikeColor = useCallback((user) => {
-    const isLikedByUser = !!user.likedReviews.find(likeId => {
-      return likeId === props.reviewId;
-    });
-    const isDislikedByUser = !!user.dislikedReviews.find(dislikeId => {
-      return dislikeId === props.reviewId;
-    });
+  // const setLikeColor = useCallback((user) => {
+  //   const isLikedByUser = !!user.likedReviews.find(likeId => {
+  //     return likeId === props.reviewId;
+  //   });
+  //   const isDislikedByUser = !!user.dislikedReviews.find(dislikeId => {
+  //     return dislikeId === props.reviewId;
+  //   });
 
-    if (isLikedByUser) {
-      setIsLiked(true);
-      setIsDisliked(false);
-      return;
-    }
-    if (isDislikedByUser) {
-      setIsDisliked(true);
-      setIsLiked(false);
-      return;
-    }
-    setIsLiked(false);
-    setIsDisliked(false);
-  }, [props.reviewId]);
+  //   if (isLikedByUser) {
+  //     setIsLiked(true);
+  //     setIsDisliked(false);
+  //     return;
+  //   }
+  //   if (isDislikedByUser) {
+  //     setIsDisliked(true);
+  //     setIsLiked(false);
+  //     return;
+  //   }
+  //   setIsLiked(false);
+  //   setIsDisliked(false);
+  // }, [props.reviewId]);
 
-  useEffect(() => {
-    setReviewLikes(props.reviewLikes);
-    setReviewDislikes(props.reviewDislikes);
-    if (props.user === 'guest') {
-      setIsLiked(false);
-      setIsDisliked(false);
-      return;
-    }
-    setLikeColor(props.user);
-  }, [auth.isLoggedIn, props.user, props.reviewLikes, props.reviewDislikes, setLikeColor]);
+  // useEffect(() => {
+  //   setReviewLikes(props.reviewLikes);
+  //   setReviewDislikes(props.reviewDislikes);
+  //   if (props.user === 'guest') {
+  //     setIsLiked(false);
+  //     setIsDisliked(false);
+  //     return;
+  //   }
+  //   setLikeColor(props.user);
+  // }, [auth.isLoggedIn, props.user, props.reviewLikes, props.reviewDislikes, setLikeColor]);
 
   return (
     <React.Fragment>

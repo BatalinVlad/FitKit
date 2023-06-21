@@ -116,12 +116,27 @@
     }
   }
 
-  &-products {
-    margin-top: 30px;
-
-    h2 {
+  &-products,
+  &-reviews {
+    .our-diet-plans,
+    .our-reviews {
+      // margin: 0px 5%;
+      padding: 0px 5%;
+      margin-bottom: 10px;
+      font-size: rem(10px);
+      border-bottom: 1px solid $primary_middle_opacity;
       color: $primary;
     }
+  }
+
+  &-products {
+    margin-top: 50px;
+    // .our-diet-plans {
+    //   margin: 0px 5%;
+    //   font-size: rem(10px);
+    //   border-bottom: 1px solid $primary_little_opacity;
+    //   color: $primary;
+    // }
 
     .main-header {
       display: none;
@@ -132,7 +147,6 @@
   }
 
   &-reviews {
-    
     h2 {
       color: $primary;
     }

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+// import ReactQuill from 'react-quill';
+// import 'react-quill/dist/quill.snow.css';
 
 import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 import Input from '../../shared/components/FormElements/Input';
@@ -196,40 +196,27 @@ const NewProduct = () => {
           </div>
           {
             userDiets &&
-            // <Input
-            //   id="dietContent"
-            //   rows='8'
-            //   element="textarea"
-            //   label="your diet plan"
-            //   validators={[VALIDATOR_MINLENGTH(100)]}
-            //   errorText="Please enter a valid plan (at least 100 characters)."
-            //   onInput={inputHandler}
-            //   initialValue={userDiets}
-            // />
-            <ReactQuill
-              value={userDiets}
-              placeholder="Enter your diet plan..."
+            <Input
+              id="dietContent"
+              element="editor"
+              // label="your diet plan"
+              validators={[VALIDATOR_MINLENGTH(100)]}
+              errorText="Please enter at least 100 characters..."
+              onInput={inputHandler}
+              initialValue={userDiets}
             />
           }
           {
             !userDiets &&
-            // <Input
-            //   id="dietContent"
-            //   rows='8'
-            //   element="textarea"
-            //   label="your diet plan"
-            //   validators={[VALIDATOR_MINLENGTH(100)]}
-            //   errorText="Please enter a valid plan (at least 100 characters)."
-            //   onInput={inputHandler}
-            //   initialValue={''}
-            // />
-            <div className='editor-container'>
-              <ReactQuill
-                value={''}
-                placeholder="Enter your diet plan..."
-                style={{ height: '85%' }}
-              />
-            </div>
+            <Input
+              id="dietContent"
+              element="editor"
+              // label="your diet plan"
+              validators={[VALIDATOR_MINLENGTH(100)]}
+              errorText="Please enter at least 100 characters..."
+              onInput={inputHandler}
+              initialValue={''}
+            />
           }
           <Input
             id="price"

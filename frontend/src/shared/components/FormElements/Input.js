@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from 'react';
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import { validate } from '../../util/validators';
 
 const inputReducer = (state, action) => {
@@ -34,7 +35,7 @@ const Input = props => {
     onInput(id, value, isValid)
   }, [id, value, isValid, onInput]);
 
-  const changeHandler = event => {
+  const changeHandler = (event) => {
     dispatch({
       type: 'CHANGE',
       val: event.target.value,
@@ -45,6 +46,15 @@ const Input = props => {
   const touchHandler = () => {
     dispatch({
       type: 'TOUCH'
+    });
+  };
+
+  const handleEditorChange = (value) => {
+    // setEditorValue(value);
+    dispatch({
+      type: 'CHANGE',
+      val: value,
+      validators: props.validators
     });
   };
 
@@ -81,7 +91,6 @@ const Input = props => {
       );
       break;
     case 'checkbox':
-      // YOU MUST MAKE IT MORE DYNAMIC !!
       const choices = props.choices
       element = (
         <>
@@ -100,6 +109,21 @@ const Input = props => {
           })}
         </>
       );
+      break;
+    case 'editor':
+      element = (
+        <div className='editor-container'>
+          <ReactQuill
+            defaultValue={props.initialValue || ''}
+            value={inputState.value}
+            onChange={handleEditorChange}
+            onBlur={touchHandler}
+            placeholder="Enter your diet plan..."
+            style={{ height: '85%' }}
+
+          />
+        </div>
+      )
       break;
     default:
       element = null;

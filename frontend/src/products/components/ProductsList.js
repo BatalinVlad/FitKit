@@ -41,7 +41,7 @@ const ProductsList = props => {
                         <Button className="uppercase" type="to" href={`/addproduct`} regularAction={true} >add product</Button>
                     </div> :
                     <p className='add-product-login ml10'>
-                        <Link to="/auth">
+                        <Link to="/auth" className='bold'>
                             want to add your diet-plan? <br></br> you should log in first...
                         </Link>
                     </p>

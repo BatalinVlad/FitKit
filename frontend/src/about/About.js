@@ -95,22 +95,19 @@ const About = ({ socket }) => {
                     </div>
                 </div>
                 <div className='about-page-products'>
-                    <h2 className='uppercase text-center fs40 bold'> our diet plans </h2>
-                    <Products/>
+                    <h2 className='our-diet-plans uppercase bold'> our diet plans </h2>
+                    <Products />
                 </div>
                 <div className='about-page-reviews flex column justify-center'>
+                    <h2 className='our-reviews uppercase bold'> our reviews </h2>
                     {openAddReviewModal ?
                         <AddReview onAddReviewModalHandler={addReviewModalHandler} /> : <div className='flex column'>
                             <Reviews socket={socket} />
                             <div className="flex center wrap mt10">
                                 <Button type="button" action onClick={addReviewModalHandler}>ADD REVIEW</Button>
-                                {/* <div className="ml10"> */}
-                                    <Button type="to" href="/reviews" regularAction >ALL REVIEWS</Button>
-                                {/* </div> */}
-                                {/* <div className="ml10"> */}
-                                    {auth.isLoggedIn &&
-                                        < Button type="to" href={`${auth.userId}/reviews`} regularAction >MY REVIEWS</Button>}
-                                {/* </div> */}
+                                <Button type="to" href="/reviews" regularAction >ALL REVIEWS</Button>
+                                {auth.isLoggedIn &&
+                                    < Button type="to" href={`${auth.userId}/reviews`} regularAction >MY REVIEWS</Button>}
                             </div>
                         </div>
                     }
