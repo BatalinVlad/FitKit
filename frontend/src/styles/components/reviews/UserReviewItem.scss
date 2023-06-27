@@ -58,20 +58,3 @@
   }
 }
 
-.user-review__likes_container {
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-
-  p,
-  svg {
-    font-size: rem(20px);
-    color: $light_black;
-  }
-
-  p {
-    margin: 0;
-    font-size: rem(18px);
-    padding: 0px 5px;
-  }
-}

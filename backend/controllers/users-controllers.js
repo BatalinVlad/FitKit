@@ -91,8 +91,6 @@ const signup = async (req, res, next) => {
     },
     role,
     password: hashedPassword,
-    likedReviews: [],
-    dislikedReviews: [],
     reviews: [],
   });
 
@@ -125,8 +123,6 @@ const signup = async (req, res, next) => {
     userImage: createdUser.image,
     role: createdUser.role,
     token: token,
-    likedReviews: createdUser.likedReviews,
-    dislikedReviews: createdUser.dislikedReviews
   });
 };
 
@@ -181,8 +177,6 @@ const login = async (req, res, next) => {
     role: existingUser.role,
     userImage: existingUser.image,
     token: token,
-    dislikedReviews: existingUser.dislikedReviews,
-    likedReviews: existingUser.likedReviews
   });
 }
 

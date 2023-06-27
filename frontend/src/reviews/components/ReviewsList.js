@@ -43,8 +43,6 @@ const ReviewsList = props => {
                 name={review.name}
                 stars={review.stars}
                 description={review.description}
-                reviewLikes={review.likes}
-                reviewDislikes={review.dislikes}
                 creatorId={review.creator}
                 user={props.user}
               />

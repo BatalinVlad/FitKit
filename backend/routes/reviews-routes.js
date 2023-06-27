@@ -15,11 +15,6 @@ router.get('/user/:uid', reviewsControllers.getReviewsByUserId);
 
 router.use(checkAuth);
 
-router.put(
-  '/:uid/:rid/:act',
-  reviewsControllers.updateReviewLikes
-);
-
 router.patch(
   '/:rid',
   [

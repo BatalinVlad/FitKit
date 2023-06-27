@@ -37,8 +37,6 @@ const UserReviewsList = props => {
             name={review.name}
             stars={review.stars}
             description={review.description}
-            likes={review.likes.length}
-            dislikes={review.dislikes.length}
           />
         ))}
       </ul>

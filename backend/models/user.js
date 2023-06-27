@@ -11,8 +11,6 @@ const userSchema = new Schema({
         image_id: { type: String, required: true },
         secure_url: { type: String, required: true }
     },
-    likedReviews: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Review' }],
-    dislikedReviews: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Review' }],
     reviews: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Review' }],
     products: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Product' }],
     dietPlans: [{ type: String, required: true }],

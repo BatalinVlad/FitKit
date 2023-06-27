@@ -11,8 +11,6 @@ import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 
 import { getStars } from '../../shared/util/utils';
 
-import { SlLike } from 'react-icons/sl';
-import { SlDislike } from 'react-icons/sl';
 
 const UserReviewItem = props => {
   const auth = useContext(AuthContext);
@@ -100,20 +98,6 @@ const UserReviewItem = props => {
               </Button>
             )}
           </div>
-
-          <div className="user-review__likes_container flex">
-            <div className="user-review__dislike_buttom flex justify-center align-center">
-              <SlDislike />
-              <p>
-                {props.dislikes}</p>
-            </div>
-            <div className="user-review__like_buttom flex justify-center align-center">
-              <p>{props.likes}</p>
-              <SlLike />
-            </div>
-          </div>
-
-
         </Card>
       </li>
     </React.Fragment>

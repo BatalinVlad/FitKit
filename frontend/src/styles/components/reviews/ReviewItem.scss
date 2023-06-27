@@ -85,54 +85,6 @@
       border-bottom-right-radius: 4px;
     }
   }
-
-  &__likes_container {
-    color: black;
-    font-size: 2rem;
-    display: flex;
-    justify-content: space-around;
-
-    p {
-      color: $light_black;
-      margin: 0;
-      font-size: 1.2rem;
-      font-family: bold;
-      padding: 0px 5px;
-    }
-
-    svg {
-      color: $light_black;
-      font-size: rem(16px);
-    }
-  }
-
-  &__dislike_buttom {
-    svg {
-      margin-bottom: 2px;
-    }
-  }
-
-  &__dislike_buttom:hover {
-    border-bottom-left-radius: 4px;
-    background-color: rgb(255, 0, 0, 0.4);
-  }
-
-  &__like_buttom {
-    svg {
-      margin-top: 2px;
-    }
-  }
-
-  &__like_buttom:hover {
-    border-bottom-right-radius: 4px;
-    background-color: rgba(0, 128, 0, 0.4);
-  }
-
-  &__dislike_buttom,
-  &__like_buttom {
-    place-items: center;
-    transition: $transition_slow;
-  }
 }
 
 @media (max-width: $narrow-breakpoint) {

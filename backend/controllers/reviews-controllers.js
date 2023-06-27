@@ -69,8 +69,6 @@ const createReview = async (req, res, next) => {
     stars,
     description,
     userImage,
-    likes: [],
-    dislikes: [],
     isGuest,
     creator: req.userData.userId
   });
@@ -142,104 +140,12 @@ const updateReview = async (req, res, next) => {
   res.status(200).json({ review: review.toObject({ getters: true }) });
 };
 
-const updateReviewLikes = async (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return next(new HttpError('Invalid inputs passed, please check your data.', 422));
-  }
-
-  const reviewId = req.params.rid;
-  const userId = req.params.uid;
-  const action = req.params.act;
-
-  let review;
-
-  try {
-    review = await Review.findById(reviewId);
-  } catch (err) {
-    const error = new HttpError('Something went wrong, could not find review', 500);
-    return next(error);
-  }
-
-  let updatedReviewLikes = [...review.likes];
-  let updatedReviewDislikes = [...review.dislikes];
-
-  let user;
-  try {
-    user = await User.findById(userId, '-paswword');
-  } catch (err) {
-    const error = new HttpError('Something went wrong, could not find user', 500);
-    return next(error);
-  }
-  let updatedUserLikes = [...user.likedReviews];
-  let updatedUserDislikes = [...user.dislikedReviews];
-
-
-  const isLikedByUser = !!updatedReviewLikes.find(likeId => {
-    return likeId.toString() === userId;
-  });
-
-  const isDislikedByUser = !!updatedReviewDislikes.find(dislikeId => {
-    return dislikeId.toString() === userId;
-  });
-
-  if (action === 'like') {
-    if (isLikedByUser) {
-      updatedReviewLikes = [...updatedReviewLikes.filter(likeId => likeId.toString() !== userId)];
-      updatedUserLikes = [...updatedUserLikes.filter(likedReviewId => likedReviewId.toString() !== reviewId)];
-    } else {
-      if (isDislikedByUser) {
-        updatedReviewDislikes = [...updatedReviewDislikes.filter(dislikeId => dislikeId.toString() !== userId)];
-        updatedUserDislikes = [...updatedUserDislikes.filter(dislikedReviewId => dislikedReviewId.toString() !== reviewId)];
-      }
-      updatedReviewLikes.push(userId);
-      updatedUserLikes.push(reviewId);
-    }
-  } else {
-    if (isDislikedByUser) {
-      updatedReviewDislikes = [...updatedReviewDislikes.filter(dislikeId => dislikeId.toString() !== userId)];
-      updatedUserDislikes = [...updatedUserDislikes.filter(dislikedReviewId => dislikedReviewId.toString() !== reviewId)];
-    } else {
-      if (isLikedByUser) {
-        updatedReviewLikes = [...updatedReviewLikes.filter(likeId => likeId.toString() !== userId)];
-        updatedUserLikes = [...updatedUserLikes.filter(likedReviewId => likedReviewId.toString() !== reviewId)];
-      }
-      updatedReviewDislikes.push(userId);
-      updatedUserDislikes.push(reviewId);
-    }
-  }
-  //update
-
-  review.likes = [...updatedReviewLikes];
-  review.dislikes = [...updatedReviewDislikes];
-  user.likedReviews = [...updatedUserLikes];
-  user.dislikedReviews = [...updatedUserDislikes];
-
-  try {
-    const sess = await mongoose.startSession();
-    sess.startTransaction();
-    await review.save({ session: sess });
-    await user.save({ session: sess });
-    await sess.commitTransaction();
-  } catch (err) {
-    const error = new HttpError('Something went wrong, could not update likes', 500);
-    return next(error);
-  }
-
-  res.status(200).json({
-    reviewLikes: [...updatedReviewLikes],
-    reviewDislikes: [...updatedReviewDislikes],
-    userLikes: [...updatedUserLikes],
-    userDislikes: [...updatedUserDislikes]
-  });
-};
-
 const deleteReview = async (req, res, next) => {
   const reviewId = req.params.rid;
 
   let review;
   try {
-    review = await Review.findById(reviewId).populate('creator').populate('likes').populate('dislikes');
+    review = await Review.findById(reviewId).populate('creator');
   } catch (err) {
     const error = new HttpError('Something went wrong, Could not delete the review', 500);
     return next(error);
@@ -278,5 +184,4 @@ exports.getReviewById = getReviewById;
 exports.getReviewsByUserId = getReviewsByUserId;
 exports.createReview = createReview;
 exports.updateReview = updateReview;
-exports.updateReviewLikes = updateReviewLikes;
 exports.deleteReview = deleteReview;
