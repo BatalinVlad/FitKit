@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-// import ReactQuill from 'react-quill';
-// import 'react-quill/dist/quill.snow.css';
 
 import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 import Input from '../../shared/components/FormElements/Input';

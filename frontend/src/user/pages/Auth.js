@@ -172,9 +172,11 @@ const Auth = () => {
                 errorText="Please enter a valid password, at least 6 characters."
                 onInput={inputHandler}
               />
-              <Button type="submit" regularAction={true} disabled={!formState.isValid}>
-                {isLoginMode ? 'LOGIN' : 'SIGNUP'}
-              </Button>
+              <div className='mt10'>
+                <Button type="submit" regularAction={true} disabled={!formState.isValid}>
+                  {isLoginMode ? 'LOGIN' : 'SIGNUP'}
+                </Button>
+              </div>
             </form>
             <Button inverse regularAction={true} onClick={switchModeHandler}>
               SWITCH TO {isLoginMode ? 'SIGNUP' : 'LOGIN'}

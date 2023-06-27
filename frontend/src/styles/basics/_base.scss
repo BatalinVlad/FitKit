@@ -136,8 +136,17 @@ a {
 }
 
 // editor
-.ql-editor{
+.ql-editor {
   p {
     color: black;
   }
+}
+.ql-toolbar {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: 1px solid;
+}
+.ql-container {
+  border: 1px solid;
+  border-top: none;
 }

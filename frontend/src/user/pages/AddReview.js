@@ -121,7 +121,7 @@ const NewReview = ({ socket, onAddReviewModalHandler }) => {
             initialValue={initialValue}
             initialValueIsValid={initialValueIsValid}
           />
-          <div>
+          <div className='mt10'>
             <Button type="button" size={'very_small'} regularAction onClick={() => describenByAi()}>
               LET THE AI TAKE CARE OF IT. . .
             </Button>

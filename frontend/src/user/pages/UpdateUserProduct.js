@@ -84,7 +84,7 @@ const UpdateUserProduct = () => {
     event.preventDefault();
     const currentDate = new Date();
     const date = currentDate.toDateString();
-    
+
     let updatedImage;
     if (!formState.inputs.image.value) {
       updatedImage = loadedProduct.image;
@@ -135,7 +135,6 @@ const UpdateUserProduct = () => {
       </React.Fragment>
     );
   }
-
 
   return (
     <React.Fragment>
@@ -201,6 +200,17 @@ const UpdateUserProduct = () => {
             initialValue={loadedProduct.description}
             initialValid={true}
           />
+
+          <Input
+            id="dietContent"
+            element="editor"
+            // label="your diet plan"
+            validators={[VALIDATOR_MINLENGTH(100)]}
+            errorText="Please enter at least 100 characters..."
+            onInput={inputHandler}
+            initialValue={loadedProduct.dietContent}
+          />
+{/* 
           <Input
             id="dietContent"
             rows='8'
@@ -212,7 +222,9 @@ const UpdateUserProduct = () => {
             onInput={inputHandler}
             initialValue={loadedProduct.dietContent}
             initialValid={true}
-          />
+          /> */}
+
+
           <Input
             id="price"
             element="input"

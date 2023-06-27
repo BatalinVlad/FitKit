@@ -50,7 +50,6 @@ const Input = props => {
   };
 
   const handleEditorChange = (value) => {
-    // setEditorValue(value);
     dispatch({
       type: 'CHANGE',
       val: value,
@@ -95,7 +94,7 @@ const Input = props => {
       element = (
         <>
           {choices.map((choice) => {
-            return <label key={choice} className="center checkbox__label">
+            return <label key={choice} className="flex align-center checkbox__label">
               <input
                 type="checkbox"
                 name={choice}
