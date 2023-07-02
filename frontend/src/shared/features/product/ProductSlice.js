@@ -1,10 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchProducts } from '../../api/productApi';
+import { fetchProducts ,fetchProduct } from '../../api/productApi';
 
 export const getProducts = createAsyncThunk('products/getProducts', async () => {
     try {
         const products = await fetchProducts();
         return products;
+    } catch (err) {
+        throw new Error('Error fetching products: ' + err.message);
+    }
+});
+
+export const getProductById = createAsyncThunk('products/getProduct', async (productId) => {
+    try {
+        const product = await fetchProduct(productId);
+        return product;
     } catch (err) {
         throw new Error('Error fetching products: ' + err.message);
     }
@@ -99,9 +108,9 @@ export const deleteProduct = createAsyncThunk(
     }
 );
 
-
 const initialState = {
     productsData: [],
+    selectedProduct: null,
     isLoading: false,
     error: null,
 };
@@ -122,6 +131,20 @@ const productSlice = createSlice({
                 state.error = null;
             })
             .addCase(getProducts.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.error.message;
+            })
+
+            //GET PRODUCT BY ID
+            .addCase(getProductById.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getProductById.fulfilled, (state, action) => {
+                state.selectedProduct = action.payload;
+                state.isLoading = false;
+                state.error = null;
+            })
+            .addCase(getProductById.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.error.message;
             })
@@ -178,5 +201,6 @@ const productSlice = createSlice({
 
     },
 });
+
 
 export default productSlice.reducer;

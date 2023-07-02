@@ -1,5 +1,6 @@
 .live-chat-page {
   height: 100vh;
+  // background: url('../images/pxfuel.jpg');
   .main-header {
     background-color: $main_header_dark_blue;
     position: relative;
@@ -22,7 +23,8 @@
   height: max-content;
   width: 100%;
   background-color: white;
-  box-shadow: $box_shadow;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 13%);
+
 }
 .chat-header {
   background: $primary_lighter;
@@ -36,7 +38,6 @@
 .chat-window .chat-header {
   height: 45px;
   position: relative;
-  box-shadow: 0 0px 5px rgb(209 136 255);
   cursor: pointer;
 }
 .chat-window .chat-header p {

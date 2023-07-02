@@ -172,6 +172,10 @@
   text-align: center;
 }
 
+.text-end {
+  text-align: end;
+}
+
 .text-decoration {
   text-decoration: line-through;
 }
@@ -262,6 +266,18 @@
 
 .label-color-4 {
   background-color: rgb(97, 94, 255);
+}
+
+.colorPrimary {
+  color: $primary;
+}
+
+.colorBlack {
+  color: #262626;
+}
+
+.colorWhite {
+  color: white;
 }
 
 // Image helpers

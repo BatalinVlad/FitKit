@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../shared/context/auth-context';
@@ -24,8 +25,8 @@ const ProductItem = props => {
         <React.Fragment>
             <div className='product-item__wraper'>
                 <p className='mr10'>{props.date}</p>
-                <li className="product-item">
-                    <div className="product-item__link flex column fill-height">
+                <li className="product-item" >
+                    <Link className="product-item__link flex column fill-height" to={`/products/${props.productId}`}>
                         {
                             auth.userId === props.creator &&
                             <div className="product-item__actions flex space-between fill-width">
@@ -62,7 +63,7 @@ const ProductItem = props => {
                         <div className="product-item__image flex grow1">
                             <img src={`${props.image}`} alt={props.title} className="img-cover fill" />
                         </div>
-                    </div>
+                    </Link>
                 </li>
                 <div className="product-item__footer flex space-between align-baseline ">
                     <p className='fs14'> {props.price} $ </p>

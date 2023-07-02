@@ -4,6 +4,7 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
+import Button from '../../shared/components/FormElements/Button';
 import { v4 as uuid } from 'uuid';
 
 const LiveChat = ({ socket }) => {
@@ -80,6 +81,23 @@ const LiveChat = ({ socket }) => {
         };
         fetchMainCHatMessages();
     }, [sendRequest, socket]);
+
+    if (!auth.isLoggedIn) {
+        return (
+            <div className='live-chat-page flex column'>
+                <MainNavigation />
+                <div className='fill-height center'>
+                        <div className='log-in-card'>
+                            <h1 className='colorPrimary'>Sorry but you need</h1>
+                            <h2 className='colorPrimary'>to login first...</h2>
+                            <div className='mt10'>
+                                <Button action to="/auth">Log in</Button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        );
+    }
 
     return <React.Fragment>
         <ErrorModal error={error} onClear={clearError} />
