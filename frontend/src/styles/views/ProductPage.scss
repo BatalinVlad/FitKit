@@ -17,12 +17,9 @@
   &__all-products {
     button,
     a {
-      padding: 5px 10px;
-      border-radius: 10px;
       text-align: center;
-      width: 95px;
-      height: 60px;
-      /* justify-content: center; */
+      width: 60px;
+      height: 35px;
       margin-left: 8px;
       margin-top: 5px;
       display: flex;
@@ -38,9 +35,13 @@
   &-container {
     &-wrapper {
       padding: 20px;
-      width: 60%;
+      width: 75%;
       margin: 0 auto;
+      .section-one {
+        flex-direction: row-reverse;
+      }
     }
+    flex-direction: column;
     margin: 5px 0px 15px 0px;
     box-shadow: 0px 2px 5px #00000024;
     border-radius: 20px;
@@ -48,6 +49,10 @@
     &__content {
       text-align: initial;
       padding: 20px;
+      .diet-content {
+        max-height: 350px;
+        overflow-y: scroll;
+      }
     }
 
     img {
@@ -55,6 +60,61 @@
       border-radius: 0;
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .product {
+    &-container {
+      flex-direction: row;
+      &-wrapper {
+        width: 90%;
+        .section-one {
+          flex-direction: column-reverse;
+        }
+        .actions {
+          flex-direction: row;
+
+          .product__buy-now,
+          .product__add-to-fav,
+          .product__all-products {
+            button,
+            a {
+              margin-top: 0;
+              margin-left: 8px;
+            }
+            margin: 0;
+          }
+        }
+      }
+      img {
+        max-height: 100%;
+        width: 38%;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .product {
+    &-container {
+      &-wrapper {
+        width: 100%;
+        padding: 20px 0px;
+        .actions {
+          justify-content: center;
+        }
+      }
+      flex-direction: column;
+      box-shadow: none;
+      img {
+        border-radius: 4px;
+        width: 100%;
+        max-height: 200px;
+      }
     }
   }
 }
