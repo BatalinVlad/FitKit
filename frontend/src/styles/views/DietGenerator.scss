@@ -1,7 +1,7 @@
 .diet-generator-page {
   height: 100vh;
   .main-header {
-    background-color: $main_header_dark_blue;
+    background-color: $primary;
   }
 }
 .card {
@@ -59,9 +59,13 @@
 }
 .diet-generator__result {
   &_container {
+    margin-top: 5px;
     padding: 0px 5px 5px 10px;
     max-height: 90%;
     overflow-y: auto;
+  }
+  .ql-editor {
+    height: 50vh;
   }
   ::-webkit-scrollbar {
     width: 6px;

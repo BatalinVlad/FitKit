@@ -27,7 +27,7 @@ const ProductPage = () => {
                     <MainNavigation />
                     {isLoading && <LoadingSpinner asOverlay />}
                     <div className='product-container-wrapper flex column center'>
-                            <p className='fill-width text-start ml10'> {product.date} </p>
+                        <p className='fill-width text-start ml10'> {product.date} </p>
                         <div className='section-one flex'>
                             <div className='actions flex column'>
                                 <div className='product__buy-now center'>
@@ -59,7 +59,10 @@ const ProductPage = () => {
                                             {product.description_short}
                                         </h2>
                                         <p className='diet-content mt10'>
-                                            {product.dietContent}
+                                            {product.dietContent.substring(0, 100)}
+                                            <span className='blur-text'>
+                                                {product.dietContent.substring(100)}
+                                            </span>
                                         </p>
                                     </div>
                                     <p className='bold mt10 fs16'> {product.price} $ </p>

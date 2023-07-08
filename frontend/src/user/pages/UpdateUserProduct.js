@@ -210,20 +210,6 @@ const UpdateUserProduct = () => {
             onInput={inputHandler}
             initialValue={loadedProduct.dietContent}
           />
-{/* 
-          <Input
-            id="dietContent"
-            rows='8'
-            element="textarea"
-            label="your diet plan"
-            placeholder='tell us more about the diet...'
-            validators={[VALIDATOR_MINLENGTH(100)]}
-            errorText="Please enter a valid plan (at least 100 characters)."
-            onInput={inputHandler}
-            initialValue={loadedProduct.dietContent}
-            initialValid={true}
-          /> */}
-
 
           <Input
             id="price"

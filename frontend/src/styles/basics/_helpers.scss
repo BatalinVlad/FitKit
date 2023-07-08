@@ -206,6 +206,10 @@
   text-transform: capitalize;
 }
 
+.blur-text {
+  filter: blur(2px); // Adjust the blur amount as desired
+}
+
 // pointer helper
 
 .pointer {

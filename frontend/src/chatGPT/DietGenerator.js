@@ -50,7 +50,7 @@ const DietGenerator = () => {
 
 
     const dietSubmitHandler = async event => {
-        event.preventDefault();
+        if (event) event.preventDefault();
         //best PROMPT yet....:
         const prompt = `
         hey, my name is ${formState.inputs.name.value}, 
@@ -194,8 +194,13 @@ const DietGenerator = () => {
                                     placeholder="Enter your diet plan..."
                                 />
                             </div>
-                            <div className='mt10'>
-                                <Button type='button' regularAction onClick={() => saveDietPlanHandler()}>SAVE</Button>
+                            <div className='flex justify-center mt10'>
+                                <div>
+                                    <Button type='button' regularAction onClick={() => saveDietPlanHandler()}>SAVE</Button>
+                                </div>
+                                <div className='ml10'>
+                                    <Button type='button' regularAction onClick={() => dietSubmitHandler()}>TRY AGAIN?</Button>
+                                </div>
                             </div>
                         </div>
                     }

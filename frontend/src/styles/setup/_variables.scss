@@ -28,10 +28,12 @@ $primary: #432656;
 $primary_little_opacity: #432656e7;
 $primary_middle_opacity: #43265683;
 
+//webkit
+$webkit_scrollbar_thumb: #4326561c;
+$webkit_scrollbar_thumb_hover: #4326563b;
 
 
-$main_header_dark_blue: $primary;
-
+//page
 $footer_primary_dark: $primary;
 $side-drawer: $primary;
 
@@ -56,4 +58,4 @@ $user_shaodw_img: 0px 0px 1px 1px #252525;
 $text_shadow_black: 0px 1px 25px #2626263b;
 
 //hvoer
-$hover_light_dark: #ef7ffc2a;
+$hover_light_dark: #ef7ffc0e;

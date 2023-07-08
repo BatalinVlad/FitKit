@@ -101,23 +101,23 @@ a {
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
-  height: 3px;
+  height: 10px;
   display: none;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgba(241, 241, 241, 0.043);
+  background: rgba(241, 241, 241, 0.0);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgba(227, 227, 227, 0.279);
+  background: $webkit_scrollbar_thumb;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(235, 235, 235, 0.477);
+  background: $webkit_scrollbar_thumb_hover;
 }
 
 .observed-element {
@@ -144,10 +144,10 @@ a {
 .ql-toolbar {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  border: 1px solid;
+  // border: 3px solid  red;
 }
-.ql-container {
-  border: 1px solid;
-  border-top: none;
-}
+// .ql-container {
+//   border: 1px solid #8a8a8a26;
+//   // padding: 5px 0px 5px 5px;
+// }
 
