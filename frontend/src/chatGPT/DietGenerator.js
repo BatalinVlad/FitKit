@@ -52,27 +52,37 @@ const DietGenerator = () => {
     const dietSubmitHandler = async event => {
         if (event) event.preventDefault();
         //best PROMPT yet....:
-        const prompt = `
-        hey, my name is ${formState.inputs.name.value}, 
-        I'm a ${formState.inputs.age.value} years old ${formState.inputs.gender.value} 
-        height: ${formState.inputs.height.value} cm,
-        weight: ${formState.inputs.weight.value} kg. 
-        I lead an active lifestyle and exercise regularly. 
-        I follow a reguler diet and have no specific dietary restrictions or allergies. 
-        My goal is to lose weight while ensuring I get balanced nutrition. 
-        Could you create a personalized diet plan for me based on these details?
-        with quantities and calories amount must.
-        pretend that you are a expert at field and try to explaine everything,
-        in the end write the diet that will look like this:
-        breackfest 
-        lunch 
-        dinner
-        `
+        const prompt = [
+            {
+                role: 'system', content: 'Welcome!'
+            },
+            {
+                role: 'user',
+                content: `my name is ${formState.inputs.name.value} I'm a ${formState.inputs.age.value} years old ${formState.inputs.gender.value}
+            height: ${formState.inputs.height.value} cm, weight: ${formState.inputs.weight.value} kg`
+            },
+            {
+                role: 'user',
+                content: `
+            I lead an active lifestyle and exercise regularly. 
+            I follow a reguler diet and have no specific dietary restrictions or allergies. 
+            My goal is to lose weight while ensuring I get balanced nutrition.
+            `
+            },
+            {
+                role: 'user',
+                content: `Could you create a personalized diet plan for me based on these details ?
+            with quantities and calories amount must.
+            pretend that you are a expert at field and try to explaine everything,
+            in the end write the diet that will look like this:
+            -breackfest -lunch -dinner`
+            }
+        ]
 
         try {
             const responseData = await sendRequest(`${process.env.REACT_APP_BACKEND_URL}/openai`, 'POST',
                 JSON.stringify({ //body
-                    message: prompt
+                    messages: prompt
                 }),
                 { //headers
                     'Content-Type': 'application/json',

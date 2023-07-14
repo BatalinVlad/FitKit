@@ -1,31 +1,34 @@
-
-const { Configuration, OpenAIApi } = require('openai');
 const HttpError = require('../models/http-error');
 
 const createPlans = async (req, res, next) => {
+
+    const { Configuration, OpenAIApi } = require("openai");
+
     const configuration = new Configuration({
-        organization: process.env.ORGANIZATION,
         apiKey: process.env.OPENAI_API_KEY,
     });
-
     const openai = new OpenAIApi(configuration);
-    const { message } = req.body;
 
+    const { messages } = req.body;
+    let conversation = [];
 
     try {
-        const completion = await openai.createCompletion({
-            model: "text-davinci-003",
-            prompt: message,
-            max_tokens: 3000,
-            temperature: 0
-        });
-        res.json({ completion: completion.data.choices[0].text });
-    } catch (err) {
+        await Promise.all(messages.map(async (message) => {
+            conversation.push(message);
+            const chatCompletion = await openai.createChatCompletion({
+                model: "gpt-3.5-turbo",
+                messages
+            });
+
+            const response = chatCompletion.data.choices[0].message.content;
+            conversation.push({ role: 'assistant', content: response });
+        }));
+        const finalResult = conversation[conversation.length - 1].content;
+        res.json({ completion: finalResult});
+    }
+    catch (err) {
         const error = new HttpError('something went wrong, try again later', 500)
         return next(error);
     }
-};
-
-
+}
 exports.createPlans = createPlans;
-

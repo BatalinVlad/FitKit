@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useState} from 'react';
 import { useParams } from 'react-router-dom';
 
 import MainNavigation from '../../shared/components/Navigation/MainNavigation';
@@ -15,17 +15,26 @@ const ProductPage = () => {
     const productId = useParams().productId;
     const product = useSelector((state) => state.products.selectedProduct);
     const isLoading = useSelector((state) => state.products.isLoading);
+    const [dietContentPlainText, setDietContentPlainText] = useState('');
 
     useEffect(() => {
         dispatch(getProductById(productId));
     }, [dispatch, productId]);
 
+    useEffect(() => {
+        if (product) {
+            const divElement = document.createElement('div');
+            divElement.innerHTML = product.dietContent;
+            setDietContentPlainText(divElement.innerText);
+        }
+    }, [product]);
+
     return (
         <React.Fragment>
-            {product &&
-                <div className='product-page flex column 100vh'>
-                    <MainNavigation />
-                    {isLoading && <LoadingSpinner asOverlay />}
+            <div className='product-page flex column 100vh'>
+                <MainNavigation />
+                {isLoading && <LoadingSpinner asOverlay />}
+                {product &&
                     <div className='product-container-wrapper flex column center'>
                         <p className='fill-width text-start ml10'> {product.date} </p>
                         <div className='section-one flex'>
@@ -59,10 +68,8 @@ const ProductPage = () => {
                                             {product.description_short}
                                         </h2>
                                         <p className='diet-content mt10'>
-                                            {product.dietContent.substring(0, 100)}
-                                            <span className='blur-text'>
-                                                {product.dietContent.substring(100)}
-                                            </span>
+                                            {/* HERE I WANT plainText */}
+                                            {dietContentPlainText}
                                         </p>
                                     </div>
                                     <p className='bold mt10 fs16'> {product.price} $ </p>
@@ -72,8 +79,8 @@ const ProductPage = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </React.Fragment>
     )
 };
